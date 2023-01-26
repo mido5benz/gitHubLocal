@@ -12,6 +12,8 @@ class AdditionTest {
 	@Test
 	void testAddition() {
 		
+		
+		
 		// given
 		int numberOne = 10;
 		
