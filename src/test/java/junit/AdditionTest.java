@@ -12,12 +12,8 @@ class AdditionTest {
 	@Test
 	void testAddition() {
 		
-		
-		
-		
 		// given
 		int numberOne = 10;
-		
 		int numberTwo = 30;
 		
 		// when
