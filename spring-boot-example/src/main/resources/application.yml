@@ -1,0 +1,26 @@
+#server:
+#  port: 8081
+#
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5332/customer
+#    username: postgres
+#    password: password
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        format_sql: true
+#    show_sql: true
+#  main:
+#    web-application-type: servlet
+#
+#  # Logger configuration
+#  logging:
+#    pattern:
+#      console: "%d %-5level %logger : %msg%n"
+#    level:
+#      org.springframework: info
+#      org.hibernate: debug
