@@ -1,4 +1,4 @@
-export interface CostumerModel {
+export interface CustomerModel {
 
   id: number;
   name: String;
