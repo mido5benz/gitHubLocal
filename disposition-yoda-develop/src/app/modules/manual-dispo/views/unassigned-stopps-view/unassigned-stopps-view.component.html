@@ -1,0 +1,68 @@
+<app-navigation>
+  <ng-container left>
+    <div class="d-flex">
+      <div class="nav-item" [routerLink]="['/manual-dispo']">
+        <i class="fas fa-map-marked"></i> Karte
+      </div>
+    </div>
+  </ng-container>
+  <div middle></div>
+  <ng-container right>
+    <div class="d-flex">
+      <div>
+        <app-nav-badge-icon-link
+          [url]="'/stammdaten/fehlerhaft'"
+          [caption]="'Fehlerhafte Adressen'"
+          [objectCount]="errorCount$ | async"
+        ></app-nav-badge-icon-link>
+      </div>
+      <div>
+        <app-nav-badge-icon-link
+          [url]="'/manual-dispo/feindisposition'"
+          [caption]="'Unverplante Stopps'"
+          [objectCount]="unassignedStopCount$ | async"
+        ></app-nav-badge-icon-link>
+      </div>
+    </div>
+  </ng-container>
+</app-navigation>
+<div class="container-fluid mt-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/manual-dispo">Karte</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/manual-dispo/feindisposition']">Tour 9999</a></li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tour-info-container">
+        <h3>Alle unverplanten Stopps</h3>
+        <app-start-umdisposition-button
+          [selectedStopps]="selectedStopps"
+          (openDialogClicked)="openMoveStoppDialog()">
+        </app-start-umdisposition-button>
+        <app-reload-data-button (onButtonClicked)="reloadData()"></app-reload-data-button>
+      </div>
+      <div class="table-container">
+        <ag-grid-angular
+          #agGrid
+          class="ag-theme-alpine"
+          style="width: 100%; height: 100%"
+          [rowDragManaged]="true"
+          [animateRows]="true"
+          [columnDefs]="columnDefs"
+          [defaultColDef]="defaultColDef"
+          [rowData]="stopps"
+          [rowSelection]="'multiple'"
+          [localeText]="localeText"
+          [pagination]="true"
+          (selectionChanged)="onRowSelectionChanged()"
+          (gridReady)="onGridReady($event)"
+          (rowDoubleClicked)="onRowDoubleClicked($event)"
+          [gridOptions]="gridOptions"
+        >
+        </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<app-navigation>
+  <ng-container left></ng-container>
+  <ng-container middle></ng-container>
+  <ng-container right>
+    <app-navigation-item [iconClasses]="['fa fa-refresh']" title="Refresh" (click)="refreshOnTour()"></app-navigation-item>
+  </ng-container>
+</app-navigation>
+
+<app-on-tour-info [tourInfos]="allTours$ | async"></app-on-tour-info>

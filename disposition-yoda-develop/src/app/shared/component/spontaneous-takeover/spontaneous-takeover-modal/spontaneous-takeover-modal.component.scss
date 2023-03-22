@@ -1,0 +1,63 @@
+.btn {
+  border: 1px solid darken(white, 15%);
+  border-radius: 2px;
+  background-color: white;
+  color: black;
+
+  &:hover {
+    color: white;
+    border: 1px solid darken(#F27E00, 15%) !important;
+    background-color: #F27E00;
+  }
+}
+
+.label-position {
+  display: block;
+  text-align: left;
+}
+
+.versenderAdress {
+  margin-bottom: 20px;
+  margin-left: 70px;
+}
+
+.modal-form-title {
+  font-family: "Days", serif;
+  font-style: italic;
+  letter-spacing: 0.4px;
+}
+
+.ambient-checkbox {
+  position: relative;
+  display: block;
+  padding-left: 2.30rem;
+  align-self: center;
+}
+
+.nav-item {
+  font-size: 14px;
+  color: black;
+  border-left: 1px solid darken(#ffffff, 10%);
+  border-right: 1px solid darken(#ffffff, 10%);
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    cursor: pointer;
+    background: rgb(242, 241, 241);
+    background: linear-gradient(180deg, rgba(205, 205, 205, 0.4) 0%, rgba(232, 230, 230, 0) 100%);
+    border-left: 1px solid darken(#ffffff, 30%);
+    border-right: 1px solid darken(#ffffff, 30%);
+  }
+
+  .fa-filter {
+    font-size: 12px;
+  }
+}
+
+//.ng-valid[required], .ng-valid.required  {
+//  border-left: 5px solid #42A948; /* green */
+//}
+//
+//.ng-invalid:not(form)  {
+//  border-left: 5px solid #a94442; /* red */
+//}

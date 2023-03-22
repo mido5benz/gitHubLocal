@@ -1,0 +1,48 @@
+<span class="tourFiltersInactive" *ngIf="filterInactive(); else filtersActive"
+  >Keine Filter aktiv</span
+>
+<ng-template #filtersActive>
+  <div class="tourFiltersActive">
+    <b>Aktive Filter:</b>
+    <span
+      class="filter toursFilter"
+      *ngIf="tourFilters.length > 2; else extendTourFilter"
+      >Touren: {{ tourFilters.length }}
+    </span>
+    <ng-template #extendTourFilter>
+      <span class="filter collapsedTourFilter" *ngIf="tourFilters.length > 0"
+        >Touren:
+        <span class="shown" *ngFor="let tourFilter of tourFilters">{{
+          tourFilter
+        }}</span>
+      </span>
+    </ng-template>
+    <span
+      class="filter serviceFilter"
+      *ngIf="serviceFilters.length > 2; else extendServiceFilter"
+      >Dienste: {{ serviceFilters.length }}
+    </span>
+    <ng-template #extendServiceFilter>
+      <span
+        class="filter collapsedServiceFilter"
+        *ngIf="serviceFilters.length > 0"
+        >Dienste:
+        <span class="shown" *ngFor="let serviceFilter of serviceFilters">{{
+          serviceFilter
+        }}</span>
+      </span>
+    </ng-template>
+    <span class="filter vehicleFilter" *ngIf="vehicleType !== '0'"
+      >Fahrzeugtyp: {{ vehicleType | vehicleType }}
+    </span>
+    <span class="filter semiTrailerFilter" *ngIf="semitrailer"
+      >Sattel: <i class="fas fa-check"></i>
+    </span>
+    <span class="filter truckFilter" *ngIf="truck"
+      >LKW: <i class="fas fa-check"></i
+    ></span>
+    <span class="reset-filter">
+      <i class="fa fa-times" aria-hidden="true" (click)="resetFilters()"></i>
+    </span>
+  </div>
+</ng-template>

@@ -1,0 +1,53 @@
+.error-list-container {
+  .error-stopp-list {
+    height: calc(100vh - 170px);
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    .item {
+      font-size: 13px;
+      padding: 5px 10px;
+      border: 1px solid lightgray;
+      margin-bottom: 3px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: darken(#fff, 5%);
+        border-color: orange;
+        color: black;
+      }
+    }
+  }
+}
+
+.fa-check-circle {
+  color: #155724;
+}
+
+.knownDesinationsList {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    font-size: 13px;
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+    margin-bottom: 3px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: darken(#fff, 5%);
+      border-color: orange;
+      color: black;
+    }
+  }
+}
+
+.selected {
+  background-color: darken(#fff, 5%);
+  border-color: orange;
+  color: black;
+}

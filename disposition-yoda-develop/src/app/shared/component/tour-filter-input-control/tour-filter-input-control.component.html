@@ -1,0 +1,31 @@
+<div class="form-group" id="tourSelectionInput">
+  <label class="labelCaption" for="myDropDown">{{ labelCaption }}</label>
+  <input
+    #input
+    id="myDropDown"
+    class="form-control"
+    [placeholder]="placeholder"
+    type="text"
+    (keydown)="inputChanged($event)"
+    [(ngModel)]="inputValue"
+    [typeahead]="dataSource$"
+    [typeaheadAsync]="true"
+    typeaheadOptionField="tour.tournr"
+    (typeaheadOnSelect)="onSelect($event)"
+    (typeaheadLoading)="changeTypeaheadLoading($event)"
+    [typeaheadItemTemplate]="customItemTemplate"
+  />
+  <app-tag-item
+    [caption]="tag"
+    [index]="index"
+    (tagRemoved)="removeTag($event)"
+    *ngFor="let tag of tagsList; let index = index"
+  ></app-tag-item>
+</div>
+
+<ng-template #customItemTemplate let-model="item" let-index="index">
+  <div class="item">
+    {{ model.tour.tournr }}
+  </div>
+</ng-template>
+

@@ -1,0 +1,22 @@
+.icon-wrapper {
+  width: 40px;
+
+  .soll-stopp-nr {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #fff;
+    line-height: 2;
+    text-align: center;
+    background: #f27e00;
+    margin-right: 8px;
+    border: 1px solid transparent;
+
+    &:hover {
+      border: 1px solid darken(#f27e00, 25%);
+      background: darken(#f27e00, 5%);
+      cursor: pointer;
+    }
+  }
+}

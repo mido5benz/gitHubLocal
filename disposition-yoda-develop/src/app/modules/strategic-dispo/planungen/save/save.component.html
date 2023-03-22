@@ -1,0 +1,69 @@
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Planung speichern?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <div *ngIf="planungenService.getActiveArt()=='Neu'">
+    <p>Möchten Sie die Planung unter dem Namen: <b>{{tempName}}</b> speichern?</p>
+    <button type="button" class="btn btn-primary" (click)="speichernNeu()">Speichern</button>
+  </div>
+  <div *ngIf="planungenService.getActiveArt()=='Update'">
+    <p>Möchten Sie die Planung unter dem Namen: <b>{{currentPlaning}}</b> speichern?</p>
+    <button type="button" class="btn btn-primary" (click)="speichernUpdate()">Speichern</button>
+  </div>
+  </div>
+</ng-template>
+
+<ng-template #templateKopie>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Speichern unter:</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <input type="text" id="text-input" name="text-input" class="form-control felder" [(ngModel)]="name" placeholder="Name"
+    #namePlanungKopie="ngModel" required>
+  <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control felder" [(ngModel)]="beschreibung"
+    #beschreibungPlanungKopie="ngModel" required placeholder="Beschreibung"></textarea>
+  <div class="modal-body text-center">
+    <button type="button" class="btn btn-danger"
+      [disabled]="namePlanungKopie.invalid || beschreibungPlanungKopie.invalid"
+      (click)="speichernNeu()">Speichern</button>
+  </div>
+</ng-template>
+
+<div *ngIf="planungenService.getActiveArt()=='Neu'">
+  <div class="dropdown" title="Planung speichern" dropdown [insideClick]="true" placement="bottom right" (isOpenChange)="change($event)"
+    [isOpen]="status.isOpen">
+    <div dropdownToggle  class="nav-item dropdown-toggle">
+      <i class="fa fa-cloud-upload"></i>
+    </div>
+
+    <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+      <input type="text" id="text-input" name="text-input" class="form-control felder" [(ngModel)]="name"
+        #namePlanung="ngModel" required placeholder="Name">
+      <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control felder"
+        [(ngModel)]="beschreibung" #beschreibungPlanung="ngModel" required placeholder="Beschreibung"></textarea>
+      <button class="btn btn-block btn-primary felder" [disabled]="namePlanung.invalid || beschreibungPlanung.invalid"
+        (click)="openModal(template)">Speichern</button>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="planungenService.getActiveArt()=='Update'">
+  <div class="dropdown" dropdown [insideClick]="true" placement="bottom right" (isOpenChange)="change($event)"
+    [isOpen]="status.isOpen">
+    <div dropdownToggle  class="nav-item dropdown-toggle">
+      <i class="fa fa-cloud-upload" title="Speichern"></i>
+    </div>
+
+    <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+      <button class="btn btn-block btn-primary felder" (click)="openModal(template)">Speichern</button>
+      <button class="btn btn-block btn-primary felder" (click)="openModalKopie(templateKopie)">Speichern unter (Kopie
+        erstellen)</button>
+    </ul>
+  </div>
+</div>

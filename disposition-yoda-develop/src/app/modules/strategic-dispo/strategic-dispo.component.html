@@ -1,0 +1,41 @@
+
+<app-navigation>
+  <ng-container left>
+    <app-strategic-dispo-layer #layer></app-strategic-dispo-layer>
+  </ng-container>
+  <ng-container middle>
+    <app-strategic-dispo-active #active></app-strategic-dispo-active>
+  </ng-container>
+  <ng-container right>
+    <div class="d-flex">
+    <app-strategic-dispo-excel #excel></app-strategic-dispo-excel>
+    <app-strategic-dispo-save #save></app-strategic-dispo-save>
+    <app-strategic-dispo-load #load></app-strategic-dispo-load>
+    <app-strategic-dispo-neu #neu></app-strategic-dispo-neu>
+    <app-strategic-dispo-delete #delete></app-strategic-dispo-delete>
+    <app-strategic-dispo-activate #activate></app-strategic-dispo-activate>
+  </div>
+  </ng-container>
+</app-navigation>
+
+<div class="container-fluid map-viewport">
+  <div class="content-wrapper w-100 d-flex">
+    <div class="flex-grow-1 main-container">
+      <div class="main-map" [ngClass]="mapHeight">
+        <!-- Map -->
+        <app-strategic-dispo-map
+          #map
+          (rasterChanged)="updateTour()"
+          (filter)="onFilter($event)"
+        >
+        </app-strategic-dispo-map>
+      </div>
+
+      <div class="tour-table" [ngClass]="tableHeight">
+        <!-- Table -->
+        <app-strategic-dispo-table #table (rowSelect)="onSelect($event)">
+        </app-strategic-dispo-table>
+      </div>
+    </div>
+  </div>
+</div>

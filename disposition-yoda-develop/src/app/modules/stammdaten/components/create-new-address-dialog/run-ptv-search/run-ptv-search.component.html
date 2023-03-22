@@ -1,0 +1,15 @@
+<div class="text-center">
+  Die eingegeben Adresse
+  <ul class="list-unstyled">
+    <li><b>{{ address?.name1 }}</b></li>
+    <li><b>{{ address?.strasse }} {{ address?.hausnr }}</b></li>
+    <li><b>{{ address?.plz }} {{ address?.ort }}</b></li>
+  </ul>
+  <div class="p-3">
+    Kann unter Umständen vom Logistik-Server automatisch ermittelt werden. Wird keine geignete Adresse ermittelt,
+    können
+    Sie im nächsten Schritt die Adresse
+    entweder per Längen / Breitengrad eingeben oder einen Punkt auf der Karte auswählen:
+  </div>
+  <button class="btn btn-primary" (click)="runPTVSearch()">Suche starten</button>
+</div>

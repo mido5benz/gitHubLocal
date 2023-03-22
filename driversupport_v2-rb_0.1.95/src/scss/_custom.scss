@@ -1,0 +1,101 @@
+@font-face {
+  font-family: 'PT Sans';
+  src: url('../assets/fonts/PTSans/PTSans-Regular.eot');
+  src: url('../assets/fonts/PTSans/PTSans-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/PTSans/PTSans-Regular.woff2') format('woff2'),
+  url('../assets/fonts/PTSans/PTSans-Regular.woff') format('woff'),
+  url('../assets/fonts/PTSans/PTSans-Regular.svg#PTSans-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  src: url('../assets/fonts/PTSans/PTSans-Bold.eot');
+  src: url('../assets/fonts/PTSans/PTSans-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/PTSans/PTSans-Bold.woff2') format('woff2'), url('../assets/fonts/PTSans/PTSans-Bold.woff') format('woff'),
+  url('../assets/fonts/PTSans/PTSans-Bold.svg#PTSans-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Days';
+  src: url('../assets/fonts/Days/Days-Regular.eot');
+  src: url('../assets/fonts/Days/Days-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/Days/Days-Regular.woff2') format('woff2'), url('../assets/fonts/Days/Days-Regular.woff') format('woff'),
+  url('../assets/fonts/Days/Days-Regular.svg#Days-Regular') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Days';
+  src: url('../assets/fonts/Days/Days-Italic.eot');
+  src: url('../assets/fonts/Days/Days-Italic.eot?#iefix') format('embedded-opentype'),
+  url('../assets/fonts/Days/Days-Italic.woff2') format('woff2'), url('../assets/fonts/Days/Days-Italic.woff') format('woff'),
+  url('../assets/fonts/Days/Days-Italic.svg#Days-Italic') format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+
+.progress-bar > .progress-bar{
+  flex-direction: row;
+}
+
+.productname{
+  font-family: 'Days';
+  font-weight: bold;
+  font-style: italic;
+}
+
+.card-body, .brand-card-body{
+  .h5, .h4, .text-value{
+    font-family: 'Days';
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+.form-control{
+  height: unset;
+}
+
+.dropdown-item{
+  transition: background-color 0.5s ease;
+
+  &:hover{
+    background-color: rgba($black, 0.1);
+  }
+}
+
+.flag-icon{
+  border-radius: $border-radius;
+  width: 1.4em;
+  height: 1.4em;
+  background-size: cover;
+}
+
+.bg-blue-500{
+  background-color: $blue-500;
+}
+
+.bg-blue-300{
+  background-color: $blue-300;
+}
+
+.bg-yellow-500{
+  background-color: $yellow-500;
+}
+
+.bg-yellow-300{
+  background-color: $yellow-300;
+}
+
+.bg-green-500{
+  background-color: $green-500;
+}
+
+.bg-green-300{
+  background-color: $green-300;
+}

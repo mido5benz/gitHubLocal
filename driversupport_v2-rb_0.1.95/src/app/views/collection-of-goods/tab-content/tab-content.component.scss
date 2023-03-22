@@ -1,0 +1,1027 @@
+@import "../../../../scss/variables";
+
+#collectiongoodsDashboard,
+#collectiongoodsReceipt {
+  .collectiongoodsSearchHeader {
+    padding: 0.5rem;
+
+    #headerText {
+      color: $orange;
+    }
+
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#barcode {
+  border-radius: 0;
+  width: 100%;
+  height: 25px;
+  color: black;
+}
+
+.nav-tabs {
+  justify-content: space-between;
+  padding: 0 15px;
+
+  .tabs {
+    width: 19%;
+
+    .info-box-text {
+      margin-top: 0 !important;
+    }
+  }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .headerBtn {
+    width: 150px;
+    text-transform: none;
+  }
+
+  .headerText {
+    color: $orange;
+  }
+
+  .scan-btn {
+    border-radius: 5px;
+    padding: 3px 15px;
+    font-size: 0.7rem;
+    text-transform: none;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+.item-list {
+  overflow: hidden;
+  .item {
+    position: relative;
+    display: table;
+    width: 100%;
+    background: $white;
+
+    touch-action:pan-y !important;
+    user-select: auto !important;
+    -webkit-user-drag: auto !important;
+
+    .itemValuesContainer {
+      .collapse {
+        padding-bottom: 0;
+      }
+
+      td {
+        padding: 5px 10px;
+      }
+
+      .row-header {
+        padding: 5px 0px;
+        white-space: nowrap;
+        display: inline-block;
+
+        // .seperator {
+        //   margin: 0 5px;
+        // }
+
+        .icon-text {
+          font-weight: bold;
+        }
+      }
+      .row-body-name,
+      .row-body-address,
+      .row-body-id {
+        border-bottom: 1px solid $black;
+        display: inline-block;
+        // padding: 5px 0px;
+        padding: 5px 0px;
+      }
+      .row-body-id-PCK {
+        display: inline-block;
+        padding-left: 5px;
+        padding-right: 15px;
+        color: red;
+        font-weight: bold;
+      }
+    }
+
+    .action {
+      position: absolute;
+      width: auto;
+      height: 100%;
+      top: 0;
+      border: 0;
+      outline: none;
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      button {
+        width: 65px;
+        margin-top: -1px;
+        color: $white;
+        border: 0;
+        font-size: 0.8rem;
+        outline: none;
+      }
+    }
+    .action-3 {
+      right: -195px;
+      height: 30px;
+    }
+
+    .action-2 {
+      right: -130px;
+    }
+
+    .action-1 {
+      right: -65px;
+    }
+  }
+}
+
+.item-list .item.demo {
+  left: -130px !important;
+  -webkit-transition: left 0.4s linear;
+  transition: left 0.4s linear;
+}
+
+.item-list .item.leftz {
+  left: 0px !important;
+  -webkit-transition: left 0.4s linear;
+  transition: left 0.4s linear;
+}
+
+.item-list .item.demo.HideWEButton {
+  left: -65px !important;
+  -webkit-transition: left 0.4s linear;
+  transition: left 0.4s linear;
+}
+
+
+.red-background {
+  background-color: $red;
+}
+
+.gray-background {
+  background-color: $gray;
+}
+
+.orange-background {
+  background-color: $orange;
+}
+
+.yellow-background {
+  background-color: $yellow;
+}
+
+.barcodesze {
+  font-size: 1rem;
+}
+/*  DS-112 Changes Start */
+
+/* Korrektur,Bruch,reschedule Modal Start */
+.modal-aktuelle,
+.modal-Korrigierte {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.popheader,
+.popbody,
+.popfooter {
+  background-color: $gray-100;
+  border-bottom: none;
+  border-top: none;
+
+  .btsm {
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+.popheader {
+  .modal-title {
+    color: $orange;
+  }
+
+  .close {
+    padding: 0rem 1rem;
+    margin: 0rem -1rem -1rem auto;
+    outline: 0px auto -webkit-focus-ring-color !important;
+  }
+}
+
+.popbody {
+  .btfnt {
+    font-size: 0.8rem !important;
+  }
+
+  .btn-lightdark,
+  .btn-lightdark:hover {
+    color: $white;
+    background-color: $bggraybox;
+    border-color: $bggraybox;
+  }
+
+  .btn-lightdark:not(:disabled):not(.disabled):active,
+  .btn-lightdark:not(:disabled):not(.disabled).active,
+  .show > .btn-lightdark.dropdown-toggle {
+    color: $white;
+    background-color: $orange;
+    border-color: $orange;
+  }
+
+  .btcent {
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    float: none;
+  }
+  .btcentr {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    float: none;
+  }
+
+  .btn-sq-lg {
+    width: 100%;
+    height: 100%;
+    max-height: 6rem;
+    min-height: 6rem;
+  }
+  .btn-sq-lg_g {
+    width: 100%;
+    height: 100%;
+    max-height: 6rem;
+    min-height: 6rem;
+    font-size: 1.3rem !important;
+    font-weight: 500;
+  }
+  .btn-sq-lg-bt {
+    width: 100%;
+    height: 100%;
+    max-height: 3.5rem;
+    min-height: 3.5rem;
+    font-size: 1.3rem !important;
+    font-weight: 500;
+  }
+
+  .btn-sq {
+    height: 100%;
+    max-height: 100px;
+    font-size: 10px;
+  }
+
+  .sub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    min-height: 100px;
+    max-height: 200px;
+
+    img {
+      max-height: 200px;
+    }
+  }
+
+  .fa-2x {
+    font-size: 1.5em;
+  }
+
+  .fawid {
+    width: 1.25em !important;
+    color: $gray !important;
+  }
+
+  .widtxt {
+    width: 100%;
+    max-width: 50px;
+    outline: none;
+    border: 1px solid $gray;
+  }
+
+  .selectClass {
+    max-width: 130px;
+  }
+
+  p {
+    color: $gray;
+  }
+
+  .bggrey {
+    background-color: $gray-100;
+  }
+
+  .headerText {
+    color: $orange;
+  }
+}
+
+.mo_bodyradius {
+  border-radius: 0rem 0rem 0.813rem 0.813rem;
+}
+
+/* Korrektur,Bruch,reschedule Modal End */
+
+/* info-box Start */
+ul {
+  li {
+    .info-box {
+      display: block;
+      background: $white;
+      width: 100%;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+      border-radius: 0.7rem !important;
+      margin-bottom: 1rem;
+      cursor: pointer;
+    }
+
+    .info-box-icon {
+      border-radius: 0.7rem 0rem 0rem 0.7rem;
+      display: block;
+      float: left;
+      text-align: center;
+      background: $gray-600;
+
+      &.active,
+      &:hover,
+      &:focus {
+        background-color: $orange !important;
+      }
+
+      .svg-inline--fa.fa-w-22,
+      .svg-inline--fa.fa-w-20 {
+        width: 0.7em;
+      }
+
+      .svg-inline--fa.fa-w-8,
+      .svg-inline--fa.fa-w-12 {
+        width: 1.4em;
+      }
+
+      .svg-inline--fa {
+        color: $white;
+        width: 36px;
+        position: inherit;
+        left: -6px;
+      }
+    }
+
+    .info-box-content {
+      .info-box-number {
+        display: block;
+        font-weight: bold;
+        font-size: 0.9rem;
+        height: 1rem;
+
+
+        &small {
+          font-size: 0.8rem;
+        }
+      }
+
+      .progress-description,
+      .info-box-text {
+        display: block;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 12px;
+      }
+    }
+  }
+}
+
+/* info-box End */
+
+/* info-box tab content section start */
+.tabsection {
+  border: none !important;
+  border-radius: 1rem 1rem 0rem 0rem;
+
+  .tab-pane {
+    padding: 0rem;
+  }
+
+  .card2 {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+
+    .cardbody {
+      .headerText {
+        color: $orange;
+      }
+    }
+  }
+}
+
+/* info-box tab content section End */
+
+/* Common css start */
+
+.btsm {
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.btgroup .btn:not(:first-of-type) {
+  margin-left: -5px;
+}
+
+/* Common css End */
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 576px) and (max-width: 1200px) {
+  .popbody {
+    .col25 {
+      max-width: 25% !important;
+    }
+  }
+
+  .cardbody {
+    padding: 0.7rem;
+  }
+
+  .popbody,
+  .cardbody {
+    .headerText {
+      font-size: 0.9rem;
+    }
+  }
+
+  ul {
+    .col20 {
+      max-width: 20% !important;
+
+      .info-box {
+        min-height: 3.16rem !important;
+
+        .info-box-icon {
+          height: 50px;
+          width: 25px;
+          text-align: center;
+          font-size: 1.3rem;
+          line-height: 50px;
+        }
+
+        .info-box-content {
+          padding: 5px 5px;
+          margin-left: 25px;
+          text-align: center;
+
+          .progress-description,
+          .info-box-text {
+            margin-top: 4px;
+            font-size: 0.6rem;
+          }
+
+          .info-box small {
+            font-size: 0.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Korrektur,Bruch,reschedule Modal End */
+
+/*  DS-112 Changes End*/
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 767px) {
+  .itemValuesContainer {
+    font-size: 0.7rem;
+  }
+
+  #headerText {
+    font-size: 0.7rem;
+  }
+
+  .nav-tabs {
+    .info-box-content {
+      padding: 5px 5px 5px 35px;
+      line-height: 0.9;
+      text-align: center;
+    }
+
+    .info-box-icon {
+      padding: 5px 10px;
+      font-size: 1rem;
+    }
+  }
+
+
+  .info-box-svg {
+    position: relative;
+    height: 41px;
+    width: 55px;
+  }
+
+  .icon_svg {
+    position: absolute;
+    top: 0px;
+    left: 7px;
+  }
+
+  // .row-header {
+  //   width: 12%;
+  // }
+  // .row-body-name{
+  //   width: 14%;
+  // }
+
+  // .row-body-address {
+  //   width: 40%;
+  // }
+
+  // .row-body-id {
+  //   width: 34%;
+  // }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+  .itemValuesContainer {
+    font-size: 0.7rem;
+  }
+
+  .nav-tabs {
+    .info-box-content {
+      padding: 5px 5px 5px 50px;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .info-box-icon {
+      padding: 3px 14px;
+      font-size: 1.5rem;
+    }
+  }
+
+  .info-box-svg {
+    position: relative;
+    height: 42px;
+    width: 50px;
+  }
+
+  .icon_svg {
+    position: absolute;
+    top: 0px;
+    left: 4px;
+  }
+
+  // .row-header {
+  //   width: 10%;
+  // }
+  // .row-body-name{
+  //   width: 15%;
+  // }
+
+  // .row-body-address {
+  //   width: 40%;
+  // }
+
+  // .row-body-id {
+  //   width: 35%;
+  // }
+
+  /* accordions css start */
+  .mystyle {
+    position: inherit !important;
+
+    &.VerbringpflichtAccordian,
+    &.SonstigesAccordian {
+      left: 195px !important;
+    }
+
+    &.StörungAccordian,
+    &.ZustellhindernisAccordian {
+      left: 130px !important;
+    }
+
+    &.TemperaturprüfungAccordian {
+      left: 65px !important;
+    }
+  }
+
+  /* accordions css end */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .itemValuesContainer {
+    font-size: 0.7rem;
+  }
+
+  .nav-tabs {
+    .info-box-content {
+      padding: 5px 5px 5px 50px;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .info-box-icon {
+      padding: 3px 14px;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .itemValuesContainer {
+    font-size: 0.9rem;
+  }
+
+  .info-box-content {
+    padding: 12px 5px 12px 65px !important;
+    line-height: 1.5;
+  }
+
+  .info-box-icon {
+    padding: 10px 18px !important;
+    font-size: 2rem;
+  }
+
+  .info-box-svg {
+    position: relative;
+    height: 55px;
+    width: 55px;
+  }
+
+  .icon_svg {
+    position: absolute;
+    top: 4px;
+    left: 7px;
+  }
+
+  // .row-header {
+  //   width: 12%;
+  // }
+  // .row-body-name{
+  //   width: 28%;
+  // }
+  // .row-body-address {
+  //   width: 33%;
+  // }
+
+  // .row-body-id {
+  //   width: 27%;
+  // }
+}
+
+@media (min-width: 1500px) {
+  .itemValuesContainer {
+    font-size: 0.8rem;
+  }
+
+  .info-box-content {
+    padding: 13px 12px 10px 80px;
+    line-height: 1.75;
+  }
+
+  .info-box-icon {
+    padding: 11px 22px;
+    font-size: 2rem;
+  }
+}
+
+.cardbottomlefrightbod {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.modal-aktuelle,
+.modal-Korrigierte {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.popheader,
+.popbody,
+.popfooter {
+  background-color: $gray-100;
+  border-bottom: none;
+  border-top: none;
+  // text-indent: 0.9rem;
+  .btsm {
+    border-radius: 6px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}
+
+.popheader {
+  .modal-title {
+    color: $orange;
+  }
+  .close {
+    padding: 0rem 1rem;
+    margin: 0rem -1rem -1rem auto;
+    outline: 0px auto -webkit-focus-ring-color !important;
+  }
+}
+.popbody {
+  .btfnt {
+    font-size: 0.8rem !important;
+  }
+  .btn-lightdark,
+  .btn-lightdark:hover {
+    color: $white;
+    background-color: $bggraybox;
+    border-color: $bggraybox;
+  }
+  .btn-lightdark:not(:disabled):not(.disabled):active,
+  .btn-lightdark:not(:disabled):not(.disabled).active,
+  .show > .btn-lightdark.dropdown-toggle {
+    color: $white;
+    background-color: $orange;
+    border-color: $orange;
+  }
+
+  .btcent {
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    float: none;
+  }
+  .btn-sq-lg {
+    width: 100%;
+    height: 100%;
+    max-height: 6rem;
+    min-height: 6rem;
+  }
+  .btn-sq {
+    height: 100%;
+    max-height: 100px;
+    font-size: 10px;
+  }
+
+  .sub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    min-height: 100px;
+    max-height: 200px;
+
+    img {
+      max-height: 180px;
+    }
+  }
+  .fa-2x {
+    font-size: 1.5em;
+  }
+  .fawid {
+    width: 1.25em !important;
+    color: $gray !important;
+  }
+  .widtxt {
+    width: 100%;
+    max-width: 50px;
+    outline: none;
+    border: 1px solid $gray;
+  }
+  .mxwidth100 {
+    max-width: 100px !important;
+  }
+  .mxwidth120 {
+    max-width: 120px !important;
+  }
+  .mxwidth186 {
+    max-width: 168px !important;
+    height: 29px;
+  }
+
+  .mxwidth250 {
+    max-width: 250px !important;
+  }
+
+  .col-5 {
+    flex: 0 0 41.6666666667%;
+    max-width: 115.666667%;
+  }
+  .mxwidth186 > option {
+    max-width: 168px !important;
+  }
+  p {
+    color: $gray;
+  }
+  .bggrey {
+    background-color: $gray-100;
+  }
+  .headerText {
+    color: $orange;
+  }
+
+  .txtindent1_5 {
+    text-indent: 1.5rem;
+  }
+  .txtindent1_2 {
+    text-indent: 1.2rem;
+  }
+  .textad {
+    position: absolute;
+    margin-left: 1rem;
+    margin-top: -1.6rem;
+    width: max-content;
+  }
+  .ml1_1 {
+    margin-left: -1.1rem;
+  }
+  .icon-stack-1x,
+  .icon-stack-2x,
+  .icon-stack-3x {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: right;
+  }
+  .icon-stack-1x {
+    line-height: inherit;
+  }
+  .icon-stack-2x {
+    font-size: 1.5em;
+  }
+  .icon-stack-3x {
+    font-size: 2em;
+  }
+}
+.mo_bodyradius {
+  border-radius: 0rem 0rem 0.813rem 0.813rem;
+}
+
+.icon-stack {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 4em;
+  vertical-align: middle;
+}
+
+.switch-slider,
+.switch-slider::before {
+  border: 1px solid #f27e00 !important;
+}
+
+.disabledcolor {
+  color: #dadada !important;
+}
+input:disabled {
+  background-color: -internal-light-dark(
+    rgba(239, 239, 239, 0.3),
+    rgba(59, 59, 59, 0.3)
+  ) !important;
+  border-color: rgba(118, 118, 118, 0.3) !important;
+}
+
+.btcolor {
+  color: #5a7882;
+}
+
+.icons {
+  .imgwid {
+    width: 1.1rem;
+    margin-top: -1px;
+  }
+}
+/* Korrektur Modal End (ShipmentCorrectionPopup) */
+.m30 {
+  margin-right: -30px !important;
+  margin-left: -30px !important;
+}
+.btn-lg,
+.btn-group-lg > .btn {
+  border-radius: 0 !important;
+}
+.btn-sm,
+.btn-group-sm > .btn {
+  line-height: 1 !important;
+  font-weight: 500;
+  border-radius: 0.5rem;
+}
+.form-control {
+  border-radius: 0.5rem !important;
+}
+
+.border-dot {
+  border-style: dotted;
+}
+.tboxright {
+  width: 150px;
+  float: right;
+}
+
+.autoscroll {
+  max-height: 200px;
+  overflow: auto;
+}
+
+.error {
+  color: $red;
+}
+.bruchmodelclass {
+  text-indent: 0rem !important;
+}
+
+.bruchmodelclass > .fawid {
+  font-size: 2.3rem;
+}
+
+.icons.active > .fawid {
+  color: $primary !important;
+}
+
+.active1 .activeclass,
+.disabled1 .activeclass1 {
+  color: $primary !important;
+}
+
+.fawid1 {
+  font-size: 2.2em !important;
+}
+.m-l1 {
+  margin-left: 0.7rem;
+}
+
+.actionBtn {
+  margin-top: 5px;
+  margin-bottom: 2px;
+  font-size: 1.2em;
+}
+
+.snapshot {
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  height: 160px;
+  .tof-img {
+    width: 200px;
+    margin-left: 10px;
+    margin-top: 8px;
+    &:hover {
+      filter: drop-shadow(0px 1px 1px lighten($primary, 20));
+    }
+  }
+}
+
+ul.links {
+  padding-bottom: 20px;
+}
+
+// Gallery css
+
+.carousel-item {
+  margin-right: 0.5% !important;
+}
+.carousel-inner > .item > img {
+  height: 150px;
+}
+.carousel {
+  height: 150px;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.carousel-caption {
+  top: -4px;
+  left: 86%;
+  cursor: pointer;
+}
+
+.img-thumbnail {
+  cursor: pointer;
+}
+
+.row-header .svg-inline--fa.fa-w-18,
+.row-header .svg-inline--fa.fa-w-20,
+.row-header .svg-inline--fa.fa-w-8,
+.row-header .svg-inline--fa.fa-w-12 {
+  margin-right: 5px;
+}
+
+.packTausch {
+  background-image: url("../../../../assets/img/brand/icon-driversupport-tof-sprinter.svg");
+}

@@ -1,0 +1,31 @@
+<!--<button title="PTV für Restverplanung anstoßen" class="nav-item" (click)="startPTVRestplaning()">-->
+<!--  <i class="mr-1 fas fa-map-marked-alt"></i>-->
+<!--</button>-->
+
+
+<div class="dropdown" dropdown [insideClick]="true" placement="bottom right">
+  <div dropdownToggle class="nav-item"><i class="mr-1 fas fa-map-marked-alt"></i></div>
+  <ul *dropdownMenu class="dropdown-menu dropdown-menu-left" role="menu">
+    <div name="textarea-input" rows="9" class="form-control felder">
+      <div class="radio" *ngFor="let layer of layers">
+        <input type="radio" name="depotNrRadios" id="depotNr"
+               (click)="triggerPtvPlanning(layer.code)"> {{ layer.name }}
+      </div>
+    </div>
+    <button class="btn btn-block btn-primary felder" (click)="openModal(ptvTrigger)" >PTV Starten</button>
+  </ul>
+</div>
+
+
+<ng-template #ptvTrigger>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">PTV Berechnung</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <p>Möchten Sie, PTV die Unverplanten Stopps neu verplanen lassen?</p>
+    <button type="button" class="btn btn-primary" (click)="triggerPtvCalculation()" (click)="modalRef.hide()">Bestätigen</button>
+  </div>
+</ng-template>

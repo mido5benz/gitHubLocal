@@ -1,0 +1,43 @@
+<form [formGroup]="chosenAddressForm" (ngSubmit)="onSubmit()">
+  <div class="form-group row">
+    <label for="inputName1" class="d-flex align-self-center col-sm-1 col-form-label col-form-label-sm">Name</label>
+    <div class="col-sm-11">
+      <input type="text" formControlName="name1" class="form-control form-control-sm" id="inputName1"
+             placeholder="Name">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputStreet" class="d-flex align-self-center col-sm-1 col-form-label col-form-label-sm">Straße</label>
+    <div class="col-sm-6">
+      <input type="text" formControlName="strasse" class="form-control form-control-sm" id="inputStreet"
+             placeholder="Straße">
+    </div>
+    <label for="inputHouseNumber"
+           class="d-flex align-self-center col-sm-3 col-form-label col-form-label-sm">Hausnummer</label>
+    <div class="col-sm-2">
+      <input type="text" formControlName="hausnr" class="form-control form-control-sm" id="inputHouseNumber"
+             placeholder="Hausnr">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputZip" class="d-flex align-self-center col-sm-1 col-form-label col-form-label-sm">Plz</label>
+    <div class="col-sm-3">
+      <input type="text" formControlName="plz" class="form-control form-control-sm" id="inputZip"
+             placeholder="PLZ">
+    </div>
+    <label for="inputCity" class="d-flex align-self-center col-sm-1 col-form-label col-form-label-sm">Ort</label>
+    <div class="col-sm-7">
+      <input type="text" formControlName="ort" class="form-control form-control-sm" id="inputCity"
+             placeholder="Ort">
+    </div>
+  </div>
+  <div class="d-flex justify-content-start mt-2 mb-2">
+    <button class="btn btn-primary btn-sm" (click)="runSearch()">
+      <i class="fas fa-sync-alt"></i> Neu suchen
+    </button>
+    <button class="btn btn-primary btn-sm ml-2" (click)="archiveAddress()">
+      <i class="far fa-folder"></i> Adresse Archivieren
+    </button>
+  </div>
+</form>
+

@@ -1,0 +1,10 @@
+<div (click)="selectItem(item)" class="item">
+  <div>{{ item.strasse  }} {{ item.hausnr  }}</div>
+  <div>{{ item.plz  }} {{ item.ort  }}</div>
+</div>
+<div *ngIf="selected">
+  <div class="mt-1 add-synonym text-right" (click)="addSynonym(item)">
+    <i class="fas fa-arrow-circle-right"></i> {{ originalClickedItem?.strasse }} {{ originalClickedItem?.hausnr }} als
+    Synonym für {{ item.strasse }} {{ item.hausnr  }} hinzufügen
+  </div>
+</div>

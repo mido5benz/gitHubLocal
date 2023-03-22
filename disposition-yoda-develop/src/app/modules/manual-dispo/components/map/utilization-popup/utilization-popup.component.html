@@ -1,0 +1,30 @@
+<div style="min-width: 200px">
+  <div class="popup-title"><i class="fa fa-globe" aria-hidden="true"></i>
+    <b>Tour {{ tour?.tour?.tournr | tourNumber }}</b>
+  </div>
+  <hr/>
+
+  <ul class="tour-details-list">
+    <li>
+      <div class="d-flex">
+        <i class="far fa-clock"></i>
+        <progressbar
+          class="progress progress-success"
+          [value]="fahrtzeit"
+          [max]="maxFahrtzeitInSec"
+        ><b> {{ fahrtzeit * 1000 | date: 'H:mm':'UTC' }}</b></progressbar
+        >
+      </div>
+    </li>
+    <li>
+      <i class="fas fa-weight-hanging"></i> {{ preReloadTourInfo.weight }} kg
+      / {{ postReloadTourInfo.weight }} kg
+    </li>
+    <li>
+      <i class="fas fa-archive"></i> Colli: {{ preReloadTourInfo.colli }} / {{ postReloadTourInfo.colli }}
+    </li>
+    <li>
+      <i class="fas fa-pallet"></i> Paletten: {{ preReloadTourInfo.paletten }} / {{ postReloadTourInfo.paletten }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,14 @@
+.name {
+  padding: 5px;
+  font-weight: bold;
+  font-size: 13px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: darken(white, 10%);
+  }
+}
+
+.info {
+  font-size: 13px;
+}

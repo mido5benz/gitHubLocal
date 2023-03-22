@@ -1,0 +1,32 @@
+<div class="details-container w-100">
+  <div class="d-flex w-100">
+    <div class="w-100">
+      <div class="form-group">
+        <label>Name</label>
+        <span class="fas fa-info-circle pl-1" style="cursor: pointer"
+              title="Bevor Sie hier einen Namen vergeben, suchen Sie bei Google nach der Korrekten Schreibweise dieses Empfängers. Das Anlegen der korrekten Schreibweise ist wichtig für die spätere Erkennung der Ziele."></span>
+
+        <!-- Auswahl per Dropdown -->
+        <div class="form-group col-md-12">
+          <select id="inputName1" class="form-control" [(ngModel)]="selectedSynonym" (ngModelChange)="getSelectedSynonym($event)">
+            <option selected disabled [ngValue]="null">Haupteintrag auswählen</option>
+            <option [ngValue]="'newName'">Neuen Haupteintrag vergeben</option>
+            <option *ngFor="let synonym of synonyms" [ngValue]="synonym">
+              {{synonym.name1 ? synonym.name1 : ''}} {{synonym.name2 ? synonym.name2 : ''}} {{synonym.name3 ? synonym.name3 : ''}}
+            </option>
+          </select>
+        </div>
+
+        <!-- oder... per Input eingeben -->
+        <div *ngIf="showInputFeld" class="input-class">
+          <input type="text" class="form-control" placeholder="Haupteintrag name" maxlength="100" (keyup)="isInputValid($event)" (change)="getSelectedSynonym($event)">
+        </div>
+
+      </div>
+      <div class="pull-right">
+        <button class="btn btn-default" (click)="okCancel()">Abbrechen</button>
+        <button [disabled]="!formValid" class="btn btn-primary" (click)="okSave()">Speichern</button>
+      </div>
+    </div>
+  </div>
+</div>

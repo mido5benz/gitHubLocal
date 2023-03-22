@@ -1,0 +1,35 @@
+.btn {
+  border: 1px solid darken(white, 15%);
+  border-radius: 2px;
+  background-color: white;
+  color: black;
+
+  &:hover {
+    color: white;
+    border: 1px solid darken(#F27E00, 15%) !important;
+    background-color: #F27E00;
+  }
+}
+
+.versenderAdress {
+  margin-bottom: 20px;
+  margin-left: 70px;
+}
+
+.modal-form-title {
+  font-family: "Days", serif;
+  font-style: italic;
+  letter-spacing: 0.4px;
+}
+
+.ambient-checkbox {
+  position: relative;
+  display: block;
+  padding-left: 2.30rem;
+  align-self: center;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+}

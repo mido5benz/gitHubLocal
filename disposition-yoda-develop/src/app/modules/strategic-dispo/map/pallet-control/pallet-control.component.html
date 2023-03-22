@@ -1,0 +1,22 @@
+<div class="control">
+  <span *ngIf="loading==true;">
+    <ngx-spinner [fullScreen]="false"></ngx-spinner>
+  </span>
+
+  <div class="title">unverplante Raster</div>
+  <div class="status">
+    <span class="highlight">{{ pallets.length }}</span> / {{ palletCount }}
+  </div>
+
+  <hr *ngIf="show">
+
+  <div class="list" [collapse]="!show">
+    <div *ngFor="let pallet of pallets" >
+      <div class="list-item" (click)="selectEmpfaenger(pallet)" *ngFor="let empfaenger of pallet.empfaenger">{{empfaenger.name1}}</div>
+    </div>
+  </div>
+
+  <i class="icon-arrow-down selectable" *ngIf="!show" (click)="open()"></i>
+  <i class="icon-arrow-up selectable" *ngIf="show" (click)="close()"></i>
+
+</div>

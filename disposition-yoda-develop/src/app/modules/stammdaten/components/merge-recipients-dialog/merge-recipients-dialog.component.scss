@@ -1,0 +1,63 @@
+.recipient-container {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+  background-color: darken(white, 10%);
+}
+
+.recipient-list {
+  width: 500px;
+  max-width: 100%;
+  min-height: 60px;
+  display: block;
+  background: white;
+  cursor: move;
+  overflow: auto;
+  height: 300px;
+}
+
+.recipient-list :hover {
+  background: navajowhite;
+}
+
+.header {
+  font-weight: bold;
+}
+
+.first {
+  font-weight: bold;
+}
+
+.modal-size {
+  max-width: 1000px;
+}
+
+.restriction-icon {
+  width: 15%;
+  cursor: pointer;
+}
+
+.bg-color {
+  background-color: #e6e6e6;
+  color: #5a7882;
+}
+
+.bs-modal-style {
+  height: 600px;
+  overflow-y: auto;
+}
+
+.label {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.text-position {
+  position: relative;
+  left: 5px;
+}
+
+
+
+
+

@@ -1,0 +1,33 @@
+<!--<div class="dropdown" dropdown [insideClick]="true" placement="bottom right" title="Touren synchronisieren">-->
+<div class="dropdown" dropdown placement="bottom right" title="Touren synchronisieren">
+  <div dropdownToggle class="nav-item">
+    <div class="caption-wrapper">
+      <span class="caption">
+        <i class="fas fa-user-cog ml-3" style="font-size: 17px"></i>
+      </span>
+      <span
+        class="badge badge-primary ml-1"
+        style="position: static;"
+        *ngIf="tourList.length > 0"
+      >{{ tourList.length }}</span>
+    </div>
+  </div>
+  <ul *dropdownMenu class="dropdown-menu dropdown-menu-left" role="menu">
+    <div class="dropdown-header">
+      <span><b>Nicht synchrone Touren:</b></span>
+    </div>
+    <div *ngIf="tourList.length > 0" name="textarea-input" rows="9" class="form-control felder">
+      <ul>
+        <li *ngFor="let tour of tourList">
+          {{tour.tour_nr | tourNumber}}
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="tourList.length === 0" name="textarea" rows="9" class="form-control felder">
+      Alle Touren sind synchron!
+    </div>
+    <button [disabled]="tourList.length === 0" [ngClass]="{'disabled': tourList.length === 0}"
+            class="btn btn-block btn-primary felder" (click)="fetchTourlists()">Touren synchronisieren
+    </button>
+  </ul>
+</div>

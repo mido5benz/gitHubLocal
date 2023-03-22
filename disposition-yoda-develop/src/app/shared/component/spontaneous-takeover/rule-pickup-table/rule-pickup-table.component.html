@@ -1,0 +1,19 @@
+<ag-grid-angular
+  style="width: 100%; height: 300px;"
+  class="ag-theme-alpine"
+  [columnDefs]="columnDef"
+  [defaultColDef]="defaultColDef"
+  [rowSelection]="'single'"
+  [suppressCellSelection]="true"
+  [overlayLoadingTemplate]="overlayLoadingTemplate"
+  [overlayNoRowsTemplate]="noRowsTemplate"
+  (gridReady)="gridReady($event)"
+  (rowClicked)="onRowClicked($event)"
+  [frameworkComponents]="frameworkComponents"
+  [gridOptions]="gridOptions"
+  enableCellTextSelection="true"
+>
+</ag-grid-angular>
+
+
+<button [disabled]="!isRowSelected" (click)="showDeleteRulePickupDialog()" class="btn btn-primary btn-sm pull-right mt-3 p-2">Regelabholung löschen</button>

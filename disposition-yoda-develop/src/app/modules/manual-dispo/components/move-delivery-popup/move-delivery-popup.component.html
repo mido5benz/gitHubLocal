@@ -1,0 +1,26 @@
+<div class="move-stopp-container text-center">
+  <span class="text-sm"
+  >Bitte geben Sie die Tournummer der Tour ein, auf die die Sendungen
+    umdisponiert werden sollen
+  </span>
+  <input
+    [(ngModel)]="tourNr"
+    [typeahead]="dataSource$"
+    [typeaheadAsync]="true"
+    [typeaheadScrollable]="true"
+    [typeaheadOptionsInScrollableView]="5"
+    typeaheadOptionField="tour.tournr"
+    (typeaheadOnSelect)="onSelect($event)"
+    (typeaheadLoading)="changeTypeaheadLoading($event)"
+    (typeaheadNoResults)="typeaheadNoResults($event)"
+    placeholder="Tournummer"
+    class="form-control mt-3"
+    id="tour-input"
+  />
+  <div class="alert alert-danger" *ngIf="noResult">
+    Tour konnte nicht gefunden werden
+  </div>
+  <button class="btn btn-danger mt-2" *ngIf="tourSelected" (click)="moveSendungen()">
+    Umdisponieren
+  </button>
+</div>

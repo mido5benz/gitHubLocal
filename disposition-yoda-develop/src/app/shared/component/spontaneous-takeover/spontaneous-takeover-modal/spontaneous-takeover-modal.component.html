@@ -1,0 +1,144 @@
+<div class="modal-body text-left">
+  <form #addresForm="ngForm">
+
+    <!-- Versender Adresse -->
+    <div class="versenderAdress col-form-label-sm">
+      <h6 class="modal-form-title">Versender:</h6>
+      <b>Name:</b>
+      {{spontaneUebernahme.versender_adresse?.name1}}
+      {{spontaneUebernahme.versender_adresse?.name2}}
+      {{spontaneUebernahme.versender_adresse?.name3}}<br>
+      <b>Distributions GmbH:</b> {{spontaneUebernahme?.depot}}<br>
+      <b>Straße:</b> {{spontaneUebernahme.versender_adresse?.strasse}} &nbsp;
+      <b>Hausnr:</b> {{spontaneUebernahme.versender_adresse?.hausnr}}<br>
+      <b>Plz:</b> {{spontaneUebernahme.versender_adresse?.plz}} &nbsp;
+      <b>Ort:</b> {{spontaneUebernahme.versender_adresse?.ort}}
+      <br>
+    </div>
+
+    <!-- Formular -->
+    <div>
+      <h6 class="versenderAdress modal-form-title mt-3">Übernahmeanschrift:</h6>
+      <div class="form-group row">
+        <label for="inputName1" class=" col-sm-1 col-form-label col-form-label-sm">Name1</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control form-control-sm" id="inputName1"
+                 placeholder="Name" name="name1" #name1='ngModel' [(ngModel)]="spontaneUebernahme.name_1" autocomplete="off" required>
+        </div>
+
+        <label for="inputName2" class=" col-sm-1 col-form-label col-form-label-sm">Name2</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control form-control-sm" id="inputName2"
+                 placeholder="Name" name="name2" #name2='ngModel' [(ngModel)]="spontaneUebernahme.name_2" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputName3" class=" col-sm-1 col-form-label col-form-label-sm">Name3</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control form-control-sm" id="inputName3"
+                 placeholder="Name" name="name3" #name3='ngModel' [(ngModel)]="spontaneUebernahme.name_3" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputStreet" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">Straße</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control form-control-sm" id="inputStreet"
+                 placeholder="Straße" name="strasse" #strasse='ngModel' [(ngModel)]="spontaneUebernahme.strasse" autocomplete="off"
+                 required>
+        </div>
+
+        <label for="inputHouseNumber"
+               class="align-self-center col-sm-1 col-form-label col-form-label-sm">Hausnr</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control form-control-sm" id="inputHouseNumber"
+                 placeholder="Hausnr" name="hausnr" #hausnr='ngModel' [(ngModel)]="spontaneUebernahme.hausnr" autocomplete="off"
+                 required>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputCountry" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">LKZ</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" id="inputCountry" placeholder="Land"
+                 name="land" #land='ngModel' [(ngModel)]="spontaneUebernahme.land" autocomplete="off" required>
+        </div>
+
+        <label for="inputZip" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">Plz</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" id="inputZip" placeholder="PLZ"
+                 name="plz" #plz='ngModel' [(ngModel)]="spontaneUebernahme.plz" autocomplete="off" required>
+        </div>
+
+        <label for="inputCity" class="align-self-center col-sm-1 col-form-label col-form-label-sm">Ort</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control form-control-sm" id="inputCity"
+                 placeholder="Ort" name="ort" #ort='ngModel' [(ngModel)]="spontaneUebernahme.ort" autocomplete="off" required>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputTournr" class=" col-sm-1 col-form-label col-form-label-sm">Tournr</label>
+        <div class="col-sm-5">
+          <div class="input-group">
+            <input
+              [(ngModel)]="tourNr"
+              [typeahead]="dataSource$"
+              [typeaheadAsync]="true"
+              typeaheadOptionField="tournr"
+              (typeaheadOnSelect)="onSelect($event)"
+              (typeaheadLoading)="changeTypeaheadLoading($event)"
+              (typeaheadNoResults)="typeaheadNoResults($event)"
+              [typeaheadItemTemplate]="tourNumberTemplate"
+              [typeaheadScrollable]="true"
+              [typeaheadOptionsInScrollableView]="5"
+              placeholder="Tournummer"
+              class="form-control"
+              id="inputTournr"
+              name="tournr" #tournr='ngModel'
+              required minlength="4"
+              autocomplete="off"
+            />
+            <div class="alert alert-danger" *ngIf="noResult">
+              Tour konnte nicht gefunden werden!
+            </div>
+          </div>
+        </div>
+
+        <ng-template #tourNumberTemplate let-tour="item">
+          <span>{{tour?.tournr}}</span>
+        </ng-template>
+
+        <label for="inputDate" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">Datum</label>
+        <div class="col-sm-5">
+          <input type="date" class="form-control form-control-sm" id="inputDate" name="datum" #datum='ngModel'
+                 [(ngModel)]="uebernahmeDatumFormatted" required readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputTime" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">Uhrzeit</label>
+        <div class="col-sm-2">
+          <input type="time" class="form-control form-control-sm" id="inputTime"
+                 aria-describedby="addonStart" name="uhrzeit" #uhrzeit='ngModel'
+                 [(ngModel)]="spontaneUebernahme.uebernahmeZeit" autocomplete="off" required>
+        </div>
+
+        <div class="ambient-checkbox">
+          <input class="form-check-input" type="checkbox" id="ambientCheckbox"
+                 [checked]="spontaneUebernahme.ambient"
+                 (change)="checkedAmbientBox($event)">
+          <label class="form-check-label" for="ambientCheckbox">Ambient</label>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between mt-2 mb-2 pull-right">
+        <button type="button" class="btn btn-primary btn-sm mr-2" (click)="resetFormular()">Abbrechen</button>
+        <button  type ="button" class="btn btn-primary btn-sm mr-2" [disabled]="!addresForm.valid || noResult" (click)="onSubmit()">
+          Speichern
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

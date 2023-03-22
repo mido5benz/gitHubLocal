@@ -1,0 +1,5 @@
+<ul>
+  <ng-container *ngIf="delivery && delivery?.length > 0 ">
+    <app-delivery-item [delivery]="delivery[0]"></app-delivery-item>
+  </ng-container>
+</ul>

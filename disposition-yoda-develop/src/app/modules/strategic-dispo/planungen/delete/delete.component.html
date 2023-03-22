@@ -1,0 +1,32 @@
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Ausgewählte Planung löschen?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <p>Möchten Sie die Planung: <b>{{selectedPlanung.name}}</b> löschen?</p>
+    <button type="button" class="btn btn-danger" (click)="loeschen(selectedPlanung)">Unwiderruflich löschen</button>
+  </div>
+</ng-template>
+
+<div class="dropdown " dropdown [insideClick]="true" placement="bottom right" [isOpen]="status.isOpen"
+  (isOpenChange)="change($event)" title="Planung löschen">
+  <div dropdownToggle class="nav-item dropdown-toggle" (click)="holePlanungen();">
+    <i class="fa fa-trash"></i>
+  </div>
+
+  <ul *dropdownMenu class="dropdown-menu dropdown-menu-right " role="menu">
+    <select id="select_loeschen" name="multiple-select" class="form-control height felder" size="3"
+      [(ngModel)]="selectedPlanung" (click)="enable_button(selectedPlanung)">
+      <option *ngFor="let planung of planungen" [ngValue]="planung">{{planung.name}}</option>
+    </select>
+    <button *ngIf="isSelected; else disabled" class="btn btn-block btn-danger felder"
+      (click)="openModal(template)">Löschen</button>
+
+    <ng-template #disabled>
+      <button class="btn btn-block btn-danger felder" disabled>Löschen</button>
+    </ng-template>
+  </ul>
+</div>

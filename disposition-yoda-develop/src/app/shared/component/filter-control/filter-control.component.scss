@@ -1,0 +1,53 @@
+.control-container {
+  position: relative;
+  .collapse-control {
+    text-align: center;
+    position: absolute;
+    left: -1px;
+    top: -17px;
+    width: 24px;
+    height: 17px;
+    z-index: 100001;
+    background-color: #fff;
+    border: 1px solid #babfc7;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: none;
+    &:hover {
+      cursor: pointer;
+      i {
+        color: darken(#babfc7, 25%);
+      }
+    }
+    &.isCollapsed {
+      border-bottom: 1px solid #babfc7;
+      i {
+        transform: rotate(180deg);
+      }
+    }
+    i {
+      transition: transform 0.5s ease-in-out;
+      font-size: 16px;
+      line-height: 16px;
+      color: #babfc7;
+    }
+  }
+  .control {
+    padding: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    background-color: #fff;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    overflow: hidden;
+    height: auto;
+    transition: height 0.5s ease-in-out;
+    &.isCollapsed {
+      height: 0px;
+      padding: 0px;
+    }
+  }
+}
+
+hr {
+  margin:5px 0;
+}

@@ -1,0 +1,21 @@
+@import '../../../scss/variables';
+
+table{  
+    width:100%;
+    th{
+        position: sticky;
+        top: -1px;
+        background-color: $white;
+        // padding:0.5rem;
+       // padding:0.1rem;
+       // border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    td{
+       // word-break: break-all;
+       // padding:0.1rem;
+       // border: 1px solid black;
+        border-collapse: collapse;
+    }
+}

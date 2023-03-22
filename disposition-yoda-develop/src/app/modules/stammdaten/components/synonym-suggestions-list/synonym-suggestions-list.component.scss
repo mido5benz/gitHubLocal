@@ -1,0 +1,30 @@
+.suggestion-list {
+  overflow-y: scroll;
+}
+
+.new-search-button {
+  margin-top: -5px;
+}
+
+
+.item-container {
+  width: 100%;
+}
+
+.suggestion-list-item-container {
+  font-size: 13px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.suggestion-list-item {
+  margin-bottom: 3px;
+}
+
+.selected {
+  background-color: darken(#fff, 5%);
+  border-color: orange;
+  color: black;
+}

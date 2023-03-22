@@ -1,0 +1,356 @@
+@import "../../../../scss/variables";
+
+.card-header-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Days";
+  font-weight: bold;
+  font-style: italic;
+
+  .card-header {
+    padding: 0 10px;
+    border-bottom: 7px solid #e4e5e6;
+
+    .time,
+    .print,
+    .tourID {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .fa-print {
+        border: 2px solid;
+        border-radius: 50px;
+        padding: 5px;
+        cursor: pointer;
+      }
+    }
+
+    .tour-info {
+      display: flex;
+      justify-content: space-between;
+      padding-right: 0;
+
+      .package-pallet {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+
+        .package,
+        .pallet,
+        .package-text,
+        .pallet-text,
+        .package-icon,
+        .pallet-icon {
+          max-width: max-content;
+        }
+
+        .pallet-text {
+          margin: 0 auto;
+        }
+
+        .package-icon>span {
+          padding-right: 10px;
+          padding-bottom: 5px;
+        }
+      }
+    }
+
+    .tour-info>div:last-child {
+      border-left: 1px solid $gray;
+    }
+
+    .criteria {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 0;
+
+      .criteria-icon {
+        text-align: right;
+      }
+
+      .paddingClass{
+        padding-right: 0 ;
+        padding-left: 0 ;
+        width: 35%;
+        text-align: center;
+        justify-content: space-around;
+        display: flex;
+
+        .criteria-icon{
+          text-align: center;
+        }
+
+        // .newpadClass{
+        //   padding-right: 1px;
+        // }
+      }
+    }
+
+    .criteria>div {
+      border-left: 1px solid $gray;
+      width: 25%;
+    }
+  }
+
+  .red {
+    color: $red;
+  }
+
+  .yellow {
+    color: $yellow;
+  }
+
+  .gray {
+    color: $gray;
+  }
+}
+
+// /* Small devices (landscape phones, 576px and up) */
+@media (max-width: 768px) {
+  .header-detail-icon {
+    font-size: 1rem;
+  }
+
+  .header-detail-text {
+    font-size: 0.4rem;
+  }
+
+  .dolly-count {
+    font-size: 0.4rem;
+  }
+
+  .criteria>div,
+  .tour-info .package-pallet {
+    padding: 5px;
+  }
+
+  .fa-print {
+    font-size: 1.5rem;
+  }
+
+  .tourID {
+    font-size: 0.7rem;
+  }
+
+  .tour-info>div {
+    width: 20%;
+  }
+
+  .tour-info .package-pallet {
+    width: 49%;
+  }
+
+  .header-detail-icon {
+    margin-right: 5px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+  .header-detail-icon {
+    font-size: 1rem;
+  }
+
+  .header-detail-text {
+    font-size: 0.4rem;
+  }
+
+  .dolly-count {
+    font-size: 0.4rem;
+  }
+
+  .criteria>div,
+  .tour-info .package-pallet {
+    padding: 5px;
+  }
+
+  .fa-print {
+    font-size: 2rem;
+  }
+
+  .tourID {
+    font-size: 1.1rem;
+  }
+
+  .tour-info>div {
+    width: 23%;
+  }
+
+  .tour-info .package-pallet {
+    width: 36%;
+  }
+
+  .header-detail-icon {
+    margin-right: 10px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .header-detail-icon {
+    font-size: 1rem;
+  }
+
+  .header-detail-text {
+    font-size: 0.4rem;
+  }
+
+  .dolly-count {
+    font-size: 0.5rem;
+  }
+
+  .criteria>div,
+  .tour-info .package-pallet {
+    padding: 2px;
+    align-content: space-between;
+  }
+
+  .fa-print {
+    font-size: 2rem;
+  }
+
+  .tour-info>div {
+    width: 21%;
+  }
+
+  .tour-info .package-pallet {
+    width: 37%;
+  }
+
+  .header-detail-icon {
+    margin-right: 10px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .header-detail-icon {
+    font-size: 1rem;
+  }
+
+  .header-detail-text {
+    font-size: 0.42rem;
+  }
+
+  .dolly-count {
+    font-size: 0.5rem;
+  }
+
+  .criteria>div,
+  .tour-info .package-pallet {
+    padding: 2px;
+    align-content: space-between;
+  }
+
+  .fa-print {
+    font-size: 2.5rem;
+  }
+
+  .tour-info>div {
+    width: 25%;
+  }
+
+  .tour-info .package-pallet {
+    width: 35%;
+  }
+  .orangeIcon{
+    padding: 5px!important;
+  }
+}
+
+@media (min-width: 1500px) {
+  .header-detail-icon {
+    font-size: 1.2rem;
+  }
+
+  .header-detail-text {
+    font-size: 0.5rem;
+  }
+
+  .dolly-count {
+    font-size: 0.7rem;
+  }
+
+  .criteria>div,
+  .tour-info .package-pallet {
+    padding:5px;
+  }
+
+  .fa-print {
+    font-size: 3rem;
+  }
+
+  .tour-info>div {
+    width: 25%;
+  }
+
+  .tour-info .package-pallet {
+    width: 35%;
+  }
+  .paddingClass{
+    padding-right: 0 ;
+    padding-left: 0 ;
+    width: 30%;
+    text-align: center;
+    justify-content: space-around;
+    display: flex;
+  }
+}
+
+
+.centerClass{
+  margin: auto;
+  text-align: center;
+
+  .criteria-text{
+    text-align: left;
+  }
+}
+
+// .paddingClass{
+//   padding-right: 0 !important;
+//   padding-left: 0 !important;
+//   width: 35%;
+// }
+/* Landscape */
+@media
+  (max-device-width: 1280px)
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .classpad{
+      padding: 0rem 0.2rem;
+    }
+
+}
+
+@media (orientation: portrait) {
+  .criteria>div,
+  .tour-info .package-pallet {
+    padding: 2px;
+  }
+}
+
+.fmsection{
+  border-left: 1px solid #626a6d;
+  border-right: 1px solid #626a6d;
+  font-size: 0.7rem;
+  span{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.orangeIcon{
+  width: 20%!important;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time .header-detail-text, .fmsection .header-detail-text,.package-pallet .header-detail-text {
+  font-size: 0.7rem;
+}

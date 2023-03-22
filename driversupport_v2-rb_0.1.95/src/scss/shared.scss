@@ -1,0 +1,607 @@
+@import "./variables";
+app-dashboard,
+app-tour-detail,
+app-pdf-viewer {
+    min-height: 100%;
+}
+
+.dashboard-wrapper {
+    .progress-red .progress-bar {
+        background-color: $red;
+    }
+    .progress-yellow .progress-bar {
+        background-color: $yellow;
+    }
+    .progress-green .progress-bar {
+        background-color: $green;
+    }
+}
+
+// navbar path show classes
+#navbarBreadcrumb {
+    .breadcrumb {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0.75rem 0;
+        margin-bottom: 0;
+        list-style: none;
+        background-color: rgba($color: #000000, $alpha: 0);
+        border-radius: 0px;
+        border-bottom: 0px none;
+    }
+    .breadcrumb-item {
+        padding-right: $breadcrumb-item-padding;
+        padding-left: 0px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    button.navbar-toggler.d-none.d-md-block {
+        display: none !important;
+    }
+    .app-header,
+    .app-footer,
+    .sidebar,
+    .main,
+    .aside-menu {
+        transition: margin-left 0s, margin-right 0s, width 0s, flex 0s;
+        // transition: margin-left 0.1s,margin-right 0.1s,width 0.1s,flex 0.1s;
+        //transition: margin-left 14.5s,margin-right 14.5s,width 14.5s,flex 14.5s,-ms-flex 14.5s;
+        //transition: visibility 0s, opacity 0.5s linear;
+    }
+}
+
+@media (min-width: 992px) {
+    button.navbar-toggler.d-none.d-md-block {
+        display: none;
+    }
+    button.navbar-toggler.d-lg-none {
+        display: block;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1024px) {
+    .sidebar-minimized .sidebar .nav {
+        overflow: hidden;
+    }
+    .sidebar .nav-link.active {
+        color: #fff;
+        background: #f27e00;
+    }
+    .sidebar .nav-link.active .nav-icon {
+        color: #fff;
+    }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+        html:not([dir="rtl"]) {
+            .sidebar#{$infix}-show,
+            .sidebar-show {
+                .sidebar {
+                    margin-left: 0;
+                }
+                @if $breakpoint=="sm" {
+                    @include media-breakpoint-down(md) {
+                        #main_resp {
+                            position: relative;
+                            &::before {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                z-index: $zindex-sticky - 2;
+                                width: 100%;
+                                height: 100%;
+                                content: "";
+                                background: rgba(0, 0, 0, 0.7);
+                                //animation: opacity $layout-transition-speed;
+                                $layout-transition-speed: .01s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.scanHistoryModal {
+    min-width: 700px !important;
+    .modal-content {
+        background-color: $bggraybox;
+        border-radius: 0;
+        .modal-header {
+            color: $white;
+            button {
+                color: $white;
+            }
+        }
+        .modal-body {
+            height: 180px;
+            .scanHistoryTableContainer {
+                max-height: 155px;
+                overflow-y: auto;
+                background-color: #989999;
+                color: white;
+                th,
+                td {
+                    background-color: #989999;
+                    color: white;
+                    border: 0;
+                }
+                tbody {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+}
+
+// Toast Classes Start
+.toast-container {
+    .ngx-toastr {
+        background-color: $toastPrimary;
+        color: $black;
+        border-radius: 0.5rem !important;
+        .toast-message,
+        .toast-title,
+        .toast-close-button {
+            color: $black;
+            font-weight: 600;
+        }
+    }
+}
+
+// Toast Classes End
+ngx-extended-pdf-viewer #thumbnailView {
+    width: auto !important;
+}
+
+ngx-extended-pdf-viewer #sidebarContent {
+    background-color: #626a6d !important;
+}
+
+ngx-extended-pdf-viewer .toolbar {
+    background-color: transparent !important;
+    border: 0 !important;
+}
+
+ngx-extended-pdf-viewer #printServiceOverlay #printCancel {
+    background: $orange;
+    width: 70px;
+    border-radius: 5px;
+    color: white;
+}
+
+ngx-extended-pdf-viewer #loadingBar .progress {
+    background-color: $orange !important;
+    border: 0 !important;
+}
+
+.loaderActive {
+    pointer-events: none;
+    cursor: wait;
+}
+
+#btlogout {
+    min-width: 150px;
+    padding: 0.5rem;
+    text-align: center;
+    margin-top: -8px;
+}
+
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: url('src/assets/img/brand/loader.gif') 50% 50% no-repeat #e4e5e6;
+}
+
+.sidebar-lg-show .se-pre-con {
+    background: url('src/assets/img/brand/loader.gif') 55% 50% no-repeat #e4e5e6;
+}
+
+.sidebar-show .se-pre-con {
+    background: url('src/assets/img/brand/loader.gif') 50% 50% no-repeat #e4e5e6;
+}
+
+@media (max-device-width: 850px) and (orientation: portrait) {
+    .sidebar-lg-show .se-pre-con {
+        background: url('src/assets/img/brand/loader.gif') 50% 50% no-repeat #e4e5e6;
+    }
+    .sidebar-lg-show .tourSelectionLoader {
+        background: url('src/assets/img/brand/loader.gif') 50% 50% no-repeat #e4e5e6;
+    }
+
+    .sidebar-lg-show .tourDetailsSelectionLoader {
+        background: url('src/assets/img/brand/loader.gif') 50% 50% no-repeat #e4e5e6;
+    }
+
+    .sidebar-lg-show .UMDispoSelectionLoader {
+        background: url('src/assets/img/brand/Spinner.gif') 50% 50% no-repeat #e4e5e6;
+    }
+}
+
+@media (min-device-width: 768px) and (orientation: portrait) {
+    ngx-extended-pdf-viewer .pdfViewer .page canvas {
+        max-width: 684px!important;
+        max-height: 973px!important;
+    }
+}
+
+// @media (min-device-width: 768px) and (orientation: landscape) {
+//     ngx-extended-pdf-viewer .pdfViewer .page canvas {
+//         max-width: 942px;
+//         max-height: 1340px;
+//     }
+// }
+@media (min-width: 768px) and (max-width:1024px) {
+    ngx-extended-pdf-viewer .sidebarOpen .pdfViewer .page canvas {
+        max-width: 502px;
+        max-height: 723px;
+    }
+    ngx-extended-pdf-viewer .pdfViewer .page canvas {
+        max-width: 706px;
+        max-height: 1006px;
+    }
+}
+
+@media (min-width:1025px) and (max-width:1300px) {
+    ngx-extended-pdf-viewer .sidebarOpen .pdfViewer .page canvas {
+        max-width: 741px;
+        max-height: 1057px;
+    }
+    ngx-extended-pdf-viewer .pdfViewer .page canvas {
+        max-width: 942px;
+        max-height: 1340px;
+    }
+}
+
+@media (min-width: 1301px) and (max-width:2600px) {
+    ngx-extended-pdf-viewer .sidebarOpen .pdfViewer .page canvas {
+        max-width: 973px;
+        max-height: 1384px;
+    }
+    ngx-extended-pdf-viewer .pdfViewer .page canvas {
+        max-width: 972px;
+        max-height: 1386px;
+    }
+
+    // #Colliereignisse .card-body{
+    //     .table thead tr th:first-child , .table tbody tr td:first-child {
+    //       width: 290px!important;
+    //     }
+    //   }
+}
+
+
+/* FM POPUP Tour Details*/
+
+.fmPopup {
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        background-color: $gray-300;
+        border-bottom: none;
+        border-top: none;
+        .modal-title {
+            color: $orange;
+        }
+        button {
+            border-radius: 6px;
+            padding: 0.3rem 1rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+    }
+}
+
+
+/* FM POPUP Tour Details*/
+
+
+/* Shipment Correction Modal Start */
+
+.shipmentCorrection {
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        background-color: $gray-300;
+        border-bottom: none;
+        border-top: none;
+        .modal-title {
+            color: $orange;
+        }
+        .buttonClass {
+            border-radius: 6px;
+            padding: 0.3rem 1rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+    }
+}
+
+
+/* Shipment Correction Modal End */
+
+
+/* Tour Selection POPUP*/
+
+.tsPopup {
+
+    &.invalid {
+      .modal-header,
+      .modal-body,
+      .modal-footer {
+        background-color: rgb(249, 66, 12);
+        color: white;
+        .modal-title {
+          color: $white;
+          font-weight: bold;
+        }
+      }
+    }
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        background-color: $gray-300;
+        border-bottom: none;
+        border-top: none;
+        justify-content: center;
+        padding: 8px;
+        .modal-title {
+            color: $orange;
+        }
+        button {
+            border-radius: 6px;
+            padding: 0.3rem 1rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+    }
+}
+
+
+/* FM POPUP Tour Details*/
+.loadtxt{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+}
+.UMDispoSelectionLoader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    z-index: 99999;
+    background: url('src/assets/img/brand/Spinner.gif') 50% 50% no-repeat #e4e5e6;
+    display: none;
+}
+.tourSelectionLoader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+    z-index: 999;
+    background: url('src/assets/img/brand/loader.gif') 50% 50% no-repeat #e4e5e6;
+    display: none;
+}
+.tourDetailsSelectionLoader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+    z-index: 999;
+    background: url('src/assets/img/brand/loader.gif') 50% 50% no-repeat #e4e5e6;
+    display: none;
+}
+
+.sidebar-lg-show .tourSelectionLoader{
+    background: url('src/assets/img/brand/loader.gif') 55% 50% no-repeat #e4e5e6;
+}
+
+.sidebar-lg-show .tourDetailsSelectionLoader{
+    background: url('src/assets/img/brand/loader.gif') 55% 50% no-repeat #e4e5e6;
+}
+
+.sidebar-lg-show .UMDispoSelectionLoader {
+    background: url('src/assets/img/brand/Spinner.gif') 50% 50% no-repeat #e4e5e6;
+}
+.sidebar-show .tourSelectionLoader {
+    background: url('src/assets/img/brand/loader.gif') 50% 50% no-repeat #e4e5e6;
+}
+
+.sidebar-show .tourDetailsSelectionLoader {
+    background: url('src/assets/img/brand/loader.gif') 50% 50% no-repeat #e4e5e6;
+}
+
+.sidebar-show .UMDispoSelectionLoader {
+    background: url('src/assets/img/brand/Spinner.gif') 50% 50% no-repeat #e4e5e6;
+}
+
+ngx-extended-pdf-viewer .grab-to-pan-grab :not(input):not(textarea):not(button):not(select):not(:link) {
+    margin-bottom: 5px;
+}
+
+ngx-extended-pdf-viewer .textLayer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    opacity: .2;
+    line-height: 1;
+}
+
+ngx-extended-pdf-viewer .textLayer .pdfViewer .page canvas {
+    width: 942px;
+    height: 1340px;
+}
+
+// ngx-extended-pdf-viewer .pdfViewer .page canvas {
+//     width: 942px;
+//     height: 1340px;
+// }
+// ngx-extended-pdf-viewer .sidebarOpen .pdfViewer .page canvas {
+//     max-width: 741px;
+//     max-height: 1057px;
+// }
+ngx-extended-pdf-viewer .thumbnailSelectionRing {
+    padding: 1px!important;
+}
+
+@media print {
+    body {
+        min-width: auto !important;
+    }
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover,
+.sidebar .nav-link:focus {
+    color: #fff;
+    background: #f27e00;
+}
+
+.sidebar .nav-link.active .nav-icon {
+    color: #fff;
+}
+
+
+/* * shipment table sttyle */
+.SharedSections  .table td, .SharedSections .table th{
+  border-top: 1px solid #626a6d;
+  border-bottom: 1px solid #626a6d;
+}
+/* * shipment table sttyle  end*/
+
+.tourDetail {
+    .item{
+        touch-action:pan-y !important;
+        user-select: auto !important;
+        -webkit-user-drag: auto !important;
+    }
+}
+
+
+/* Error Snackbar Code  start*/
+.customErrorSnackBar{
+
+    .snack-containter {
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: $red !important;
+      color: $white !important;
+      border-radius: 0.5rem !important;
+      padding: 0px 15px 15px 15px;
+      background-position: 15px center;
+      background-repeat: no-repeat;
+      background-size: 24px;
+      position: relative;
+      overflow: hidden;
+      pointer-events: auto;
+      margin-bottom: 1rem;
+      width: auto;
+
+      .titleClass {
+        border-bottom: 1px solid;
+        margin-top: 0.5rem;
+        padding: 2px;
+        margin-bottom: 0.5rem;
+      }
+
+      .bodyClass {
+        text-align: center;
+      }
+
+      .buttonClass {
+        text-align: center;
+        margin-top: 0.1rem;
+
+        button{
+            // background-color: $white !important;
+            border-color: $white !important;
+        }
+
+        .scan-btn {
+          border-radius: 5px;
+          padding: 3px 15px;
+          font-size: 0.7rem;
+          text-transform: none;
+        }
+
+      }
+
+    }
+  }
+   /* Error Snackbar Code End */
+
+   .form-control,.form-control:focus{
+    color:$black;
+  }
+
+  .click-disabled{
+    pointer-events: none;
+}
+
+.navMenuCustomClass li{ cursor: pointer;}
+
+.mirrored{
+    display: flex;
+    width: 50vw;
+    height: 60vh;
+    align-items: center;
+    justify-content: center;
+    // inexplicable/unknown extra space is rendered, causing scrollbars to show up
+    overflow: hidden;
+}
+
+.lb-nav a.lb-prev,.lb-nav a.lb-next {
+    opacity: 1!important;
+}
+
+.lb-data .lb-close {
+    z-index: 1000;
+    top: 30px;
+    right: 50px;
+    position: absolute;
+    opacity: 1!important;
+    background-color: #fff!important;
+    border-radius: 50%;
+    height: 36px!important;
+    width: 36px!important;
+    cursor: pointer!important;
+    transition: .2s!important;
+    padding: 0;
+    color: #000!important;
+    background-size: 32px!important;
+    background-position: center center!important;
+    background-repeat: no-repeat!important;
+    background-image: url(data:image/png;base64,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)!important;
+}
+
+#Colliereignisse .card-body{
+    .table thead tr th:first-child , .table tbody tr td:first-child {
+        min-width: 55px;
+    }
+    .table td{
+        max-width: max-content;
+    }
+  }
+
+

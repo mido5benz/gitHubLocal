@@ -1,0 +1,8 @@
+<div class="services-list">
+  <ng-container *ngFor="let item of services">
+    <ng-container *ngIf="item.count">
+      <img [src]="item.imgSrc" alt="service-image">
+    </ng-container>
+  </ng-container>
+</div>
+

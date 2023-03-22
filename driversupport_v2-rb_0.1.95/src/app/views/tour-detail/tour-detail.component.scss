@@ -1,0 +1,335 @@
+@import "../../../scss/variables";
+.item-list {
+  overflow: hidden;
+  .item {
+    position: relative;
+    display: table;
+    width: 100%;
+    background: $white;
+    .itemValuesContainer {
+      display: flex;
+      .collapse {
+        padding-bottom: 0;
+      }
+      td {
+        padding: 5px 10px;
+      }
+      .row-header {
+        padding: 5px 0px;
+        white-space: nowrap;
+        display: inline-block;
+        flex: 1 1 auto;
+        .icon {
+          margin-right: 10px;
+          border: 1px solid;
+          border-radius: 50%;
+          font-size: 1.5rem;
+          padding: 0.3rem;
+        }
+        .icon1 {
+          padding: 1rem;
+        }
+        .icon-text {
+          color: $orange;
+          vertical-align: super;
+        }
+      }
+      .row-body-address,
+      .row-body-id,
+      .row-body-arrow,
+      .lang-reference {
+        border-bottom: 1px solid $black;
+        display: inline-block;
+        padding: 5px 10px;
+        flex: 1 1 auto;
+      }
+    }
+    .action {
+      position: absolute;
+      width: auto;
+      height: 100%;
+      top: 0;
+      border: 0;
+      outline: none;
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      button {
+        width: 65px;
+        margin-top: -1px;
+        color: $white;
+        border: 0;
+        font-size: 0.8rem;
+        outline: none;
+      }
+    }
+    .action-3 {
+      right: -130px;
+    }
+    .action-2 {
+      right: -130px;
+    }
+    .action-1 {
+      right: -65px;
+    }
+  }
+}
+
+.red-background {
+  background-color: $red;
+}
+
+.gray-background {
+  background-color: $gray;
+}
+
+.orange-background {
+  background-color: $orange;
+}
+
+.yellow-background {
+  background-color: $yellow;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (max-width: 767px) {
+  .itemValuesContainer {
+    font-size: 0.7rem;
+  }
+  // .row-header {
+  //     width: 12%;
+  // }
+  // .row-body-address {
+  //     width: 30%;
+  // }
+  // .row-body-id {
+  //     width: 36%;
+  // }
+  // .lang-reference{
+  //     width: 17%;
+  // }
+}
+
+// @media (max-width: 767px) and (orientation: portrait) {
+//   .row-body-arrow{
+//     width: 5%;
+//     margin-top: 0.46rem;
+//   }
+// }
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .itemValuesContainer {
+    font-size: 0.8rem;
+  }
+  // .row-header {
+  //     width: 10%;
+  // }
+  // .row-body-address {
+  //     width: 31%;
+  // }
+  // .row-body-id {
+  //     width: 25%;
+  // }
+  // .lang-reference{
+  //     width: 21%;
+  // }
+  .row-body-arrow {
+    width: 10%;
+    text-align: right;
+    // margin-top: 0.46rem;
+  }
+
+  .row-body-id.smllnumber {
+    max-width: 190px;
+  }
+  .row-body-id.longnumber {
+    max-width: 190px;
+  }
+  .row-body-address.smllnumber {
+    // max-width:600px;
+    max-width: 230px;
+    word-break: break-all;
+  }
+  .row-body-address.longnumber {
+    // max-width:600px;
+    max-width: 230px;
+    word-break: break-all;
+  }
+  .lang-reference.smllnumber {
+    max-width: 100px;
+  }
+  .lang-reference.longnumber {
+    max-width: 100px;
+    // margin-top: -24px;
+  }
+
+  .fehlMengeClass {
+    margin-top: 0px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .itemValuesContainer {
+    font-size: 0.8rem;
+  }
+  .row-header {
+    width: 10%;
+  }
+
+  .row-header.smllnumber {
+    width: 85px;
+  }
+  .row-header.longnumber {
+    width: 71px;
+  }
+
+  .row-body-id.smllnumber {
+    max-width: 230px;
+  }
+  .row-body-id.longnumber {
+    max-width: 230px;
+  }
+
+  .lang-reference.smllnumber {
+    max-width: 120px;
+  }
+  .lang-reference.longnumber {
+    max-width: 120px;
+  }
+  .row-body-address.smllnumber {
+    width: 45%;
+  }
+
+  .row-body-address.longnumber {
+    width: 45%;
+  }
+
+  .row-body-arrow {
+    max-width: 110px;
+    text-align: right;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1499px) {
+  .row-header.smllnumber {
+    width: 85px;
+  }
+  .row-header.longnumber {
+    width: 71px;
+  }
+
+  .row-body-id.smllnumber {
+    max-width: 230px;
+  }
+  .row-body-id.longnumber {
+    max-width: 230px;
+  }
+
+  .lang-reference.smllnumber {
+    max-width: 120px;
+  }
+  .lang-reference.longnumber {
+    max-width: 120px;
+  }
+  .row-body-address.smllnumber {
+    width: 45%;
+  }
+
+  .row-body-address.longnumber {
+    width: 45%;
+  }
+
+  .row-body-arrow {
+    max-width: 110px;
+    text-align: right;
+  }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+  .itemValuesContainer {
+    font-size: 1rem;
+  }
+  // .row-body-arrow{
+  //   width: 5%;
+  //   margin-top: 0.2rem;
+  // }
+}
+
+@media (min-width: 1500px) {
+  .row-header.smllnumber {
+    width: 85px;
+  }
+  .row-header.longnumber {
+    width: 71px;
+  }
+
+  .row-body-id.smllnumber {
+    max-width: 230px;
+  }
+  .row-body-id.longnumber {
+    max-width: 230px;
+  }
+
+  .lang-reference.smllnumber {
+    max-width: 180px;
+  }
+  .lang-reference.longnumber {
+    max-width: 180px;
+  }
+  .row-body-address.smllnumber {
+    width: 60%;
+  }
+
+  .row-body-address.longnumber {
+    width: 60%;
+  }
+
+  .row-body-arrow {
+    max-width: 110px;
+    text-align: right;
+  }
+}
+
+.item-list .item.demo {
+  left: -130px !important;
+  -webkit-transition: left 0.4s linear;
+  transition: left 0.4s linear;
+}
+
+.item-list .item.leftz {
+  left: 0px !important;
+  -webkit-transition: left 0.4s linear;
+  transition: left 0.4s linear;
+}
+
+.item-list .item.demo.fmHide {
+  left: -65px !important;
+  -webkit-transition: left 0.4s linear;
+  transition: left 0.4s linear;
+}
+
+.item-list .item.demo.fmHide .action-3 {
+  right: -65px !important;
+}
+
+.fehlMengeClass {
+  position: absolute;
+  background-image: url("../../../assets/img/brand/icon_fm.svg");
+  // background-image: url("../../../assets/img/brand/icon-driversupport-tof-sprinter.svg");
+  background-repeat: no-repeat;
+  max-width: 100%;
+  height: auto;
+  // background-color: orange;
+  // margin-top: -15px;
+}
+
+.customDisabled {
+  opacity: 0.6;
+  pointer-events: none !important;
+}

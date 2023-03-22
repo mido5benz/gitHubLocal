@@ -1,0 +1,31 @@
+<div class="fa-1x" *ngIf="loading | async">
+  <i class="fas fa-sync fa-spin"></i>
+  Vorschläge werden geladen...
+</div>
+<div *ngIf="sortedListItems?.length > 0; else noResults">
+  <b>Ergebnisse:</b>
+  <ng-container *ngIf="(loading | async) === false">
+    <div class="suggestion-list" *ngIf="sortedListItems?.length > 0">
+      <app-synonym-suggestion-list-item
+        *ngFor="let item of sortedListItems"
+        (itemSelected)="setSelectedItem($event)"
+        (addSynonymClicked)="addSynonym($event)"
+        [originalClickedItem]="originalItem"
+        [item]="item">
+      </app-synonym-suggestion-list-item>
+    </div>
+    <div>
+      <button class="btn btn-primary btn-sm" (click)="createAddress()">
+        <i class="fas fa-user-plus"></i> Als neue Adresse Speichern
+      </button>
+    </div>
+  </ng-container>
+</div>
+<ng-template #noResults>
+  <div *ngIf="!originalItem">Bitte wählen Sie einen Eintrag</div>
+  <div *ngIf="originalItem">Es konnten keine Vorschläge gefunden werden!
+    <button class="btn btn-primary btn-sm" (click)="createAddress()">
+      <i class="fas fa-user-plus"></i> Als neue Adresse Speichern
+    </button>
+  </div>
+</ng-template>

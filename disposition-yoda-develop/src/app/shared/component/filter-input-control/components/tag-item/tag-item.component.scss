@@ -1,0 +1,18 @@
+.tag-item {
+  background-color: #dadada;
+  color: #626a6d;
+  display: inline-block;
+  border-radius: 2px;
+  border: 1px solid darken(#dadada, 8%);
+  padding: 5px 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 13px;
+  .removeTag {
+    margin-left: 5px;
+    &:hover {
+      color: #f27e00;
+      cursor: pointer;
+    }
+  }
+}

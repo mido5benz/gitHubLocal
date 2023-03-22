@@ -1,0 +1,244 @@
+// If you want to override variables do it here
+@import 'variables';
+
+// Import styles
+@import '~@coreui/coreui/scss/coreui';
+
+// If you want to add something do it here
+@import 'typography';
+@import 'buttons';
+@import 'custom';
+
+@import 'vendors/ag-grid/ag-grid';
+@import 'vendors/leaflet/leaflet';
+
+@import '~ngx-toastr/toastr-bs4-alert';
+
+// Overwrite the breadcrumb margin
+.breadcrumb {
+  margin-bottom: 10px !important;
+}
+
+.form-control {
+  color: #000;
+
+  &:active,
+  &:hover,
+  &:focus {
+    color: #000 !important;
+  }
+}
+
+@import '../../node_modules/@fortawesome/fontawesome-free/css/all.css';
+@import '../../node_modules/font-awesome/css/font-awesome.css';
+
+.leaflet-div-icon {
+  border: 0;
+  background-color: transparent;
+}
+
+.clusterIcon {
+  text-align: center;
+  width: 40px;
+  background-color: transparentize(#3ec1ef, 0.65);
+  border: 1px solid darken(#3ec1ef, 45%);
+  border-radius: 50%;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 15px;
+
+  &:hover {
+    background-color: transparentize(#3ec1ef, 0.2);
+  }
+}
+
+.unassignedClusterIcon {
+  text-align: center;
+  width: 40px;
+  color: white;
+  background-color: transparentize(red, 0.65);
+  border: 1px solid darken(red, 15%);
+  border-radius: 50%;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 15px;
+
+  &:hover {
+    background-color: transparentize(red, 0.2);
+  }
+}
+
+.assignedClusterIcon {
+  text-align: center;
+  width: 40px;
+  color: black;
+  background-color: transparentize(grey, 0.65);
+  border: 1px solid darken(grey, 15%);
+  border-radius: 50%;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 15px;
+
+  &:hover {
+    background-color: transparentize(grey, 0.2);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .app-body {
+    margin-top: 0;
+  }
+}
+
+.btn {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// Text
+.text-sm {
+  font-size: 13px;
+}
+
+.no-border-radius {
+  border-radius: 0;
+}
+
+.relative {
+  position: relative;
+}
+
+.tour-error-stopps {
+  background-color: lightcoral !important;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.app-body {
+  overflow: visible !important;
+}
+
+.block {
+  display: block;
+}
+
+.marker-pin {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  background: #2882C8;
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -15px 0 0 -15px;
+}
+
+// to draw white circle
+.marker-pin::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  margin: 3px 0 0 3px;
+  background: #fff;
+  position: absolute;
+  border-radius: 50%;
+}
+
+// to align icon
+.custom-div-icon i {
+  position: absolute;
+  width: 22px;
+  font-size: 22px;
+  left: 0;
+  right: 0;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.stopp-icon {
+  font-size: 14px;
+  color: black;
+  margin: 1px 1px 0 0;
+}
+
+.material-icons {
+  .fa {
+    font-size: 14px;
+    color: black;
+    margin: 4px 0 0 0;
+  }
+
+  .fas {
+    font-size: 14px;
+    color: black;
+    margin: 4px 0 0 0;
+  }
+}
+
+.leaflet-popup-content {
+  margin: 15px;
+}
+
+.selectedMarker {
+  .marker-pin {
+    background-color: #F27E00 !important;
+  }
+}
+
+.highlightedStopp {
+  > i > div {
+    border-radius: 50%;
+    animation-name: highlight;
+    animation-duration: 6s;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@-webkit-keyframes highlight {
+  0% {
+    background-color: #6FFF00;
+  }
+  100.0% {
+    background-color: white;
+  }
+}
+
+@keyframes highlight {
+  0% {
+    background-color: #6FFF00;
+  }
+  100.0% {
+    background-color: white;
+  }
+}
+
+#tourSelectionInput, #serviceFilter {
+  .dropdown {
+    border-radius: 2px;
+    width: 93%;
+
+    .dropdown-item {
+      background-color: white !important;
+      color: black;
+      padding: 0;
+      border-radius: 2px;
+    }
+  }
+}
+
+.leaflet-top {
+  z-index: 999 !important;
+}
+
+.modal-tof {
+  &.modal-dialog{
+    max-width: 800px;
+  }
+}

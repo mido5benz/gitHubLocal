@@ -1,0 +1,13 @@
+<ng-container *ngIf="showTourListLoading">
+  <app-loading-notification [loadingText]="'Daten werden geladen...'"></app-loading-notification>
+</ng-container>
+
+<ng-container *ngIf="checkLoadingUmdispo">
+  <app-loading-notification [loadingText]="'Umdisponierung wird durchgeführt...'"></app-loading-notification>
+</ng-container>
+
+<!--<ng-container *ngIf="loadingPtv">-->
+<!--  <app-loading-notification [loadingText]="'Bitte warten Sie ...'"></app-loading-notification>-->
+<!--</ng-container>-->
+
+<div id="map"></div>

@@ -1,0 +1,10 @@
+<div
+  class="nav-item"
+  (click)="onItemClicked()"
+  [class.disabled]="isDisabled"
+  [class.active]="isActive"
+  [class.highlighted]="isHighlighted"
+  title="{{toolTip}}"
+>
+  <i class="mr-1" [ngClass]="iconClasses"></i>{{ caption }}
+</div>

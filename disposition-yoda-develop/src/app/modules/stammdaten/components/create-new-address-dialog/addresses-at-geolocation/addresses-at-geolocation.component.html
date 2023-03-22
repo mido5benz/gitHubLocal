@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <ng-container *ngIf="loading; else resultList">
+    <div class="spinner-border text-warning" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    Adressen werden geladen....
+  </ng-container>
+
+  <ng-template #resultList>
+    Adressvorschläge für diese Geoposition:
+    <hr/>
+    <div *ngFor="let address of addresses">
+      <div>{{ address.name1 }}</div>
+      <div>{{ address.name2 }}</div>
+      <div>{{ address.name3 }}</div>
+      <div>{{ address.strasse }} {{ address.hausnr}}</div>
+      <div>{{ address.plz }} {{ address.ort}}</div>
+      <div>{{ address.landCode }}</div>
+      <button class="btn btn-sm btn-primary" (click)="addAsSynonym(address)">Als Synonym speichern</button>
+      <hr/>
+    </div>
+  </ng-template>
+</div>

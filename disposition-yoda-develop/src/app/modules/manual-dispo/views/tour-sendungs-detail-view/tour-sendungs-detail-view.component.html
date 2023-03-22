@@ -1,0 +1,57 @@
+<div class="h-100 relative">
+  <nav *ngIf="!unverplanteStopp; else unverplanteStoppsLayer" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/manual-dispo">Karte</a></li>
+      <li class="breadcrumb-item"><a
+        [routerLink]="['../../../../', this.tour_id]">Tour {{ this.tournr }} </a>
+      </li>
+      <li class="breadcrumb-item"><a
+        [routerLink]="['../../../../', this.tour_id, 'stopps', this.dispostopp_id]">Stopp {{ this.soll_stopp }} </a>
+      </li>
+      <li class="breadcrumb-item"><a>Sendung-detail </a>
+      </li>
+    </ol>
+  </nav>
+
+  <ng-template #unverplanteStoppsLayer>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/manual-dispo">Karte</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/manual-dispo/feindisposition']">Tour 9999</a></li>
+        <li class="breadcrumb-item"><a
+          [routerLink]="['/manual-dispo/feindisposition/sendungsebene/tourId', this.tour_id, 'dispostoppId', this.dispostopp_id]">Sendung</a>
+        </li>
+        <li class="breadcrumb-item"><a
+          [routerLink]="['/manual-dispo/feindisposition/sendungsebene', this.tour_id, this.dispostopp_id]">Sendung-detail</a>
+        </li>
+      </ol>
+    </nav>
+  </ng-template>
+
+  <h5>Sendungs-Detail</h5>
+  <hr>
+
+  <div>
+    <lib-shipment-info-details
+      (sendCorrectedValues)="putCorrectedValues($event)"
+      [shipmentInfoDetails]="sendungsdaten"
+      [dienste]="dienste">
+    </lib-shipment-info-details>
+
+    <div class="d-flex">
+      <div class="w-50">
+        <lib-sendungsereignisse [sendungsereignisse]="sendungsereignisse"></lib-sendungsereignisse>
+      </div>
+      <div class="w-50 ml-1">
+        <lib-dangerous-goods [dangerous_goods]="gefahrgueter"></lib-dangerous-goods>
+      </div>
+    </div>
+
+    <lib-sendungskette [sendungskette]="sendungskettenDaten"></lib-sendungskette>
+
+    <lib-dispo-details [dispoDetails]="dispoDetails"></lib-dispo-details>
+
+    <lib-colli-events [colliEvent]="colliereignisse"></lib-colli-events>
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+.breadcrumb {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  .breadcrumb-item {
+    font-size: 13px !important;
+    visibility: visible !important;
+  }
+}

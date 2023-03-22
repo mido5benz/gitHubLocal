@@ -1,0 +1,24 @@
+<div class="stopp-item-container" *ngIf="!stopp.isReloadStopp" [class.noGeoData]="stopp.ziel_name === null">
+  <div class="stopp-item">
+    <app-soll-stopp-nr [stopp]="stopp"></app-soll-stopp-nr>
+    <div class="stop-item-wrapper">
+      <app-delivery-list
+        [delivery]="stopp?.sendungen"
+        (click)="stoppClicked()"
+      ></app-delivery-list>
+      <div>
+        <app-collapsed-icon
+          [delivery]="stopp?.sendungen"
+          (iconClicked)="showServiceList()"
+        ></app-collapsed-icon>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <app-service-list
+      [delivery]="stopp?.sendungen"
+      [collapsed]="!servicesVisible"
+    ></app-service-list>
+  </div>
+</div>
+<div class="reload-item" *ngIf="showReloadLine()">Nachladebereich</div>

@@ -1,0 +1,16 @@
+<ag-grid-angular
+  style="width: 100%; height: 200px;"
+  class="ag-theme-alpine"
+  [columnDefs]="columnDef"
+  [defaultColDef]="defaultColDef"
+  [rowSelection]="'single'"
+  [suppressCellSelection]="true"
+  (gridReady)="gridReady($event)"
+  (rowClicked)="onRowClicked($event)"
+  enableCellTextSelection="true"
+>
+</ag-grid-angular>
+
+<div class="d-flex justify-content-between mt-2 mb-2 pull-right">
+  <button class="btn btn-primary" [disabled]="!isSelectedAddress" (click)="closeOk()">Übernehmen</button>
+</div>

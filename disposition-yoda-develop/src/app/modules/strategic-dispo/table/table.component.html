@@ -1,0 +1,21 @@
+<div class="table-container h-100">
+  <div class="collapse-control" (click)="collapse()" [class.isCollapsed]="isCollapsed" [attr.title]="
+      isCollapsed ? 'Tourtabelle anzeigen' : 'Tourtabelle ausblenden'
+    ">
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <ag-grid-angular class="ag-theme-alpine h-100 w-100"
+                   [rowData]="rowData"
+                   [columnDefs]="columnDefs"
+                   [defaultColDef]="defaultColDef"
+                   [frameworkComponents]="frameworkComponents"
+                   [rowSelection]="rowSelection"
+                   [suppressCellSelection]="suppressCellSelection"
+                   [getRowNodeId]="getRowNodeId"
+                   [overlayLoadingTemplate]="overlayLoadingTemplate"
+                   [overlayNoRowsTemplate]="overlayNoRowsTemplate"
+                   (selectionChanged)="onSelectionChanged($event)"
+                   (cellValueChanged)="onCellValueChanged($event)"
+                   (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+</div>

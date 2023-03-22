@@ -1,0 +1,171 @@
+<div class="w-100">
+  <div class="w-100">
+    <form class="w-100" [formGroup]="addressForm">
+      <div class="form-group row">
+        <label for="inputName1" class="col-sm-3 col-form-label col-form-label-sm">Name 1</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inputName1" placeholder="Name 1"
+                 formControlName="name1">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputName2" class="col-sm-3 col-form-label col-form-label-sm">Name 2</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inputName2" placeholder="Name 2"
+                 formControlName="name2">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputName3" class="col-sm-3 col-form-label col-form-label-sm">Name 3</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inputName3" placeholder="Name 3"
+                 formControlName="name3">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputStreet" class="col-sm-3 col-form-label col-form-label-sm">Straße</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inputStreet" formControlName="strasse">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputHouseNummer" class="col-sm-3 col-form-label col-form-label-sm">Hausnummer</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inputHouseNummer" formControlName="hausnr">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-6">
+          <div class="form-group row">
+            <label for="inputZip" class="col-sm-6 col-form-label col-form-label-sm">PLZ</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control form-control-sm" id="inputZip" formControlName="plz">
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group row">
+            <label for="inputCity" class="col-sm-3 col-form-label col-form-label-sm">Stadt</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control form-control-sm" id="inputCity" formControlName="ort">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputCountry" class="col-sm-3 col-form-label col-form-label-sm">Land</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inputCountry" placeholder="Land"
+                 formControlName="land">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputTyp" class="col-sm-3 col-form-label col-form-label-sm">Tour-Typ</label>
+        <div class="col-sm-9">
+          <select class="form-control form-control-sm" id="inputTyp" formControlName="type">
+            <option selected *ngFor="let fahrzeugTyp of fahrzeugTypen"
+                    [value]="fahrzeugTyp.fahrzeugklasse_id">{{ fahrzeugTyp.fk_code}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="w-100">
+    <form class="w-100">
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label col-form-label-sm">Eigenschaften</label>
+        <div class="col-sm-9">
+          <ngx-bootstrap-multiselect [settings]="selectSettings" [options]="settingsList" [(ngModel)]="optionsModel"
+                                     name="settings"
+                                     [texts]="settingTexts"></ngx-bootstrap-multiselect>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <!-- Sendung Avisierung -->
+  <div class="w-100">
+    <form class="w-100" [formGroup]="sendungAvisForm">
+      <span class="header">Premiumavis</span>
+
+      <div class="form-group row" formArrayName="emails">
+        <label for="inputEmail" class="col-sm-3 col-form-label col-form-label-sm"></label>
+        <div class="col-sm-9">
+          <button (click)="addNewEmail()" class="btn btn-primary btn-sm pull-right">Weitere E-Mails hinzufügen</button>
+        </div>
+      </div>
+
+      <div class="form-group row" formArrayName="emails">
+        <label for="inputEmail" class="col-sm-3 col-form-label col-form-label-sm">E-Mail</label>
+        <div class="col-sm-9">
+          <div *ngFor="let email of getEmails.controls; let i = index">
+            <input type="email" class="form-control form-control-sm" id="inputEmail"
+                   placeholder="E-mail Adresse"
+                   [formControlName]="i">
+            <button [disabled]="i == 0" class="btn btn-primary btn-sm remove-button" (click)="removeEmail(i)">Löschen</button>
+            <div *ngIf="email?.invalid">
+              <small class="text-danger">Die eingegebene E-Mail Adresse ist ungültig</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputAvisTyp" class="col-sm-3 col-form-label col-form-label-sm">Ist-Avis Typ</label>
+        <div class="col-sm-9">
+          <select class="form-control form-control-sm" id="inputAvisTyp" formControlName="avistyp">
+            <option [value]="null">{{""}}</option>
+            <option selected *ngFor="let avisTyp of sendungAvisTyp"
+                    [value]="avisTyp.sendungavistyp_id">{{ avisTyp.code}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputTrennzeichen" class="col-sm-3 col-form-label col-form-label-sm">Trennzeichen</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="inputTrennzeichen" placeholder="Trennzeichen"
+                 formControlName="trennzeichen">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label col-form-label-sm">Checkbox</label>
+        <div class="col-sm-9">
+          <div class="form-check form-check-inline" (change)="avisCheckboxValue($event)">
+            <input [checked]="sollAvisChecked === true" class="form-check-input" type="checkbox" id="soll_avis">
+            <label class="form-check-label" for="soll_avis">SOLL-AVIS</label>
+          </div>
+<!--          <br>-->
+<!--          <div class="form-check form-check-inline" (change)="avisCheckboxValue($event)">-->
+<!--            <input [checked]="istAvisChecked === true" class="form-check-input" type="checkbox" id="ist_avis">-->
+<!--            <label class="form-check-label" for="ist_avis">IST-AVIS</label>-->
+<!--          </div>-->
+          <br>
+          <div class="form-check form-check-inline" (change)="avisCheckboxValue($event)">
+            <input [checked]="avisDezimalKomma === true" class="form-check-input" type="checkbox" id="avis_dezimal_komma">
+            <label class="form-check-label" for="avis_dezimal_komma">DEZIMAL</label>
+          </div>
+          <br>
+          <div class="form-check form-check-inline" (change)="avisCheckboxValue($event)">
+            <input [checked]="avisOhneVolumen === true" class="form-check-input" type="checkbox" id="avis_ohne_volumen">
+            <label class="form-check-label" for="avis_ohne_volumen">LEER</label>
+          </div>
+          <br>
+          <div class="form-check form-check-inline" (change)="avisCheckboxValue($event)">
+            <input [checked]="avisSamstag === true" class="form-check-input" type="checkbox" id="avis_samstag">
+            <label class="form-check-label" for="avis_samstag">SAMSTAG</label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="pull-right" style="position: relative; bottom: 15px">
+    <button type="button" class="btn btn-primary btn-sm" (click)="update()">Änderungen speichern</button>
+  </div>
+
+</div>

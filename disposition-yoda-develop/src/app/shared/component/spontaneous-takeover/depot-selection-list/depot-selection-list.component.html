@@ -1,0 +1,27 @@
+<div class="dropdown" dropdown [insideClick]="true" placement="bottom right">
+  <div dropdownToggle class="nav-item">Depotauswahl</div>
+  <ul *dropdownMenu class="dropdown-menu dropdown-menu-left" role="menu">
+    <div name="textarea-input" rows="9" class="form-control felder">
+      <div class="radio" *ngFor="let depot of depots">
+        <input type="radio" name="depotNrRadios" id="depotNr"
+               (click)="depotSelected(depot)"> {{ depot.depotNr }} - {{ depot.bezeichnung }}
+      </div>
+    </div>
+
+    <button class="btn btn-block btn-primary felder" (click)="openModal(depotAenderungInfo)">Übernehmen</button>
+  </ul>
+</div>
+
+<ng-template #depotAenderungInfo>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Depot ändern?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <p>Möchten Sie das Depot ändern? Nach der Bestätigung werden Ihnen Kundenübernahmen für das
+      Depot <b>{{selectedDepotNr}} - {{selectedDepotBezeichnung}}</b> angezeigt!</p>
+    <button type="button" class="btn btn-primary" (click)="submitNewDepotNr()" (click)="modalRef.hide()">Bestätigen</button>
+  </div>
+</ng-template>

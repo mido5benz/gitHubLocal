@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">
+    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+    <b class="text-orange">{{ title }}</b>
+  </h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div *ngIf="(loading$ | async); else body">
+    <div class="text-center">
+      <div class="spinner-border text-warning" role="status"></div>
+      <div>Prüfe...</div>
+    </div>
+  </div>
+  <ng-template #body>
+    <div *ngIf="(offeneTouren$ | async).length > 0">
+      <p>Sie können derzeit den Tagesabschluss nicht durchführen.
+        Der Tagesabschluss kann erst erfolgen, wenn alle Touren abgefertigt sind.</p>
+
+      Die folgenden Touren sind noch nicht abgefertigt:
+      <ul class="open-tours-list">
+        <li *ngFor="let tour of (offeneTouren$ | async)">
+          {{ tour.tournr }}
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="(offeneTouren$ | async).length === 0">
+      Wenn Sie den Tagesabschluss manuell ausführen, erfolgen folgende Punkte:
+      <ol>
+        <li>Die manuelle Disposition wird für den aktuellen Ausliefertag beendet.</li>
+        <li>Für den nächsten Ausliefertag wird die maschinelle Disposition aktiviert.</li>
+        <li>Die Tournummern werden festgeschrieben.</li>
+      </ol>
+    </div>
+  </ng-template>
+  <div *ngIf="(loading$ | async) === false">
+    <div class="text-right" *ngIf="(offeneTouren$ | async).length > 0">
+      <button type="button" class="btn btn-outline-primary" (click)="cancel()">Ok</button>
+    </div>
+    <div class="text-right" *ngIf="(offeneTouren$ | async).length === 0">
+      <button type="button" class="btn btn-outline-primary" (click)="cancel()">Abbrechen</button>
+      <button type="button" class="btn btn-primary" (click)="confirm()">TA durchführen</button>
+    </div>
+  </div>
+</div>

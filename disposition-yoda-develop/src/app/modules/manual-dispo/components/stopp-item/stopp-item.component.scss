@@ -1,0 +1,33 @@
+.stopp-item-container {
+  border-bottom: 1px solid #babfc7;
+  &:hover {
+    cursor: pointer;
+    background-color: #eaeaea;
+  }
+  .stopp-item {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+
+    .stop-item-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.reload-item {
+  background-color: darken(#fff, 15%);
+  border-bottom: 1px dashed #333;
+  border-top: 1px dashed #333;
+  text-align: center;
+  font-weight: bold;
+  &:hover {
+    cursor: grab;
+  }
+}
+
+.noGeoData {
+  background-color: rgba(224, 56, 56, 0.4);
+}

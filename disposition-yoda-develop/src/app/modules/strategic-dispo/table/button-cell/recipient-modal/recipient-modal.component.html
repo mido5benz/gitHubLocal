@@ -1,0 +1,12 @@
+<span *ngIf="loading==true;">
+  <ngx-spinner [fullScreen]="false"></ngx-spinner>
+</span>
+<div class="modal-header">
+  <h3 class="modal-title pull-left">Zugeordnete Großposten</h3>
+</div>
+
+<div class="modal-body">
+  <div class="card-body">
+    <li *ngFor="let namen of empfaengerNamen">{{namen}}</li>
+  </div>
+</div>

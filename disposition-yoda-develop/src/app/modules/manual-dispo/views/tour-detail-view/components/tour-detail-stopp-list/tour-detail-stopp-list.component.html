@@ -1,0 +1,25 @@
+<div class="tour-stopplist-container">
+  <ag-grid-angular
+    class="ag-theme-alpine h-100 w-100"
+    style="width: 100%; height: 100%"
+    [localeText]="locale"
+    [defaultColDef]="defaultColDef"
+    [columnDefs]="columnDefs"
+    [rowSelection]="'multiple'"
+    [overlayLoadingTemplate]="overlayLoadingTemplate"
+    [overlayNoRowsTemplate]="noRowsTemplate"
+    [suppressCellSelection]="true"
+    (gridReady)="onGridReady($event)"
+    (rowClicked)="onRowClicked()"
+    (rowDoubleClicked)="onRowDoubleClicked($event)"
+    (rowDragEnter)="onRowDragStart($event)"
+    (rowDragEnd)="onRowDragEnd($event)"
+    [rowDragManaged]="true"
+    [animateRows]="true"
+    [frameworkComponents]="frameworkComponents"
+    [isFullWidthCell]="isFullWidthCell"
+    [fullWidthCellRenderer]="fullWidthCellRenderer"
+    [gridOptions]="gridOptions"
+  >
+  </ag-grid-angular>
+</div>

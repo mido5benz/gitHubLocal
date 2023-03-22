@@ -1,0 +1,20 @@
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th *ngFor="let item of columns;let index = index" (click)="sortHeader(item,index)">{{item}}
+                <span *ngIf="sortActive == item">
+                    <span *ngIf="sortDirection == true"> <i class="fa fa-sm fa-arrow-up"></i>
+                    </span>
+                    <span *ngIf="sortDirection == false"> <i class="fa fa-sm fa-arrow-down"></i>
+                    </span>
+                    <!-- <i class="fa fa-sm fa-arrow-down" *ngIf="!sortDirection"></i> -->
+                </span>                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data;let index = index">
+            <td *ngFor="let cell of item">{{cell}}</td>
+        </tr>       
+    </tbody>
+</table>

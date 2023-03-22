@@ -1,0 +1,62 @@
+
+.close-control, .filter-container {
+  font-size: 10px;
+  padding: 5px 10px 0 10px;
+}
+
+.filter-container {
+  .filter-caption {
+    font-size: 12px;
+    color: black;
+    text-transform: uppercase;
+  }
+}
+
+.form-group {
+  width: 100%;
+}
+
+app-filter-input-control,
+app-tour-filter-input-control {
+  width: 100%;
+}
+
+.reset-filters {
+  padding: 5px;
+  background-color: darken(#ffffff, 15%);
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.closeFilter {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.filter-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 0 0 2px 2px;
+}
+
+.btn-accept {
+  color: white;
+  background-color: #F27E00;
+
+  &:hover {
+    background-color: darken(#F27E00, 10%);
+  }
+}
+
+.btn-close {
+  color: black;
+  background-color: darken(#fff, 10%);
+
+  &:hover {
+    background-color: darken(#fff, 20%);
+  }
+}

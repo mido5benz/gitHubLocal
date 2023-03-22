@@ -1,0 +1,34 @@
+<app-navigation>
+  <ng-container left>
+    <div class="d-flex">
+      <div class="d-flex">
+        <div class="nav-item" [routerLink]="['/manual-dispo']">
+          <i class="fas fa-map-marked"></i> Karte
+        </div>
+        <div class="nav-item" [routerLink]="['/stammdaten']">
+          <i class="fas fa-list-ul"></i> Zielliste
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <div middle></div>
+  <ng-container right>
+    <div class="d-flex">
+      <app-nav-badge-icon-link
+        [url]="'/stammdaten/fehlerhaft/archiviert'"
+        [caption]="'Archivierte Adressen'"
+        [objectCount]="archivedAddressCount"
+      ></app-nav-badge-icon-link>
+      <app-nav-badge-icon-link
+        [url]="'/stammdaten/fehlerhaft'"
+        [caption]="'Fehlerhafte Adressen'"
+        [objectCount]="unassignedAddressesCount"
+      ></app-nav-badge-icon-link>
+      <app-nav-badge-icon-link
+        [url]="'/manual-dispo/feindisposition'"
+        [caption]="'Unverplante Stopps'"
+        [objectCount]="unassignedStopCount"
+      ></app-nav-badge-icon-link>
+    </div>
+  </ng-container>
+</app-navigation>

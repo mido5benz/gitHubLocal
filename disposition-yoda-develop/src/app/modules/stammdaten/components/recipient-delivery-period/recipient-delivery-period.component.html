@@ -1,0 +1,74 @@
+<form [formGroup]="formGroup">
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" formControlName="monday" value="" id="mondayCheck">
+    <label class="form-check-label" for="mondayCheck">
+      Montag
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" formControlName="tuesday" value="" id="tuesdayCheck">
+    <label class="form-check-label" for="tuesdayCheck">
+      Dienstag
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" formControlName="wednesday" value="" id="wendsdayCheck">
+    <label class="form-check-label" for="wendsdayCheck">
+      Mittwoch
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" formControlName="thursday" value="" id="thursdayCheck">
+    <label class="form-check-label" for="thursdayCheck">
+      Donnerstag
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" formControlName="friday" value="" id="fridayCheck">
+    <label class="form-check-label" for="fridayCheck">
+      Freitag
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" formControlName="saturday" value="" id="saturdayCheck">
+    <label class="form-check-label" for="saturdayCheck">
+      Samstag
+    </label>
+  </div>
+
+</form>
+<form [formGroup]="timeFormGroup">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputStart">Von</label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addonStart"><i class="far fa-clock"></i></span>
+        </div>
+        <input type="time" formControlName="von" class="form-control" id="inputStart" aria-describedby="addonStart"
+               placeholder="Von..">
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEnd">Bis</label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addonUntil"><i class="far fa-clock"></i></span>
+        </div>
+        <input type="time" formControlName="bis" class="form-control" id="inputEnd" aria-describedby="addonUntil"
+               placeholder="Bis..">
+      </div>
+    </div>
+  </div>
+</form>
+<alert type="info" *ngIf="(hasError$ | async) === true">
+  <strong>Hinweis!</strong> Mind. eine Auswahl ist bereits vorhanden.
+</alert>
+<div class="pull-right">
+  <button type="submit" class="btn btn-default" (click)="closeCancel()">Abbrechen</button>
+  <button type="submit" [disabled]="timeFormInvalid || dayFormInvalid"
+          class="btn btn-primary" (click)="closeOk()" *ngIf="(loading$ | async) === false">Hinzufügen
+  </button>
+  <button type="submit" class="btn btn-primary" (click)="closeOk()" *ngIf="(loading$ | async) === true"><i
+    class="fas fa-spinner fa-spin"></i></button>
+</div>

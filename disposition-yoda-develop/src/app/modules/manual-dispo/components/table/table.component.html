@@ -1,0 +1,33 @@
+<div class="table-container h-100">
+  <div
+    class="collapse-control"
+    (click)="collapse()"
+    [class.isCollapsed]="isCollapsed"
+    [attr.title]="
+      !isCollapsed ? 'Tourtabelle anzeigen' : 'Tourtabelle ausblenden'
+    "
+  >
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <ag-grid-angular
+    class="ag-theme-alpine h-100 w-100"
+    [localeText]="locale"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [frameworkComponents]="frameworkComponents"
+    [getRowNodeId]="getRowNodeId"
+    [rowSelection]="'single'"
+    [suppressCellSelection]="true"
+    [overlayLoadingTemplate]="overlayLoadingTemplate"
+    (cellValueChanged)="onCellValueChanged($event)"
+    (rowClicked)="onCellClicked($event)"
+    (rowDoubleClicked)="onCellDoubleClick($event)"
+    (gridReady)="onGridReady($event)"
+    [rowClassRules]="rowClassRules"
+  >
+  </ag-grid-angular>
+</div>
+
+
+

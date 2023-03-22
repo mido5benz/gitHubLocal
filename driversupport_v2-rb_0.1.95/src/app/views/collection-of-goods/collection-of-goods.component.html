@@ -1,0 +1,38 @@
+<!-- Header and Search bar Logic Start -->
+<div class="card mb-3" id="collectiongoodsDashboard">
+  <div class="card-body collectiongoodsSearchHeader">
+    <div class="col-sm-6 col-md-6 d-inline-block"><span id="headerText">Scannen Sie zum Vereinnahmen ein
+        Packstück</span></div>
+    <div class="col-sm-6 col-md-6 d-inline-block">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" id="barcode" name="Barcode" #searchBar class="form-control" autocomplete="off"
+                 placeholder="" (ngModelChange)='onSearch($event,false)'
+                 [(ngModel)]="searchText" (keyup.enter)="onSearch(searchText,true)">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Header and Search bar Logic  End-->
+
+<div *ngIf="!infobox">
+<app-tab-content
+                 [infoboxProperty]="infobox"
+                 (clearSearchText)="OnfocusSearchText($event)"
+                 (newVereinnahmungEvent)="fillTabValuesToUpdate($event)"
+></app-tab-content>
+</div>
+
+<div *ngIf="infobox">
+  <app-navigation-modal (goHome)="changeInfoBox($event)"
+                        (clearSearchText)="clearSearchText($event)"
+                        (confirmBruch)="confirmBruch()"
+                        (clearUmdispoSearchField)="clearUmdispoSearch()"
+                        [dienste]="dienste"
+                        [shipmentInfo]="shipmentInfo"
+                        [sendungId]="sendungId"
+                        [reArrangeList]="reArrangeList"
+                        [searchText]="searchText"
+  ></app-navigation-modal>
+</div>

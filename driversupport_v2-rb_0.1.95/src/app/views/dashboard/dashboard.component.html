@@ -1,0 +1,20 @@
+<div class="dashboard-wrapper">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <ng-container>
+          <accordion>
+            <app-release-process></app-release-process>
+          </accordion>
+        </ng-container>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+       <ng-container *ngFor="let item of tourTypes; let i= index">
+        <accordion>
+          <app-tour-card [allTours]="getCards(tours, item)" [tourSektor]="i"></app-tour-card>
+        </accordion>
+      </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

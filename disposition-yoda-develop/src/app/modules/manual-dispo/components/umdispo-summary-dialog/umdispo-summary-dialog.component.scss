@@ -1,0 +1,93 @@
+.content-wrapper {
+  overflow-y: scroll;
+  height: 500px;
+
+  .content-text {
+    font-size: 13px;
+  }
+
+  .summary-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid darken(#fff, 5%);
+    border-radius: 2px;
+    padding: 5px 10px 10px;
+
+    .tour-container {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      .single-tour {
+        &:first-child {
+          margin-top: 0px !important;
+        }
+
+        position: relative;
+
+        .tourNr {
+          font-weight: bold;
+          margin: 5px 0;
+          text-transform: uppercase;
+          font-size: 12px;
+        }
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            margin-bottom: 2px;
+
+            .soll-stopp-nr {
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              font-size: 14px;
+              color: #fff;
+              line-height: 1.5;
+              text-align: center;
+              background: #f27e00;
+              margin: 0 8px;
+            }
+
+            .zielname {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+
+    .tour {
+      .tournr-caption {
+        position: relative;
+
+        .zieltour-caption {
+          position: absolute;
+          top: -13px;
+          left: 1px;
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .fa-angle-right {
+      font-size: 50px;
+    }
+  }
+}
+
+.btn {
+  border-radius: 2px;
+}
+
+.fa-times-circle {
+  &:hover {
+    cursor: pointer;
+    color: #f27e00;
+  }
+}

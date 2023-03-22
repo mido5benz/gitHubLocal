@@ -1,0 +1,18 @@
+<ag-grid-angular
+  style="width: 100%; height: 300px;"
+  class="ag-theme-alpine"
+  [columnDefs]="columnDef"
+  [defaultColDef]="defaultColDef"
+  [rowSelection]="'single'"
+  (rowClicked)="onRowClicked($event)"
+  [overlayLoadingTemplate]="overlayLoadingTemplate"
+  [suppressCellSelection]="true"
+  (gridReady)="gridReady($event)"
+  [gridOptions]="gridOptions"
+  enableCellTextSelection="true"
+>
+</ag-grid-angular>
+
+<button [disabled]="!isRowSelected" (click)="showSpontaneousTakeoverModal()" class="btn btn-primary btn-sm pull-right mt-3 p-2">Spontane Abholungen erfassen</button>
+<button [disabled]="!isRowSelected" (click)="showRulePickupModal()" class="btn btn-primary btn-sm pull-right mt-3 p-2 mr-2">Regelabholung erfassen</button>
+

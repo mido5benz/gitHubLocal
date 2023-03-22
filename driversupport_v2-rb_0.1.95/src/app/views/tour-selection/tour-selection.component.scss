@@ -1,0 +1,189 @@
+@import "../../../scss/variables";
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .card-header-actions {
+    .card-head-button {
+      border-radius: 6px;
+      padding: 0.25rem 0.5rem;
+      text-transform: none;
+      font-weight: normal;
+      ;
+    }
+  }
+
+  .card-title {
+    color: $orange;
+    margin: 0;
+  }
+}
+
+.card-body {
+  height: 77vh;
+  margin-bottom: -73px;
+  // height: 78vh;
+  // overflow-y: auto;
+
+  .ScrollClassContainer {
+
+    overflow-y: auto;
+    height: 86%;
+
+    .square {
+      background: $bggraybox;
+      border: 1px solid $gray;
+      display: inline-block;
+      color: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .selected-square {
+      background: $orange;
+      border: 1px solid $orange;
+    }
+
+    .checkedIcon {
+      position: absolute;
+      bottom: 0px;
+      right: 5px;
+    }
+
+    .selectionstateActive {
+      cursor: pointer;
+    }
+
+    .selectionstateInactive {
+      cursor: context-menu;
+    }
+  }
+
+
+}
+
+.card-footer {
+  background-color: $white;
+  border-top: none;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 767px) {
+  .square {
+    margin: 5px;
+    width: calc((100vw - 162px) / 6);
+    height: calc((100vw - 162px) / 6);
+    font-size: 1rem;
+  }
+
+  .card-header-actions {
+    .card-head-button {
+      font-size: 0.875rem;
+      width: 100px;
+      margin-left: 7px;
+    }
+
+    .card-title {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+  .square {
+    margin: 10px;
+    width: calc((100vw - 222px) / 6);
+    height: calc((100vw - 222px) / 6);
+    font-size: 1.2rem;
+  }
+
+  .card-header-actions {
+    .card-head-button {
+      font-size: 0.875rem;
+      width: 150px;
+      margin-left: 10px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+    }
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .square {
+    margin: 10px;
+    width: calc((100vw - 425px) / 6);
+    height: calc((100vw - 425px) / 6);
+    font-size: 1.3rem;
+  }
+
+  .card-header-actions {
+    .card-head-button {
+      font-size: 0.875rem;
+      width: 150px;
+      margin-left: 10px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  .square {
+    margin: 10px;
+    width: calc((100vw - 476px) / 7);
+    height: calc((100vw - 476px) / 7);
+    font-size: 1.3rem;
+  }
+}
+
+
+.boxShadowClass {
+  box-shadow: -4px 2px 6px 1px rgba(71, 78, 106, 0.5);
+}
+
+.testScrollClass {
+  scroll-behavior: smooth;
+}
+
+#myBtn {
+  // position: fixed;
+  // bottom: 6%;
+  // right: 6%;
+  margin-right: 14px;
+  margin-top: -14px;
+  float: right;
+  z-index: 99;
+  background-color: $orange;
+  color: $white;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid $bggraybox;
+  font-size: 1.5rem;
+}
+
+@media (orientation: portrait) {
+  #myBtn {
+    margin-right: 14px;
+    margin-top: -28px;
+  }
+}
+
+input {
+  width: 80%;
+}
+
+.headername {
+  max-width: 40%;
+  padding-left: 0;
+  padding-right: 0;
+}

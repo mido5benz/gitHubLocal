@@ -1,0 +1,74 @@
+<div class="wrapper">
+  <div *ngIf="!notFound && !loading && !success">
+    <app-run-ptv-search [address]="dialogConfig.data.address" (searchClicked)="runPTVSearch()"></app-run-ptv-search>
+  </div>
+
+  <div *ngIf="loading">
+    <div class="spinner-border text-warning" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    Adresse wird gesucht....
+  </div>
+
+  <div *ngIf="success">
+    <div class="alert alert-success">Die Adresse wurde erfolgreich gespeichert</div>
+  </div>
+
+  <ng-container *ngIf="notFound">
+    <div class="mb-3">
+      <b>Die Adresse konnte nicht gefunden werden! Bitte wählen Sie auf der Karte den Punkt an dem die Adresse liegt
+        oder
+        geben Sie die Koordinaten ein:</b>
+    </div>
+  </ng-container>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6" [hidden]="!notFound">
+        <div>
+          <tabset>
+            <tab heading="Karte" id="tab_map">
+              <div id="map"></div>
+            </tab>
+            <tab heading="Eingabe" id="tab_input">
+              <app-geoposition-form [latLng]="latlng" (onSearchClick)="search($event)"
+                                    (onLatLngPasted)="latLngChanged($event)"></app-geoposition-form>
+            </tab>
+          </tabset>
+        </div>
+      </div>
+      <div class="col-6" *ngIf="!loading && notFound">
+        <alert type="warning" *ngIf="showWarning" [dismissOnTimeout]="5000">
+          <strong>Achtung!</strong> Bitte Längen- und Breitengrad auswählen oder auf der Karte anwählen!
+        </alert>
+        <div>
+          <i>Wenn die Adresse in der Liste nicht aufgeführt ist, können Sie die Adresse auch neu anlegen. Beachten Sie
+            das dabei die Daten genau so gespeichert werden, wie Sie eingegeben wurden</i>
+          <div>
+            <ul class="list-unstyled">
+              <li>{{ dialogConfig.data.address.name1 }}</li>
+              <li>{{ dialogConfig.data.address.strasse }} {{ dialogConfig.data.address.hausnr }}</li>
+              <li>{{ dialogConfig.data.address.plz }} {{ dialogConfig.data.address.ort }}</li>
+            </ul>
+          </div>
+          <div>
+            <button class="btn btn-primary btn-sm" (click)="createNew()">Neu anlegen</button>
+          </div>
+        </div>
+        <app-addresses-at-geolocation
+          (synonymCreatedClicked)="closeOk()"
+          [geoadresseFehlerId]="dialogConfig.data.geoadresse_fehler_id"
+          [sendungId]="dialogConfig.data.sendung_id"
+          [addresses]="addresses"
+          [loading]="loadingAddresses"></app-addresses-at-geolocation>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="error">
+    <div class="alert alert-danger">Es ist ein Fehler aufgetreten!</div>
+  </ng-container>
+</div>
+<div class="pull-right mt-2">
+  <button class="btn btn-primary btn-sm" (click)="closeCancel()">Schließen</button>
+
+</div>

@@ -1,0 +1,12 @@
+<button
+  class="btn btn-sm"
+  role="button"
+  popover="{{ popoverText }}"
+  triggers="{{ trigger }}"
+  (click)="onButtonClicked()"
+>
+  <ng-container *ngIf="icon">
+    <i class="fa" [ngClass]="getIconClass()"></i>
+  </ng-container>
+  {{ caption }}
+</button>

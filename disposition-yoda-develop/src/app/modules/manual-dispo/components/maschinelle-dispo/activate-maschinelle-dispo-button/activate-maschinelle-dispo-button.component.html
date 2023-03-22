@@ -1,0 +1,13 @@
+<button title="Maschinelle Dispo erneut durchführen" [disabled]="loading" class="nav-item"
+        (click)="startMaschinelleDispo()">
+  <span [ngClass]="{'changeColor': loading}">
+    <i class="mr-1 fas fa-sync-alt"></i>
+    <span *ngIf="loading">Bitte warten Sie...</span>
+  </span>
+</button>
+
+<div class="info-notification">
+<ng-container *ngIf="loading ">
+    <app-loading-notification  [loadingText]="'Bitte warten Sie ...'"></app-loading-notification>
+</ng-container>
+</div>

@@ -1,0 +1,123 @@
+<!--<div>-->
+<!--  <ng-container [ngTemplateOutlet]="!displayForm ? ladeHilfeTemplate : fotoTemplate"-->
+<!--                [ngTemplateOutletContext]="{tour:tour}"></ng-container>-->
+<!--</div>-->
+
+
+<!--<ng-template #ladeHilfeTemplate>-->
+<!--  <form #ladeHilfsMittelForm="ngForm">-->
+<!--    <div (click)="save()" style="cursor: pointer">-->
+<!--      <h5 class="customFont"><b>Ladehilfsmittel</b></h5>-->
+<!--      <i class="fas fa-camera  fa-lg pull-right" title="Gehe zu Ladungssicherungs Foto" style="position: relative; bottom: 30px;" *ngIf="!displayForm"></i>-->
+<!--    </div>-->
+<!--    <hr>-->
+<!--    <div class="mt-3">-->
+<!--      <div class="justify-content-between">-->
+<!--        <div class="form-row ml-4">-->
+<!--          <div class="form-group col-md-6">-->
+<!--            <img src="assets/img/brand/mehrwegpalette.jpg" style="width: 75px; height: 50px; margin-left: 15px;" title="Mehrwegpalette">-->
+<!--            <div class="input-group">-->
+<!--              <input type="button" value="-" class="button-minus"-->
+<!--                     (click)="calculateQuantity('colli', '-', ladeHilfeMock.colli)">-->
+<!--              <input type="text" max="" maxlength="3" [(ngModel)]="ladeHilfeMock.colli" name="colli"-->
+<!--                     class="quantity-field">-->
+<!--              <input type="button" value="+" class="button-plus"-->
+<!--                     (click)="calculateQuantity('colli', '+', ladeHilfeMock.colli)">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group col-md-6">-->
+<!--            <img src="assets/img/brand/epal.png" style="width: 75px; height: 50px; margin-left: 15px;" title="EuroPalette">-->
+<!--            <div class="input-group">-->
+<!--              <input type="button" value="-" class="button-minus"-->
+<!--                     (click)="calculateQuantity('palette', '-', ladeHilfeMock.palette)">-->
+<!--              <input type="text" max="" maxlength="3" [(ngModel)]="ladeHilfeMock.palette" name="palette"-->
+<!--                     class="quantity-field">-->
+<!--              <input type="button" value="+" class="button-plus"-->
+<!--                     (click)="calculateQuantity('palette', '+', ladeHilfeMock.palette)">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="form-row ml-4">-->
+<!--          <div class="form-group col-md-6">-->
+<!--            <img src="assets/img/brand/gibo.jpg" style="width: 75px; height: 50px; margin-left: 10px;" title="Gitterbox">-->
+<!--            <div class="input-group">-->
+<!--              <input type="button" value="-" class="button-minus"-->
+<!--                     (click)="calculateQuantity('gibo', '-', ladeHilfeMock.gibo)">-->
+<!--              <input type="text" max="" maxlength="3" [(ngModel)]="ladeHilfeMock.gibo" name="gibo"-->
+<!--                     class="quantity-field">-->
+<!--              <input type="button" value="+" class="button-plus"-->
+<!--                     (click)="calculateQuantity('gibo', '+', ladeHilfeMock.gibo)">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="form-group col-md-6">-->
+<!--            <img src="assets/img/brand/einwegpalette.jpg" style="width: 75px; height: 50px; margin-left: 15px;" title="EinwegPalette">-->
+<!--            <div class="input-group">-->
+<!--              <input type="button" value="-" class="button-minus"-->
+<!--                     (click)="calculateQuantity('einweg', '-', ladeHilfeMock.einweg)">-->
+<!--              <input type="text" max="" maxlength="3" [(ngModel)]="ladeHilfeMock.einweg" name="einweg"-->
+<!--                     class="quantity-field">-->
+<!--              <input type="button" value="+" class="button-plus"-->
+<!--                     (click)="calculateQuantity('einweg', '+', ladeHilfeMock.einweg)">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <button type="button" class="btn btn-primary btn-sm pull-right" (click)="save()" style="width: 100%;">-->
+<!--      Übernehmen-->
+<!--    </button>-->
+<!--  </form>-->
+<!--</ng-template>-->
+
+
+<!-- ng-template #fotoTemplate let-tour='tour' -->
+
+  <div (click)="save()" style="cursor: pointer">
+    <h5 class="customFont"><b>Ladungssicherung</b></h5>
+<!--    <i class="fas fa-edit fa-lg  pull-right" style="position: relative; bottom: 30px;" title="Gehe zu Ladehilfsmittel" *ngIf="displayForm"></i>-->
+  </div>
+  <hr>
+  <div style="cursor: pointer">
+    <img (click)="zoomImg(tour.fotoData)" class="image-size" [src]='tour.fotoData'/>
+  </div>
+
+  <div style="background-color: white !important">
+    <hr style="position: relative;">
+    <div (click)="declineFreigabeModal(decline, index, tour)" style="position: absolute; bottom: 20px;"><i
+      style="color: red; font-size: 25px; cursor: pointer; margin-left: 15px;" class="fas fa-ban "></i></div>
+    <!--    TODO Ladungshilfemock durch richtigen Parameter ersetzen-->
+    <div (click)="confirmFreigabe(index, tour)" style="position: absolute; bottom: 20px; right: 40px;"><i
+      style="color:green; font-size: 25px; cursor: pointer"
+      class="fas fa-check"></i></div>
+  </div>
+
+<!-- /ng-template -->
+
+
+<ng-template #decline>
+  <div class="modal-header d-flex">
+    <h4 class="modal-title mr-auto p-2">Freigabe ablehnen</h4>
+  </div>
+  <div class="modal-body">
+    <div class="modal-header">
+      Bitte nennen Sie einen Grund wieso das Foto abgelehnt werden soll..
+    </div>
+    <div class="container-fluid">
+      <form #declineForm="ngForm">
+        <div class="mt-3">
+          <select required [(ngModel)]="ablehnungGrundCode" name="reason">
+            <option *ngFor="let reason of rejectionReason" [value]="reason.code">{{reason.designation}}</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-reddit text-capitalize btsm mt-5 pull-right"
+                [disabled]="!declineForm.valid" (click)="declineFreigabe(index, tour, ablehnungGrundCode)">Foto Ablehnen
+        </button>
+        <button type="button" class="btn btn-primary text-capitalize btsm mt-5 pull-left" (click)="modalRef.hide()">
+          Zurück
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+  </div>
+</ng-template>

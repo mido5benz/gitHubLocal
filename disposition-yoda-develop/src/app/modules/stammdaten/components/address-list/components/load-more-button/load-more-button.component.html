@@ -1,0 +1,7 @@
+<button *ngIf="weitereLadenButton; else showWeitereLadenButton" class="btn btn-primary" (click)="loadMoreClicked()">
+  Weitere laden
+</button>
+
+<ng-template #showWeitereLadenButton>
+<p>Keine weitere fehlerhafte Adresse vorhanden!</p>
+</ng-template>

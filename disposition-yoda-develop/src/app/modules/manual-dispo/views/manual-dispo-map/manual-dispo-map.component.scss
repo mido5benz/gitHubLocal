@@ -1,0 +1,76 @@
+.map-viewport {
+  .content-wrapper {
+    position: relative;
+    background-color: #ffffff;
+    height: calc(100vh - (58px + 59px)) !important;
+
+    .main-container {
+      .map {
+        height: 70% !important;
+      }
+    }
+
+    app-manual-dispo-tour-details {
+      margin-left: 5px;
+    }
+  }
+}
+
+.main-map {
+  position: relative;
+}
+
+.main-map,
+.tour-table {
+  transition: height 0.5s ease-in-out;
+}
+
+.map-container {
+  height: 100%;
+  width: 100%;
+}
+
+.breadcrumb-search {
+  width: 200px;
+  height: 20px;
+  top: -4px;
+  margin-right: 18px;
+  margin-left: 20px;
+}
+
+.full-height {
+  height: calc(100vh - 152px);
+}
+
+.h-0 {
+  height: 0% !important;
+}
+
+.h-40 {
+  height: 40% !important;
+}
+
+.h-60 {
+  height: 60% !important;
+}
+
+.h-30 {
+  height: 30% !important;
+}
+
+.h-70 {
+  height: 70% !important;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  text-align: center;
+  z-index: 10000;
+  padding-top: 20%;
+}

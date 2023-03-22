@@ -1,0 +1,47 @@
+<div class="control-container">
+  <div class="control" [class.isCollapsed]="!isCollapsed">
+    <!-- Wochentag -->
+    <div *ngIf="!disabledWochentag">
+    <strong>Wochentag</strong>
+      <button (click)="collapse()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <select name="wochentag" class="form-control form-control-sm mt-1 mb-2"
+      (change)="onWochentagChange($event.target.value)">
+      <option [value]="null"></option>
+      <option *ngFor="let tag of wochentag" [value]="tag.wochentag_id">
+        {{tag.name}}
+      </option>
+    </select>
+  </div>
+
+    <strong>Dienste</strong>
+
+    <div *ngIf="currentLayer === 'express'; else notExpress">
+      <div class="form-check" *ngFor="let dienst of expressdienste">
+        <input class="form-check-input" type="checkbox" [value]="dienst.diensttyp_id" [id]="dienst.diensttyp_id"
+          [(ngModel)]="dienst.checked" (change)="onExpressDiensteChange($event)" />
+        <label class="form-check-label" [for]="dienst.diensttyp_id">
+          {{ dienst.bezeichnung }}
+        </label>
+      </div>
+    </div>
+
+    <ng-template #notExpress>
+      <div class="form-check" *ngFor="let dienst of dienste">
+          <input class="form-check-input" type="checkbox" [value]="dienst.diensttyp_id" [id]="dienst.diensttyp_id"
+            [(ngModel)]="dienst.checked" (change)="onDiensteChange($event)" />
+          <label class="form-check-label" [for]="dienst.diensttyp_id">
+            {{ dienst.bezeichnung }}
+          </label>
+
+      </div>
+    </ng-template>
+
+    <hr />
+    <strong>Suche</strong>
+    <!-- <input type="text" class="form-control form-control-sm searchfield" placeholder="Suchen"> -->
+    <input type="text" class="form-control form-control-sm searchfield" placeholder="Suchen"
+      (keyup)="onSearch($event.target.value)">
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="card">
+  <div class="card-header">
+    <h5>Infos</h5>&nbsp;
+    Frachtführer: &nbsp; <b>{{tourDetails?.ff_name_1}} </b> &nbsp; <b>{{tourDetails?.ff_name_2}}</b> &nbsp;
+    <b>{{tourDetails?.ff_name_3}} </b> &nbsp;
+    Fahrername: &nbsp; <b>{{tourDetails?.fahrer_vorname}}</b> &nbsp; <b>{{tourDetails?.fahrer_nachname}} </b> &nbsp;
+    Mobil:&nbsp; <b>{{tourDetails?.mobil_telefon}}</b>&nbsp;<br>
+
+    <div class="buttonPosition">
+      <app-tour-info-container-detail
+        [details]="tour"
+      ></app-tour-info-container-detail>
+    </div>
+  </div>
+
+  <div *ngIf="showPlanTourdauer">
+    <div class="d-flex">
+      <div class="w-50 timePosition">
+        <span>&nbsp; Geplante Fahrtzeit: <b>{{timeConvert(planTourdauerIst)}}</b></span>
+      </div>
+      <div class="w-50 timePosition">
+        <span>&nbsp; Neu geplante Fahrzeit:  <b>{{timeConvert(planTourdauerSoll)}}</b></span> &nbsp;
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card-body">
+    <div class="d-flex h-100">
+      <div class="w-100">
+        <ag-grid-angular
+          class="ag-theme-alpine h-100 w-100"
+          [localeText]="locale"
+          (gridReady)="onIstGridReady($event)"
+          [columnDefs]="istColumnDefs"
+        >
+        </ag-grid-angular>
+      </div>
+     <div class="w-100 ml-2">
+       <ag-grid-angular
+         class="ag-theme-alpine h-100 w-100"
+         [localeText]="locale"
+         (gridReady)="onSollGridReady($event)"
+         [columnDefs]="sollColumnDefs"
+       >
+       </ag-grid-angular>
+     </div>
+    </div>
+  </div>
+</div>
+
+

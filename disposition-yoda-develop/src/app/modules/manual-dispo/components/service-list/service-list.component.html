@@ -1,0 +1,16 @@
+<div class="service-list" [class.show]="!collapsed">
+  <ng-container *ngFor="let dienst of dienste">
+    <ng-container *ngIf="hasIcon(dienst); else noImage">
+      <img
+        class="service-icon"
+        [src]="getServiceIcon(dienst)"
+        [alt]="dienst"
+      />
+    </ng-container>
+    <ng-template #noImage>
+      <span class="ml-1 mr-1">
+        {{ dienst }}
+      </span>
+    </ng-template>
+  </ng-container>
+</div>

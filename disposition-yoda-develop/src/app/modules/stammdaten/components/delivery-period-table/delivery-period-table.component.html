@@ -1,0 +1,11 @@
+<span class="header">Anlieferungszeiten ({{deliveryTimeFramePeriods.length}})</span>
+<table class="table table-striped">
+  <tbody>
+  <tr *ngFor="let timeFrame of deliveryTimeFramePeriods">
+    <td>{{ timeFrame.wochentag | weekdaynumber }}</td>
+    <td>{{ timeFrame.von | date: 'HH:mm'}}</td>
+    <td>{{ timeFrame.bis | date: 'HH:mm'}}</td>
+    <td><i (click)="deleteDeliveryPeriod(timeFrame)" class="fas fa-trash" style="cursor: pointer"></i></td>
+  </tr>
+  </tbody>
+</table>

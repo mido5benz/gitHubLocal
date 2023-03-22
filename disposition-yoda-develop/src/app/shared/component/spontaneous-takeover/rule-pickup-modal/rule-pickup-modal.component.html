@@ -1,0 +1,138 @@
+<div class="modal-body text-left">
+  <form #regelAbholungForm="ngForm">
+
+    <!-- Ladestelle Adresse -->
+    <div class="versenderAdress col-form-label-sm">
+      <h6 class="modal-form-title">Ladestelle:</h6>
+      <b>Name:</b>
+      {{ladestelle.ladestelle_adresse?.name1}}
+      {{ladestelle.ladestelle_adresse?.name2}}
+      {{ladestelle.ladestelle_adresse?.name3}}<br>
+      <b>Straße:</b> {{ladestelle.ladestelle_adresse?.strasse}} &nbsp;
+      <b>Hausnr:</b> {{ladestelle.ladestelle_adresse?.hausnr}}<br>
+      <b>Plz:</b> {{ladestelle.ladestelle_adresse?.plz}} &nbsp;
+      <b>Ort:</b> {{ladestelle.ladestelle_adresse?.ort}}<br>
+      <b>Tor:</b> {{ladestelle?.tornr ? ladestelle?.tornr : '-'}}<br>
+      <br>
+    </div>
+
+    <!-- Formular -->
+    <div>
+      <h6 class="versenderAdress modal-form-title mt-3">Regelabholung erfassen:</h6>
+
+      <div class="form-group row">
+        <label for="gueltigVon" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">Von:</label>
+        <div class="col-sm-3">
+          <input type="date" class="form-control form-control-sm" id="gueltigVon" name="datumVon" #datumVon='ngModel'
+                 [(ngModel)]="gueltigVonFormatted" required>
+        </div>
+
+        <label for="gueltigBis" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">Bis:</label>
+        <div class="col-sm-3">
+          <input type="date" class="form-control form-control-sm" id="gueltigBis" name="datumBis" #datumBis='ngModel'
+                 [(ngModel)]="gueltigBisFormatted" required>
+        </div>
+
+        <label for="inputTournr" class=" col-sm-1 col-form-label col-form-label-sm">Tournr</label>
+        <div class="col-sm-3">
+          <div class="input-group">
+            <input
+              [(ngModel)]="tourNr"
+              [typeahead]="dataSource$"
+              [typeaheadAsync]="true"
+              typeaheadOptionField="tournr"
+              (typeaheadOnSelect)="onSelect($event)"
+              (typeaheadLoading)="changeTypeaheadLoading($event)"
+              (typeaheadNoResults)="typeaheadNoResults($event)"
+              [typeaheadItemTemplate]="tourNumberTemplate"
+              [typeaheadScrollable]="true"
+              [typeaheadOptionsInScrollableView]="5"
+              placeholder="Tournummer"
+              class="form-control form-control-sm"
+              id="inputTournr"
+              name="tournr" #tournr='ngModel'
+              required minlength="4"
+              autocomplete="off"
+            />
+            <div class="alert alert-danger" *ngIf="noResult">
+              Tour konnte nicht gefunden werden!
+            </div>
+          </div>
+        </div>
+
+        <ng-template #tourNumberTemplate let-tour="item">
+          <span>{{tour?.tournr}}</span>
+        </ng-template>
+
+      </div>
+
+
+      <div class="form-group row">
+
+        <label for="inputTornr" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">Tornr</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" id="inputTornr" placeholder="Tor"
+                 name="tor" #tor='ngModel' autocomplete="off" [(ngModel)]="rulePickup.tornr">
+        </div>
+
+        <div class="ambient-checkbox">
+          <input class="form-check-input" type="checkbox" id="ambientCheckbox"
+                 [checked]="rulePickup.ambient"
+                 (change)="checkedAmbientBox($event)">
+          <label class="form-check-label" for="ambientCheckbox">Ambient</label>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <div *ngFor="let uebernahme of uebernahmen; let i = index" class="form-group row">
+
+          <label for="inputDay" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">Tag</label>
+          <div class="col-sm-3">
+            <select class="form-control inputWidth mr-2" id="inputDay" name="wochentag_{{uebernahme.id}}" #wochentag='ngModel'
+                    [(ngModel)]="uebernahme.wochentag" (ngModelChange)="checkDuplicateWeekday($event)" required>
+              <option disabled [value]="null">Tag auswählen</option>
+              <option *ngFor="let wochentag of wochentage" [ngValue]="wochentag.kuerzel">{{wochentag.tag}}</option>
+            </select>
+          </div>
+
+          <label for="inputTime" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">Uhrzeit</label>
+          <div class="col-sm-2">
+            <input type="time" class="form-control form-control-sm" id="inputTime"
+                   aria-describedby="addonStart" name="uhrzeit_{{uebernahme.id}}" #uhrzeit='ngModel'
+                   [(ngModel)]="uebernahme.ankunftZeit" required>
+          </div>
+
+          <label for="inputAnzahlFarzeuge" class=" align-self-center col-sm-1 col-form-label col-form-label-sm">Anzahl</label>
+          <div class="col-sm-2">
+            <input type="text" class="form-control form-control-sm" id="inputAnzahlFarzeuge" placeholder="Anzahl"
+                   name="fahrzeuge_{{uebernahme.id}}" #fahrzeuge='ngModel' [(ngModel)]="uebernahme.anzahlFahrzeuge" autocomplete="off" required>
+          </div>
+
+        <div class="col-sm-2">
+          <i class="fas fa-plus" style="position: relative; top: 3px; color: #f27e00" (click)="addField()"></i>
+          <i class="fas fa-minus" style="position: relative; top: 3px; left: 15px; color: #f27e00" (click)="removeField(i)"></i>
+        </div>
+
+      </div>
+
+      <span>
+         <p *ngIf="duplicateWeekday" class="error-message">Der Wochentag kann nur einmal ausgewählt werden</p>
+      </span>
+
+      <div class="d-flex justify-content-between mt-2 mb-2 pull-right">
+        <button type="button" class="btn btn-primary btn-sm mr-2" (click)="resetFormular()">Abbrechen</button>
+        <button type="button" class="btn btn-primary btn-sm mr-2" [disabled]=
+                                                                            "!regelAbholungForm.valid ||
+                                                                              noResult ||
+                                                                              duplicateWeekday ||
+                                                                              gueltigVonFormatted === 'Invalid date'"
+                (click)="onSubmit()">
+          Speichern
+        </button>
+      </div>
+
+    </div>
+  </form>
+</div>

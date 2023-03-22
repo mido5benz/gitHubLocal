@@ -1,0 +1,245 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.tof.angular</groupId>
+  <artifactId>${project.build.finalName}</artifactId>
+  <version>1.2.56</version>
+
+  <parent>
+    <groupId>de.tof</groupId>
+    <artifactId>tof-parent</artifactId>
+    <version>0.0.11</version>
+  </parent>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <!-- Für Jenkins -->
+  <profiles>
+    <profile>
+      <id>DispoYodaQ</id>
+      <activation>
+        <property>
+          <name>vers</name>
+          <value>Q</value>
+        </property>
+      </activation>
+      <build>
+        <finalName>DispositionYodaQ</finalName>
+      </build>
+    </profile>
+    <profile>
+      <id>DispoYodaE</id>
+      <activation>
+        <property>
+          <name>vers</name>
+          <value>E</value>
+        </property>
+      </activation>
+      <build>
+        <finalName>DispositionYodaE</finalName>
+      </build>
+    </profile>
+    <profile>
+      <id>DispoYodaP</id>
+      <activation>
+        <property>
+          <name>vers</name>
+          <value>P</value>
+        </property>
+      </activation>
+      <build>
+        <finalName>DispositionYodaP</finalName>
+      </build>
+    </profile>
+
+    <!-- Bauen über Terminal -->
+    <profile>
+      <id>DispoYodaEWar</id>
+      <activation>
+        <property>
+          <name>vers</name>
+          <value>Ewar</value>
+        </property>
+      </activation>
+      <build>
+        <finalName>DispositionYodaE</finalName>
+        <plugins>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.11.3</version>
+            <executions>
+              <!-- uncomment this part if you don't have node or npm installed-->
+              <!--<execution>
+                <id>install node and npm</id>
+                <goals>
+                  <goal>install-node-and-npm</goal>
+                </goals>
+                <phase>generate-resources</phase>
+                <configuration>
+                  <nodeVersion>v14.16.0</nodeVersion>
+                  <npmVersion>6.14.11</npmVersion>
+                </configuration>
+              </execution>
+              <execution>
+                <id>npm install</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>install</arguments>
+                </configuration>
+              </execution>
+              <execution>
+                <id>npm build</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>run eversion</arguments>
+                </configuration>
+                <phase>generate-resources</phase>
+              </execution> -->
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>DispoYodaQWar</id>
+      <activation>
+        <property>
+          <name>vers</name>
+          <value>Qwar</value>
+        </property>
+      </activation>
+      <build>
+        <finalName>DispositionYodaQ</finalName>
+        <plugins>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.11.3</version>
+            <executions>
+              <!-- uncomment this part if you don't have node or npm installed-->
+              <!--<execution>
+                <id>install node and npm</id>
+                <goals>
+                  <goal>install-node-and-npm</goal>
+                </goals>
+                <phase>generate-resources</phase>
+                <configuration>
+                  <nodeVersion>v14.16.0</nodeVersion>
+                  <npmVersion>6.14.11</npmVersion>
+                </configuration>
+              </execution>-->
+              <!--<execution>
+                <id>npm install</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>install</arguments>
+                </configuration>
+              </execution>-->
+              <execution>
+                <id>npm build</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>run qversion</arguments>
+                </configuration>
+                <phase>generate-resources</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>DispoYodaPWar</id>
+      <activation>
+        <property>
+          <name>vers</name>
+          <value>Pwar</value>
+        </property>
+      </activation>
+      <build>
+        <finalName>DispositionYodaP</finalName>
+        <plugins>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.11.3</version>
+            <executions>
+              <!-- uncomment this part if you don't have node or npm installed-->
+              <!--<execution>
+                <id>install node and npm</id>
+                <goals>
+                  <goal>install-node-and-npm</goal>
+                </goals>
+                <phase>generate-resources</phase>
+                <configuration>
+                  <nodeVersion>v14.16.0</nodeVersion>
+                  <npmVersion>6.14.11</npmVersion>
+                </configuration>
+              </execution>-->
+              <!--<execution>
+                <id>npm install</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>install</arguments>
+                </configuration>
+              </execution>-->
+              <execution>
+                <id>npm build</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>run pversion</arguments>
+                </configuration>
+                <phase>generate-resources</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warSourceDirectory>${basedir}/dist</warSourceDirectory>
+          <webResources>
+            <resource>
+              <directory>webResources</directory>
+              <filtering>true</filtering>
+              <includes>
+                <include>**/*.xml</include>
+                <include>**/*.xhtml</include>
+              </includes>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <packaging>war</packaging>
+
+</project>

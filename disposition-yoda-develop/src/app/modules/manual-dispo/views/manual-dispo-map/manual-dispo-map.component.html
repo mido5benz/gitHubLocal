@@ -1,0 +1,49 @@
+<div class="relative">
+
+  <div [ngClass]="showOverlay === true ? 'overlay' : ''">
+    <span *ngIf="showOverlay">Daten werden geladen...Bitte warten Sie!</span>
+  </div>
+
+  <app-manual-dispo-navbar
+    [mapFilterCollapsed]="mapFilterCollapsed$ | async"
+    [tagesAbschlussDone]="tagesAbschlussDone$ | async"
+    [unassignedAddressesCount]="unassignedAddressesCount$ | async"
+    [unassignedStopCount]="unassignedStopCount$ | async"
+    (toggleMapFilterClicked)="openMapFilter()"
+    (filterMapClicked)="applyMapFilter($event)"
+    (tagesAbschlussClicked)="showDailyClosingDialog()"
+  ></app-manual-dispo-navbar>
+  <div class="map-viewport">
+    <div class="content-wrapper w-100 d-flex">
+      <div class="flex-grow-1 main-container">
+        <div
+          class="main-map"
+          [ngClass]="tableCollapsed === true ? 'h-100' : 'h-70'"
+        >
+          <app-manual-dispo-map
+            [mapConfig]="mapConfig"
+            [sitesMarkers]="siteMarkers"
+          ></app-manual-dispo-map>
+        </div>
+        <div
+          class="tour-table"
+          [ngClass]="tableCollapsed === true ? 'h-0' : 'h-30'"
+        >
+          <app-manual-dispo-table></app-manual-dispo-table>
+        </div>
+      </div>
+      <app-tour-stopp-list
+        [reloadlineEditable]="reloadLineEditable$ | async"
+        [tourId]="tourId$ | async"
+        [tourNr]="tourNr$ | async"
+        [reloadLineIndex]="reloadLineIndex$ | async"
+        [frozen]="tourFrozen$ | async"
+        [stopps]="selectedTourStoppsWithReload$ | async"
+        [isCollapsed]="sidebarCollapsed$ | async"
+        [loading]="stoppListLoading$ | async"
+        (toggleSidebar)="toggleSidebar()"
+        (closeSidebar)="closeSidebar()"
+      ></app-tour-stopp-list>
+    </div>
+  </div>
+</div>

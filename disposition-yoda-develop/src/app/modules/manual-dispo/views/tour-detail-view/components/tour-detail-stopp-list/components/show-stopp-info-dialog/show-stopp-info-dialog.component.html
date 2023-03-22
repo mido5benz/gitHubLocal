@@ -1,0 +1,9 @@
+<div class="content">
+  <div class="mb-2">Liste der Versender ({{ distinctDataToShow.length }})</div>
+  <app-versender-info
+    *ngFor="let sendung of distinctDataToShow; let i = index"
+    [sendung]="sendung"
+    [index]="i"
+  >
+  </app-versender-info>
+</div>

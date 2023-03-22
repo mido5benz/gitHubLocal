@@ -1,0 +1,269 @@
+//  $red: rgba(236, 61, 61, 0.877);
+// $yellow: rgb(231, 229, 68);
+// $green: rgb(43, 233, 43);
+// $gray: rgb(218, 218, 218);
+// .red{
+//   color: $red;
+// }
+//  .dot{
+//    &.red{
+//      background-color:$red
+//    }
+//    &.green{
+//     background-color:$green
+//   }
+//   &.yellow{
+//     background-color:$yellow
+//   }
+//   &.gray{
+//     background-color:$gray
+//   }
+//     ;
+//     width: 20px;
+//     height: 20px;
+//     border-radius: 50%;
+//     margin-top:12px;
+//     margin-left:-5px;
+//   }
+
+// .customIconProperties{
+//   font-size: 20px;
+// }
+@import "../../../scss/variables";
+
+.tour-card {
+  cursor: pointer;
+  border-radius: 12px 12px 30px 30px;
+  .red-header {
+    background-color: $red;
+    color: $white;
+    font-size: 1.2rem;
+  }
+  .yellow-header {
+    background-color: $yellow;
+    color: $gray;
+    font-size: 1.2rem;
+  }
+  .white-header {
+    background-color: $white;
+    color: $gray;
+    font-size: 1.2rem;
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Days";
+    font-weight: bold;
+    font-style: italic;
+    color: $white;
+    font-size: 1.2rem;
+  }
+  .card-body {
+    padding: 0.8rem;
+    .progress-sorting,
+    .progress-loading {
+      color: #2f353a;
+      .text-label {
+        text-align: left;
+        line-height: 8px;
+        font-size: 0.8rem;
+      }
+      .text-label::first-letter {
+        font-size: 1.2rem;
+      }
+      .value {
+        text-align: center;
+        font-size: 0.8rem;
+      }
+      .progress-value {
+        text-align: right;
+        font-size: 0.8rem;
+      }
+    }
+    progressbar {
+      height: 3px;
+    }
+    .red {
+      color: $red;
+    }
+    .yellow {
+      color: $yellow;
+    }
+    .gray {
+      color: $gray;
+    }
+    .criteria {
+      display: flex;
+      justify-content: space-between;
+      .criteria-icon {
+        text-align: right;
+        font-size: 1.3rem;
+        .dolly-count {
+          font-size: 0.5rem;
+        }
+      }
+      .criteria-text {
+        font-family: "Days";
+        font-weight: bold;
+        font-style: italic;
+        text-align: center;
+        color: #73818f;
+      }
+    }
+    .criteria > div {
+      border-right: 1px solid $gray;
+      width: 21%;
+    }
+    .criteria > div:last-child {
+      border-right: 0;
+    }
+  }
+}
+
+
+.border-left {
+  border-left: 1px solid #626a6d !important;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+  .criteria > div {
+    padding: 0 3px;
+  }
+  .criteria-text {
+    font-size: 0.7rem;
+    justify-content: space-around;
+    display: table-cell;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .dashboard-wrapper{
+    padding: 0 100px;
+  }
+}
+@media (min-width: 576px) {
+  .criteria > div {
+    padding: 0 3px;
+  }
+  .criteria-text {
+    font-size: 0.5rem;
+    justify-content: space-around;
+    display: table-cell;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+  .criteria > div {
+    padding: 0 3px;
+  }
+  .criteria-text {
+    font-size: 0.5rem;
+    justify-content: space-around;
+    display: table-cell;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .criteria > div {
+    // padding: 0 5px;
+    padding: 0 3px;
+  }
+  .criteria-text {
+    font-size: 0.5rem;
+    justify-content: space-around;
+    display: table-cell;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .criteria > div {
+    padding: 0 3px;
+  }
+  .criteria-text {
+    // font-size: 0.5rem;
+    font-size: 0.43rem;
+    justify-content: space-around;
+    display: table-cell;
+  }
+}
+
+@media (min-width: 1500px) {
+  .criteria > div {
+    // padding: 0 10px;
+    padding: 0 7px;
+  }
+  .criteria-text {
+    font-size: 0.43rem;
+    justify-content: space-around;
+    display: table-cell;
+  }
+}
+
+
+.boxShadowClass{
+  box-shadow: -4px 2px 6px 1px rgba(71,78,106,0.5);
+}
+
+.dotred {
+  height: 25px;
+  width: 25px;
+  background-color:#ff0000;
+  border-radius: 50%;
+  margin-top: 12px;
+  margin-right: 10px;
+}
+
+.dotyellow {
+  height: 25px;
+  width: 25px;
+  background-color:yellow;
+  border-radius: 50%;
+  margin-top: 12px;
+  margin-right: 10px;
+}
+.dotgreen {
+  height: 25px;
+  width: 25px;
+  background-color:green;
+  border-radius: 50%;
+  margin-top: 12px;
+  margin-right: 10px;
+}
+.dotgray {
+  height: 25px;
+  width: 25px;
+  background-color:$gray;
+  border-radius: 50%;
+  margin-top: 12px;
+  margin-right: 10px;
+}
+accordion-group {
+  ::ng-deep {
+    div {
+      &>div.panel-heading.card-header.panel-enabled {
+       background-color:#edeeef;
+       box-shadow: 0px 3px 3px -1px rgba(71, 78, 106, 0.5);
+        .btn-link {
+            color:black;
+            border-bottom:0px;
+            text-transform: capitalize;
+        }
+      }
+      &>div.panel-collapse.collapse.in.show>div {
+        background-color:#edeeef;
+        box-shadow: -3px 6px 3px -3px rgba(71, 78, 106, 0.5);
+        margin-top: -15px;
+      }
+    }
+  }
+}
+
+
+.dashboard-wrapper .tour-card .card-body .criteria > div.orangeIcon {
+  width: 15%;
+}

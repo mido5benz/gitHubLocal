@@ -1,0 +1,12 @@
+.btn {
+  border: 1px solid darken(white, 15%);
+  border-radius: 2px;
+  background-color: white;
+  color: black;
+
+  &:hover {
+    color: white;
+    border: 1px solid darken(#F27E00, 15%) !important;
+    background-color: #F27E00;
+  }
+}

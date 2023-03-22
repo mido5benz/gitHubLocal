@@ -7,15 +7,6 @@ import {AuthGuard} from "./utility/app.guard";
 
 const routes: Routes = [
 
-
-  {
-    path: 'customerList',
-    component: CustomerTableComponent,
-    data: {
-      role: ['customer_access'],
-    },
-    canActivate: [AuthGuard]
-  },
   {
     path: 'welcome',
     component: WelcomeComponent,
@@ -25,7 +16,16 @@ const routes: Routes = [
     },
     canActivate: [AuthGuard]
 
+  },
+  {
+    path: 'customerList',
+    component: CustomerTableComponent,
+    data: {
+      role: ['customer_access'],
+    },
+    canActivate: [AuthGuard]
   }
+
 ];
 
 // @ts-ignore

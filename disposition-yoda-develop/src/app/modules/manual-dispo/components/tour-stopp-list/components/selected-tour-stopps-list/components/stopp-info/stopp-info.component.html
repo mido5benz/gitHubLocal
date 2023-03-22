@@ -1,0 +1,12 @@
+<div class="text-left">
+  <div><b>{{ stopp?.ziel_name?.name1 }}</b></div>
+  <div><i title="Planankuft" class="fa fa-clock-o" aria-hidden="true"></i> {{ stopp?.planAnkunft }}</div>
+  <div class="d-flex">
+    <div>
+      <i title="Planbearbeitungszeit" class="fa fa-history"
+         aria-hidden="true"></i> {{ stopp?.planBearbeitungszeit | minuteSeconds  }}</div>
+    <div class="ml-2">
+      <app-express-service-list [sum]="stoppSums$ | async" [stopp]="stopp"></app-express-service-list>
+    </div>
+  </div>
+</div>

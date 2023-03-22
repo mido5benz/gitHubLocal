@@ -1,0 +1,14 @@
+<button
+  type="button"
+  class="btn btn-sm btn-primary"
+  [(ngModel)]="isChecked"
+  btnCheckbox
+  btnCheckboxTrue="true"
+  btnCheckboxFalse="false"
+  (click)="onButtonClicked()"
+>
+  <ng-container *ngIf="selectedIcon && deselectedIcon">
+    <i class="fa" [ngClass]="getIconClass()"></i>
+  </ng-container>
+  {{ isChecked ? deselectedCaption : selectedCaption }}
+</button>

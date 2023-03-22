@@ -1,0 +1,40 @@
+<div class="p-3 h-100 relative">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/manual-dispo">Karte</a></li>
+      <li class="breadcrumb-item"><a
+        [routerLink]="['../../../', 1]">Tour {{ tourNr$ | async }}</a>
+      </li>
+    </ol>
+  </nav>
+  <app-tour-info-header
+    (openUmdispositionDialog)="openDispositionDialog($event)"
+    (openZieleZusammenfuehrenDialog)="openMergeZieleDialog($event)"
+    (toggleEditMode)="toggleEditMode()"
+    (saveOrderClicked)="saveNewSortOrder()"
+    (bearbeitungAbschliesenClicked)="isBearbeitungAbschliesenClicked($event)"
+    [editModeEnabled]="editModeEnabled"
+    [selectedStopps]="selectedStopps"
+    [sortOrderChanged]="sortOrderChanged"
+    [ausliefertag]="ausliefertag$ | async"
+    [tourDuration]="tourDuration$ | async"
+    [tourNr]="tourNr$ | async"
+    [tourId]="tourId"
+    [loading]="loading$ | async"
+    [tourSum]="tourSums$ | async"
+    [tourFrozen]="frozen$ | async"
+    [kennzeichnungsPflichtig]="kennzeichenPflichtig$ | async"
+    [abgefertigt]="abgefertigt$ | async"
+    [isTourBlocked]="isTourBlocked$ | async"
+    [isPotenziellGleicheZiele]="isPotenziellGleicheZieleVorhanden$ | async"
+    [stopWithoutSollstopp]="hasAllStoppsSollstopp">
+  </app-tour-info-header>
+  <app-tour-detail-stopp-list
+    [supressDrag]="!editModeEnabled"
+    [loading]="loading$ | async"
+    (stoppSelected)="onStoppSelected($event)"
+    (sortOrderChanged)="onSortOrderChanged($event)"
+    (stoppDoubleClicked)="routeToStoppDeliveries($event)"
+    (tourDurationChanged)="newTourDuration($event)"
+  ></app-tour-detail-stopp-list>
+</div>

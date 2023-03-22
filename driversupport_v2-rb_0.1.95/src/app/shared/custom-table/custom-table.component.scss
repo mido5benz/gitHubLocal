@@ -1,0 +1,25 @@
+@import '../../../scss/variables';
+
+table{  
+    width:100%;
+    overflow-x: auto;
+    table-layout: auto !important;
+    th{
+        position: sticky;
+        top: -1px;
+        background-color: $white;
+        // padding:0.5rem;
+       // padding:0.1rem;
+       // border: 1px solid black;
+        border-collapse: collapse;
+        white-space: nowrap;
+    }
+
+    td{
+       // word-break: break-all;
+       // padding:0.1rem;
+       // border: 1px solid black;
+        border-collapse: collapse;
+    }
+}
+

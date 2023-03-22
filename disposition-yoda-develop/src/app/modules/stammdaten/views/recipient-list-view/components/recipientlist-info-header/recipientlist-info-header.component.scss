@@ -1,0 +1,34 @@
+.info-container {
+  margin: 15px 0;
+  padding: 15px;
+  background-color: white;
+  border: 1px solid darken(white, 15%);
+}
+
+.search-Field{
+  float: right;
+  outline-color: darkorange;
+  margin-right: 1px;
+}
+
+.search-Button{
+  float: right;
+  outline-color: darkorange;
+}
+.btn {
+  border: 1px solid darken(white, 15%);
+  border-radius: 2px;
+  background-color: white;
+  color: black;
+
+  &:hover {
+    color: white;
+    border: 1px solid darken(#F27E00, 15%) !important;
+    background-color: #F27E00;
+  }
+}
+
+.disabled {
+  color: #d9d9d9;
+}
+

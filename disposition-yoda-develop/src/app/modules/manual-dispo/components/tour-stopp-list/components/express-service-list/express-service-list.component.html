@@ -1,0 +1,6 @@
+<ng-container *ngFor="let item of expressSums | keyvalue">
+    <span class="badge badge-pill badge-warning" *ngIf="item.value > 0">
+      {{ item.key | serviceFormatter }}
+    </span>
+</ng-container>
+

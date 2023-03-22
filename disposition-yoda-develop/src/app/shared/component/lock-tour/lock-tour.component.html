@@ -1,0 +1,12 @@
+<app-button
+  *ngIf="isTourFrozen"
+  [icon]="'unlock'"
+  [caption]="'Tourfestschreibung aufheben'"
+  (clicked)="disabledTourFreeze()"
+></app-button>
+<app-button
+  *ngIf="!isTourFrozen"
+  [caption]="'Tour festschreiben'"
+  (clicked)="freezeTour()"
+  [icon]="'lock'"
+></app-button>

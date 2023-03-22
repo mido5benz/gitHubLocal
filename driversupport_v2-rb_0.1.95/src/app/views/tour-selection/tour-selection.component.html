@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-header">
+        <div class="d-inline-block col-6 col-md-6 col-lg-6 headername">
+            <h4 class="card-title">Bitte wählen Sie Ihre Touren ({{count}})</h4>
+        </div>
+        <div class="d-inline-block col-3 col-md-3 col-lg-3">
+            <input type="search" class="form-control" autocomplete="off" placeholder="Tournummer" [(ngModel)]="searchModel"
+                (ngModelChange)='onkeypress($event,false)' (keyup.enter)="onkeypress(searchModel,true)">
+        </div>
+        <div class="card-header-actions col-3 col-md-3 col-lg-3">
+            <!-- <button type="button" class="card-head-button btn btn-outline-primary active" aria-pressed="true"
+                (click)="toggleSelectionState(true)" *ngIf="!selectionState">Auswählen</button>
+            <button type="button" class="card-head-button btn btn-outline-primary active" aria-pressed="true"
+                (click)="toggleSelectionState(false)" *ngIf="selectionState">Abbrechen</button> -->
+            <button type="button" class="card-head-button btn btn-outline-primary active save-btn float-right"
+                aria-pressed="true" (click)="saveTours()">Speichern</button>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="ScrollClassContainer testScrollClass" (scroll)="scrollFunction($event,true)">
+            <div *ngFor="let item of tourArray | search: searchModel; let index = index" class="d-inline-block">
+                <div class="square"
+                    [ngClass]="[item.selectionState ? 'selected-square' : '',selectionState ? 'selectionstateActive':'selectionstateInactive',item.selectionState ? '' : 'boxShadowClass']"
+                    (click)="selectionState ? toggleSelection(item,index,maxTourLimitPopup): ''" [title]="item.tourNr">
+                    <span>{{item.tourNr}}</span>
+                    <span class="checkedIcon" [hidden]="item.selectionState ? false : true">
+                        <!-- <i class="far fa-check-circle"></i> -->
+                        <i class="fa fa-check-circle"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button (click)="topFunction()" id="myBtn" title="Go to top" class="boxShadowClass">
+            <i class="fa fa-arrow-up fa-lg"></i>
+        </button>
+    </div>
+</div>
+<div class="tourSelectionLoader"></div>
+
+
+<ng-template #maxTourLimitPopup>
+    <div class="modal-header p-3">
+        <h4 class="modal-title">Die maximale Anzahl von {{maxTours}} Touren ist überschritten</h4>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary text-capitalize btsm" (click)="modalRef.hide()">Ok</button>
+    </div>
+</ng-template>

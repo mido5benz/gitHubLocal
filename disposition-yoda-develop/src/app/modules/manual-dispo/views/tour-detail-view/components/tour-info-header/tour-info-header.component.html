@@ -1,0 +1,69 @@
+<div class="tour-info-container" *ngIf="!empty">
+  <div *ngIf="empty">
+    <div>Keine Daten</div>
+  </div>
+  <div *ngIf="loading; else tourInfo">
+    <div class="spinner-border text-warning" role="status"></div>
+    <div>Lade Tourdaten...</div>
+  </div>
+  <ng-template #tourInfo>
+    <div class="d-flex">
+      <div class="tourinfo">
+        <div>Tournummer: {{ tourNr | tourNumber }}</div>
+        <div [hidden]="tourNr === '9999'">Kennzeichnungspflichtig: {{ kennzeichnungsPflichtig | yesno }} <img
+          class="imgCss" *ngIf="kennzeichnungsPflichtig" src="assets/img/gefahrgut.png" alt=""></div>
+        <div *ngIf="kennzeichnungsPflichtig">GG-Punkte: {{tourSum?.ggPunkteSum.toFixed(2)}}</div>
+        <div>Festgeschrieben: {{ tourFrozen | yesno }}</div>
+        <div>Ausliefertag: {{ ausliefertag }}</div>
+        <div>Abgefertigt: {{ abgefertigt | yesno }} </div>
+      </div>
+      <div class="suminfo">
+        <div class="d-flex align-items-center w-100 ml-3">
+          <div class="mr-2"><i class="far fa-clock"></i> Fahrzeit:</div>
+          <div class="flex-grow-1">
+            <progressbar
+              class="progress progress-success"
+              [value]="tourDuration"
+              [max]="maxFahrtzeitInSec">
+              <span class="time"><b>{{ tourDuration * 1000 | date: 'H:mm':'UTC' }}</b></span>
+            </progressbar>
+          </div>
+        </div>
+        <div class="d-flex mt-2 align-items-center justify-content-between ml-3">
+          <div class="mr-2"><i class="fas fa-weight-hanging" title="Gewicht"></i> Gewicht - IST/SOLL:</div>
+          <div>{{ tourSum.istGewichtSum | number }} kg / {{ tourSum.sollGewichtSum | number }} kg</div>
+        </div>
+        <div class="d-flex mt-2 align-items-center justify-content-between ml-3">
+          <div class="mr-2"><i class="fas fa-archive" title="Collis"></i> Collis - IST/SOLL:</div>
+          <div>{{ tourSum.istColSum }} / {{ tourSum.sollColSum }}</div>
+        </div>
+        <div class="d-flex mt-2 align-items-center justify-content-between ml-3">
+          <div class="mr-2"><i class="fas fa-pallet" title="Paletten"></i> Paletten - IST/SOLL:</div>
+          <div>{{ tourSum.istPalSum }} / {{ tourSum.sollPalSum }}</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <app-lock-tour [tourId]="tourId" [editModeEnabled]="editModeEnabled"
+                     [isTourFrozen]="tourFrozen"></app-lock-tour>
+      <app-button *ngIf="editModeEnabled" (clicked)="enableEditMode()"
+                  [caption]="'Stoppreihenfolge bearbeiten verlassen'"></app-button>
+      <app-button *ngIf="!editModeEnabled && !abgefertigt && !isTourBlocked" (clicked)="enableEditMode()"
+                  [caption]="'Stoppreihenfolge bearbeiten'"></app-button>
+      <app-button *ngIf="sortOrderChanged" (clicked)="saveNewSortOrder()"
+                  [caption]="'Neue Stoppreihenfolge speichern'"></app-button>
+      <app-button *ngIf="selectedStopps.length > 0 && !abgefertigt" (clicked)="openDialog()"
+                  [caption]=" selectedStopps.length + ' Stopps umdisponieren'"></app-button>
+      <app-button *ngIf="!abgefertigt && !tourFrozen && stopWithoutSollstopp" (clicked)="reloadData()"
+                  [caption]="' Tourdaten neu laden'"></app-button>
+<!--      <app-button *ngIf="isPotenziellGleicheZiele" (clicked)="bearbeitungAbschliesenButtonClicked()"-->
+<!--                  [caption]="'Bearbeitung abschließen'"></app-button>-->
+      <app-button *ngIf="selectedStopps.length > 1 && !abgefertigt && tourNr !== '9999'"
+                  (clicked)="zieleZusammenfuehrenClicked()"
+                  [caption]="'Ziele zusammenführen'"></app-button>
+      <span *ngIf="editModeEnabled" class="pl-3" style="color: red; font-weight: bolder"> Die Stopps bitte nicht über die Nachladelinie ziehen!</span>
+
+    </div>
+  </ng-template>
+</div>
+

@@ -1,0 +1,29 @@
+<div class="form-group" id="serviceFilter">
+  <label class="labelCaption">{{ labelCaption }}</label>
+  <input
+    #input
+    class="form-control"
+    [placeholder]="placeholder"
+    type="text"
+    (keydown)="inputChanged($event)"
+    [(ngModel)]="inputValue"
+    [typeahead]="dataSource$"
+    [typeaheadAsync]="true"
+    typeaheadOptionField="tour_nummer"
+    (typeaheadOnSelect)="onSelect($event)"
+    (typeaheadLoading)="changeTypeaheadLoading($event)"
+    [typeaheadItemTemplate]="tmpl"
+  />
+  <app-tag-item
+    [caption]="tag"
+    [index]="index"
+    (tagRemoved)="_removeTag($event)"
+    *ngFor="let tag of tagsList; let index = index"
+  ></app-tag-item>
+</div>
+
+<ng-template #tmpl let-model="item">
+  <div class="item">
+    {{ model }}
+  </div>
+</ng-template>

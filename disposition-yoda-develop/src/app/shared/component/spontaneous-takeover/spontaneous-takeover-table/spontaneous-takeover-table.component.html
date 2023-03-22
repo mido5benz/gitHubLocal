@@ -1,0 +1,14 @@
+<ag-grid-angular
+  style="width: 100%; height: 300px;"
+  class="ag-theme-alpine"
+  [columnDefs]="columnDef"
+  [defaultColDef]="defaultColDef"
+  [rowSelection]="'single'"
+  [suppressCellSelection]="true"
+  [overlayLoadingTemplate]="overlayLoadingTemplate"
+  (gridReady)="gridReady($event)"
+  [frameworkComponents]="frameworkComponents"
+  [gridOptions]="gridOptions"
+  enableCellTextSelection="true"
+>
+</ag-grid-angular>

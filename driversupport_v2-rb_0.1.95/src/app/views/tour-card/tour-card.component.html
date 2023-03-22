@@ -1,0 +1,153 @@
+<accordion-group #one heading="{{tourSektorNames[tourSektor]}} ({{allTours.length}})" [isOpen]="isAllOpen">
+  <span class="float-left {{tourSektorColor[tourSektor]}}" accordion-heading></span>
+  <span class="float-right" accordion-heading>
+    <p *ngIf="one.isOpen"><i class="fa fa-chevron-up fa-lg"></i></p>
+    <p *ngIf="!one.isOpen"><i class="fa fa-chevron-down fa-lg"></i></p>
+  </span>
+  <div class="row">
+    <div *ngFor="let tour of allTours; let countTour = index;" class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-3">
+      <div class="card tour-card h-100 mb-0 boxShadowClass">
+        <div class="card-header" (click)="routeToTourDetail(tour)"
+          [style.background-color]="tour.tourStatus ? tour.tourStatus : ''">
+          <span class="tour-number">
+            {{tour.tourNr}}
+          </span>
+          <span class="departure-time">
+            <i class="fa fa-arrow-alt-circle-right"></i>
+            {{tour.tourStartTime}}
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="row progress-sorting" (click)="routeToTourDetail(tour)"
+            [style.color]="tour.presortStatus ? tour.presortStatus : ''">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-label">Presort</div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 value">
+              {{tour.presortCountCurrent}}/{{tour.presortCountTotal}}</div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 progress-value">{{tour.presortCountCurrentPercent}}%
+            </div>
+          </div>
+          <div class="row" (click)="routeToTourDetail(tour)">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="mb-3">
+                <div class="progress progress-xs">
+                  <div class="progress-bar" role="progressbar" aria-valuemax="100"
+                    [style.background-color]="tour.presortStatus ? tour.presortStatus : ''"
+                    [style.width]="tour.presortCountCurrentPercent + '%'"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div (click)="routeToTourDetail(tour)" class="row progress-loading"
+            [style.color]="tour.loadingStatus ? tour.loadingStatus : ''">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-label">Beladung</div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 value">
+              {{tour.loadingCountCurrent}}/{{tour.loadingCountTotal}}</div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 progress-value">{{tour.loadingCountCurrentPercent}}%
+            </div>
+          </div>
+          <div class="row" (click)="routeToTourDetail(tour)">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="mb-2">
+                <div class="progress progress-xs">
+                  <div class="progress-bar" role="progressbar" aria-valuemax="100"
+                    [style.background-color]="tour.loadingStatus ? tour.loadingStatus : ''"
+                    [style.width]="tour.loadingCountCurrentPercent + '%'"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 criteria">
+              <ng-container *ngIf="tour.labelingObligation">
+                <div class="orangeIcon" (click)="routeToTourDetail(tour)">
+                  <div class="criteria-icon">
+                    <img src="assets/img/brand/gefahrgut.png" class="img-fluid imgwid">
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="tour.temperatur && tour.temperatur.length">
+                <div (click)="routeToTourDetail(tour)" class="temperature col border-right-0"
+                  *ngFor="let tempItem of tour.temperatur"
+                  [style.color]="tempItem.degreeeStatus ? tempItem.degreeeStatus : ''">
+                  <div class="criteria-icon">
+                    <i class="fa fa-thermometer-three-quarters"></i>
+                  </div>
+                  <div class="criteria-text">
+                    {{tempItem.currentDegreeVehicle}}<span *ngIf="tempItem.currentDegreeVehicle">&#176;</span>
+                  </div>
+                </div>
+              </ng-container>
+
+
+              <div class="cash border-left" (click)="routeToTourDetail(tour)"
+                [style.color]="tour.cashReturnStatus ? tour.cashReturnStatus : ''">
+                <div class="criteria-icon">
+                  <i class="fa fa-money-bill-alt"></i>
+                </div>
+                <div class="criteria-text" [style.color]="tour.cashReturnStatus ? tour.cashReturnStatus : ''">
+                  {{tour.cashReturn > 0 ? tour.cashReturn + ' €' : '-'}}
+                </div>
+              </div>
+
+              <div class="registration" (click)="(tour.ringingFahrer !== grayColor) && tour.ringingFahrer ? phoneMethodFahrer(countTour,ringingConfirm) : '' "
+                >
+               <div class="criteria-icon"
+                [style.color]="tour.ringingFahrer ? tour.ringingFahrer : '' ">
+                  <i class="fa fa-phone-alt"></i>
+                </div>
+                <div class="criteria-icon" [style.color]="tour.driverRegistrationStatus ? tour.driverRegistrationStatus : ''">
+                  <i class="fa fa-user"></i>
+                  <div class="criteria-text">
+                  {{tour.driverName ? tour.driverName : ''}}
+                </div>
+                </div>
+              </div>
+              <div class="package" (click)="routeToTourDetail(tour)"
+                [style.color]="tour.rearrangerStatus ? tour.rearrangerStatus : ''">
+                <div class="criteria-icon">
+                  <span class="dolly-count">
+                    {{tour.rearrangeCount === 0 ? "" : tour.rearrangeCount}}
+                  </span>
+                  <i class="fa fa-dolly"></i>
+                </div>
+
+                <div *ngFor="let rearrangeTour of tour.countsarr">
+                  <div class="criteria-text">
+                    {{rearrangeTour.name }} - {{rearrangeTour.count}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="phone" (click)="(tour.ringingPresort !== grayColor) && tour.ringingPresort ? phoneMethodPresort(countTour,ringingConfirm) : '' "
+              [style.color]="tour.ringingPresort ? tour.ringingPresort : '' ">
+               <div class="criteria-icon">
+                  <i class="fa fa-phone-alt"></i>
+               </div>
+                <div class="criteria-text" [style.color]="tour.ringingPresort ? tour.ringingPresort : '' ">
+                  {{tour.requestDriverSupporter === null ? 'Presort' : tour.requestDriverSupporter ? 'Fahrer' :
+                  'Presort'}}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</accordion-group>
+
+<ng-template #ringingConfirm>
+  <div class="modal-header">
+    <h4 class="modal-title">Informationen</h4>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+        {{fmModalMessage}}
+    </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-primary text-capitalize btsm" (click)="modalRef.hide()">Ok</button>
+  </div>
+</ng-template>

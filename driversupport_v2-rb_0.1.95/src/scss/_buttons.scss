@@ -1,0 +1,98 @@
+.btn {
+  text-transform: uppercase;
+  font-size: 1rem;
+  box-shadow: none !important;
+  padding: 0.75rem 1.5rem;
+  min-width: 0;
+  max-width: 100%;
+  transition: $transition-base;
+  letter-spacing: normal;
+
+  @include media-breakpoint-up(xxl) {
+    letter-spacing: 0.1em;
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: 0.5rem 1rem;
+  }
+
+  .btn-group & {
+    min-width: 0 !important;
+
+    &:not(:first-of-type) {
+      margin-left: 1px;
+    }
+  }
+
+  .btn-group-block & {
+    flex: 1 1 auto;
+  }
+
+  .input-group-sm > .input-group-prepend > &,
+  .input-group-sm > .input-group-append > &,
+  .btn-group-sm &,
+  &-sm {
+    padding: 0.5rem 1.5rem;
+  }
+
+  &-lg {
+    @include media-breakpoint-up(xxl) {
+      padding: 1.125rem 2rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+      padding: 0.75rem 1.5rem;
+    }
+  }
+
+  .input-group-lg > .input-group-prepend > &,
+  .input-group-lg > .input-group-append > &,
+  .btn-group-lg & {
+    font-size: $font-size-base;
+    padding: 0.75rem 1rem;
+
+    @include media-breakpoint-up(xxl) {
+      padding: 1.125rem 1.5rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &-light {
+    &,
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &-link {
+    color: $gray-500;
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 0;
+    width: auto;
+    font-weight: $font-weight-bold;
+
+    &:hover {
+      color: $primary;
+      text-decoration: none;
+    }
+  }
+
+  &-squared {
+    border-radius: 0;
+  }
+
+  i[class*='bt-'] {
+    font-size: 0.75em;
+  }
+}
+
+.btn-group {
+  &-block {
+    width: 100%;
+    justify-content: stretch;
+  }
+}

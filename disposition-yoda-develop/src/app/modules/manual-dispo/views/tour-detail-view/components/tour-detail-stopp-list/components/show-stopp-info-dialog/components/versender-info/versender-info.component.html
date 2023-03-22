@@ -1,0 +1,15 @@
+<div class="name" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+     aria-controls="collapseBasic">
+  {{index + 1}}. {{ sendung?.versender_name}}
+</div>
+<div id="collapseBasic" class="p-2 info" [collapse]="isCollapsed" [isAnimated]="true">
+  <div>BCVSNR: {{ sendung.versender_bcvsnr}}</div>
+  <div>{{ sendung.name1 }}</div>
+  <div>{{ sendung.name2 }}</div>
+  <div>{{ sendung.name3 }}</div>
+  <div>{{ sendung?.strasse }} {{ sendung?.hausnr}}</div>
+  <div>{{ sendung?.plz }} {{ sendung?.ort}}</div>
+  <div>{{ sendung.empfaenger_hinweis}}</div>
+  <div>{{ sendung.operativer_hinweis}}</div>
+  <div></div>
+</div>

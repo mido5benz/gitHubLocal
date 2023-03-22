@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-end close-control">
+  <div class="closeFilter" (click)="closePopUp()">
+    <i class="fas fa-times"></i>
+  </div>
+</div>
+<div class="d-flex justify-content-between filter-container">
+  <app-tour-filter-input-control
+    #tourFilter
+    [(ngModel)]="tours"
+    [labelCaption]="'Tour'"
+    [placeholder]="'Tour suchen'"
+    [currentFilter]="tourFilters$ | async"
+  ></app-tour-filter-input-control>
+</div>
+<div class="d-flex justify-content-between filter-container">
+  <app-filter-input-control
+    #serviceFilter
+    [(ngModel)]="services"
+    [labelCaption]="'Dienst'"
+    [placeholder]="'Dienst suchen'"
+    [currentFilter]="serviceFilter$ | async"
+  ></app-filter-input-control>
+</div>
+<div class="d-flex justify-content-between filter-container">
+  <div><span class="filter-caption">Großposten Sattel</span></div>
+  <div>
+    <label class="switch switch-3d switch-primary"
+    ><input
+      checked=""
+      class="switch-input"
+      type="checkbox"
+      [(ngModel)]="semitrailer"/><span class="switch-slider"></span
+    ></label>
+  </div>
+</div>
+<div class="d-flex justify-content-between filter-container">
+  <div><span class="filter-caption">Großposten LKW</span></div>
+  <div>
+    <label class="switch switch-3d switch-primary"
+    ><input
+      checked=""
+      class="switch-input"
+      type="checkbox"
+      [(ngModel)]="truck"/><span class="switch-slider"></span
+    ></label>
+  </div>
+</div>
+<div class="d-flex align-items-center">
+  <button class="btn btn-sm filter-button btn-close" (click)="resetMapFilters()"><i class="fas fa-trash"></i>
+    Löschen
+  </button>
+  <button class="btn btn-sm filter-button btn-accept" (click)="applyFilterClicked()"><i class="fas fa-filter"></i>
+    Anwenden
+  </button>
+</div>

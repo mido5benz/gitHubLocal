@@ -1,0 +1,17 @@
+<ag-grid-angular
+  #stoppList
+  class="ag-theme-alpine"
+  style="width: 100%; height: 100%"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [rowSelection]="'multiple'"
+  [frameworkComponents]="frameworkComponents"
+  [isFullWidthCell]="isFullWidthCell"
+  [fullWidthCellRenderer]="fullWidthCellRenderer"
+  (gridReady)="onGridReady($event)"
+  (rowDragEnd)="onRowDragEnd($event)"
+  (rowDragEnter)="onRowDragStart($event)"
+  (rowClicked)="onRowClicked($event)"
+  (rowDoubleClicked)="onRowDoubleClicked($event)"
+>
+</ag-grid-angular>

@@ -1,0 +1,47 @@
+<div style="height: 100vh;">
+
+<div class="mb-2" *ngIf="collectionRedirect">
+  <button type="button" class="btn btn-primary text-capitalize btn-sm buttonClass" (click)="redirectToCollection()">  < Zurück zur Vereinnahmung</button>
+</div>
+
+<!-- Header and Search bar Logic Start -->
+<div class="card mb-3" id="ShipmentDetailsDashboard">
+  <div class="card-body shipmentSearchHeader">
+    <div class="col-sm-7 col-md-7 d-inline-block"><span id="headerText">Scannen Sie ein Packstück um die dazugehörige Sendung anzuzeigen</span>
+    </div>
+    <div class="col-sm-5 col-md-5 d-inline-block">
+      <div class="form-group">
+        <div class="input-group">
+          <input  type="text" id="barcode" name="Barcode" autocomplete="off" class="form-control" #searchBarInput
+                 placeholder=""
+                 [(ngModel)]="searchText"
+                 (ngModelChange)='onkeypress($event,false)'
+                 (keyup.enter)="onkeypress(searchText,true)">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="temp">
+  <lib-shipment-info-details
+    (sendCorrectedValues)="putCorrectedValues($event)"
+    [shipmentInfoDetails]="shipmentInfo"
+    [dienste]="dienste"
+  ></lib-shipment-info-details>
+
+  <div class="d-flex">
+    <div class="w-50">
+      <lib-sendungsereignisse [sendungsereignisse]="seereignisse"></lib-sendungsereignisse>
+    </div>
+    <div class="w-50 ml-1">
+      <lib-dangerous-goods [dangerous_goods]="gefahrgueter"></lib-dangerous-goods>
+    </div>
+  </div>
+
+  <lib-sendungskette [sendungskette]="sendungsketteAnzeigeArray"></lib-sendungskette>
+  <lib-dispo-details [dispoDetails]="dispoDetails"></lib-dispo-details>
+  <lib-colli-events [colliEvent]="colliereignisse"></lib-colli-events>
+
+</div>
+</div>

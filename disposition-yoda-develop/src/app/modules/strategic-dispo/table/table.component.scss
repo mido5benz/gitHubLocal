@@ -1,0 +1,44 @@
+.table-select {
+  cursor: pointer;
+}
+
+.selected-row,
+.selected-row:hover {
+  outline: 2px dotted #f27e00 !important;
+}
+
+.pager li.btn:active {
+  box-shadow: none;
+}
+
+.table-container {
+  position: relative;
+
+  .collapse-control {
+    position: absolute;
+    background-color: #fff;
+    border: solid 1px #babfc7;
+    top: -19px;
+    left: 50%;
+    height: 20px;
+    z-index: 999;
+    width: 35px;
+    text-align: center;
+    &:hover {
+      cursor: pointer;
+      i {
+        color: darken(#babfc7, 25%);
+      }
+    }
+    &.isCollapsed {
+      i {
+        transform: rotate(180deg);
+      }
+    }
+    i {
+      transition: transform 0.5s ease-in-out;
+      font-size: 20px;
+      color: #babfc7;
+    }
+  }
+}

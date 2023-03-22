@@ -1,0 +1,18 @@
+<div cdkDropList (cdkDropListDropped)="drop($event)">
+  <div *ngFor="let stopp of stopps; let i = index" cdkDrag [cdkDragData]="stopp">
+    <ng-container *ngIf="stopp?.isReloadStopp, else noReloadStopp">
+      <div class="reload-item">
+        Nachladebereich
+        <i class="ml-3 deleteIcon fa fa-trash-o" (click)="deleteReloadLine()" aria-hidden="true"></i>
+      </div>
+    </ng-container>
+    <ng-template #noReloadStopp>
+      <div class="d-flex stopp-item-container">
+        <div class="d-flex stoppItem">
+          <app-soll-stopp-nr [stopp]="stopp" (click)="stoppClicked(stopp)"></app-soll-stopp-nr>
+          <app-stopp-info [stopp]="stopp"></app-stopp-info>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

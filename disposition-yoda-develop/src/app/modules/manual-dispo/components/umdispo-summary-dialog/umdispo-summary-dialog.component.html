@@ -1,0 +1,48 @@
+<div class="content-wrapper">
+  <span class="content-text">
+    Folgende Umdisponierung wird vorgenommen:
+  </span>
+  <div class="d-flex align-items-center summary-container">
+    <div class="flex-grow-1">
+      <ul class="tour-container">
+        <li class="single-tour" *ngFor="let tour of groupedTours | keyvalue">
+          <span class="tourNr">{{ tour.key | tourNumber }}</span>
+          <ul>
+            <li *ngFor="let stopp of tour.value">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <i [ngClass]="getIconClass(stopp.raster_ebene_id)"></i>
+                  <div class="soll-stopp-nr" *ngIf="stopp.soll_stopp">{{ stopp.soll_stopp}}</div>
+                  <div class="soll-stopp-nr" *ngIf="!stopp.soll_stopp">?</div>
+                  <span class="zielname ml-1">{{ stopp?.ziel_name?.name1 }}</span>
+                </div>
+                <div>
+                  <i class="fas fa-times-circle" (click)="removeStoppFromSelection(stopp)" title="Stopp entfernen"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="flex-grow-1 ml-5">
+      <i class="fas fa-angle-right"></i>
+    </div>
+    <div class="flex-grow-1">
+      <div class="tour">
+        <div class="tournr-caption">
+          {{ selectedTour?.tournr}}
+          <span class="zieltour-caption">Zieltour</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-right mt-3">
+  <button type="button" class="btn btn-sm btn-primary mr-2" (click)="closeCancel()">
+    Abbrechen
+  </button>
+  <button type="button" class="btn btn-sm btn-primary mr-1" (click)="closeOk()">
+    Umdisponieren
+  </button>
+</div>

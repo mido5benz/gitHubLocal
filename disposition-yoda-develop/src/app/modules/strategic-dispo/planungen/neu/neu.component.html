@@ -1,0 +1,40 @@
+<ng-template #templateWochentag>
+      <div class="modal-header">
+            <h4 class="modal-title pull-left">Wirklich neue Wochentags-Planung öffnen?</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+            </button>
+      </div>
+      <div class="modal-body text-center">
+            <p>Die aktuelle Planung wird verworfen, da sie noch nicht gespeichert wurde!</p>
+            <button type="button" class="btn btn-danger" (click)="neuePlanungWochentag()">Bestätigen</button>
+      </div>
+</ng-template>
+
+<ng-template #templateSamstag>
+      <div class="modal-header">
+            <h4 class="modal-title pull-left">Wirklich neue Samstags-Planung öffnen?</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+            </button>
+      </div>
+      <div class="modal-body text-center">
+            <p>Die aktuelle Planung wird verworfen, da sie noch nicht gespeichert wurde!</p>
+            <button type="button" class="btn btn-danger" (click)="neuePlanungSamstag()">Bestätigen</button>
+      </div>
+</ng-template>
+
+
+<div class="dropdown" title="Neue Planung erstellen" dropdown [insideClick]="true" placement="bottom right" (isOpenChange)="change($event)"
+      [isOpen]="status.isOpen">
+      <div dropdownToggle class="nav-item dropdown-toggle">
+            <i class="fa fa-plus"></i>
+      </div>
+
+      <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+            <button class="btn btn-block btn-primary felder"
+                  (click)="openModal(templateWochentag, false)">Wochentag(e)</button>
+            <button class="btn btn-block btn-primary felder"
+                  (click)="openModal(templateSamstag, true)">Samstag</button>
+      </ul>
+    </div>

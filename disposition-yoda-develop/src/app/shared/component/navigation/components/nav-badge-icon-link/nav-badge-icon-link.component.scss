@@ -1,0 +1,22 @@
+.nav-link {
+  font-size: 14px;
+  border-right: 1px solid darken(#ffffff, 10%);
+
+  .caption-wrapper {
+    padding-right: 20px;
+
+    .badge {
+      position: absolute !important;
+      top: 7px;
+    }
+  }
+}
+
+.caption {
+  color: #000;
+}
+
+
+.customCss {
+  padding-right: 0px !important;
+}

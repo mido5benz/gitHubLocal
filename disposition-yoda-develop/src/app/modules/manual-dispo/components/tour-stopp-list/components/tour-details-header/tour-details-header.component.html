@@ -1,0 +1,5 @@
+<div class="title">Tour {{ tourNr | tourNumber }}
+  <i *ngIf="showReloadIcon" title="Tour neu berechnen" class="fas fa-redo-alt" (click)="reloadData()" style="cursor: pointer"></i>
+  <i *ngIf="frozen" class="fa fa-lock" aria-hidden="true"></i>
+  <i *ngIf="abgefertigt" class="fas fa-check colorChange" aria-hidden="true"></i>
+</div>

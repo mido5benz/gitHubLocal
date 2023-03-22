@@ -1,0 +1,13 @@
+<app-navigation>
+  <ng-container left>
+    <div>
+      <app-navigation-item
+        [caption]="'Karte'"
+        [iconClasses]="['fas', 'fa-map-marked']"
+        (itemClicked)="goToMap()"></app-navigation-item>
+    </div>
+  </ng-container>
+</app-navigation>
+<div class="p-2 h-100">
+  <router-outlet></router-outlet>
+</div>

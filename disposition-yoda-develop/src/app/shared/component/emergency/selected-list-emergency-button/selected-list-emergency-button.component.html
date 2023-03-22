@@ -1,0 +1,42 @@
+    <div class="dropdown" dropdown [insideClick]="true" placement="bottom right">
+      <div dropdownToggle (click)="sort()"  class="nav-item">
+        Notfall Freigabe
+      </div>
+      <ul *dropdownMenu class="dropdown-menu dropdown-menu-left" role="menu">
+        <div name="textarea-input" rows="9" class="form-control felder">
+          <div class="checkbox" *ngFor="let tour of allLists$ | async">
+            <label>
+                <input type="checkbox" (change)="tourSelected(tour)"> {{ tour.tour.tournr | tourNumber}}
+            </label>
+          </div>
+       </div>
+        <button class="btn btn-block btn-primary felder" [class.notAllowed]="selectedTourArray.length === 0" [disabled]="selectedTourArray.length === 0" (click)="openModal(templateSelectedFreigeben)">Ausgewählte Touren freigeben</button>
+        <button class="btn btn-block btn-primary felder" [class.notAllowed]="selectedTourArray.length > 0" [disabled]="selectedTourArray.length > 0"  (click)="openModal(templateAllesFreigeben)">Alle Touren freigeben</button>
+      </ul>
+    </div>
+
+    <ng-template #templateAllesFreigeben>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Alle Touren freigeben?</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+          <p>Möchten Sie alle Touren freigeben?</p>
+          <button type="button" class="btn btn-primary"(click)="releaseAllTours()" (click)="modalRef.hide()">Freigeben</button>
+      </div>
+    </ng-template>
+
+    <ng-template #templateSelectedFreigeben>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Ausgewählte Touren freigeben?</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <p>Möchten Sie die ausgewählten Touren freigeben?</p>
+        <button type="button" class="btn btn-primary"(click)="releaseSelectedTours()" (click)="modalRef.hide()">Freigeben</button>
+      </div>
+    </ng-template>

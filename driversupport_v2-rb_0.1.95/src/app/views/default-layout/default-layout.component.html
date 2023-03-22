@@ -1,0 +1,102 @@
+<app-header id=toggle-btn [navbarBrandRouterLink]="showHead ? ['/dashboard'] :[]" [fixed]="true"
+            [navbarBrandFull]="{src: 'assets/img/brand/transoflex_logo.png', height: 20, alt: 'Trans-o-Flex Logo'}"
+            [navbarBrandMinimized]="{src: 'assets/img/brand/transoflex_logo_min.png', width: 30, height: 30, alt: 'Trans-o-Flex Logo'}"
+            [sidebarToggler]="showHead ?'lg' :[]"   [asideMenuToggler]="false" [mobileAsideMenuToggler]="false">
+  <ul class="nav navbar-nav d-md-down-none">
+    <li class="nav-item px-3">
+      <span class="productname">Driver Support</span>
+    </li>
+    <cui-breadcrumb id="navbarBreadcrumb">
+      <!-- Breadcrumb Menu-->
+      <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <!-- <a class="btn" href="#"><i class="icon-speech"></i></a>
+          <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+          <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a> -->
+        </div>
+      </li>
+    </cui-breadcrumb>
+  </ul>
+
+  <ul class="nav navbar-nav ml-auto navMenuCustomClass">
+    <li class="nav-item d-md-down-none mr-4" (click)="Info()"><i class="fa fa-info fa-lg mt-2"></i> Info</li>
+
+    <li class="nav-item d-md-down-none mr-5" (click)="doLogout()"><i class="fas fa-sign-out-alt fa-lg mt-2"></i> Abmelden</li>
+    <!-- <li class="nav-item d-md-down-none mr-5">
+      <div data-toggle="dropdown" aria-expanded="false" *ngIf="showHead">
+        <i class="fas fa-sign-out-alt fa-lg mt-2"></i>
+      </div>
+      <div class="dropdown-menu dropdown-menu-right" *ngIf="showHead">
+
+       </div>
+    </li>  -->
+  </ul>
+
+  <!-- <div class="avatar">
+  </div> -->
+</app-header>
+<div class="app-body">
+  <app-sidebar #appSidebar [fixed]="true" [display]="'lg'" [minimized]="sidebarMinimized"
+               (minimizedChange)="toggleMinimize($event)" *ngIf="showHead">
+    <!-- <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="appSidebar.minimized"></app-sidebar-nav> -->
+    <div class="sidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav navMenuCustomClass">
+          <li class="nav-item">
+            <a class="nav-link" (click)="sidebarRouteMethod($event,'dashboard')"
+               [ngClass]="currentRoute == 'dashboard' ? 'active' : ''">
+              <i class="nav-icon fa fa-tachometer-alt"></i> Dashboard
+            </a>
+            <div class="caption-wrapper">
+                <span
+                  class="badge badge-danger ml-1"
+                  style="position: static;"
+                  *ngIf="releaseProcessBadgeInfo > 0 && !disableBadge">
+                     {{ releaseProcessBadgeInfo }}
+                </span>
+            </div>
+
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="sidebarRouteMethod($event,'sendungslib')"
+               [ngClass]="currentRoute == 'sendungslib' ? 'active' : ''">
+              <i class="nav-icon fa fa-search"></i> Sendungsdetail
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="sidebarRouteMethod($event,'vereinnahmung')"
+               [ngClass]="currentRoute == 'vereinnahmung' ? 'active' : ''">
+              <i class="nav-icon fa fa-box-open"></i> Vereinnahmung
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="sidebarRouteMethod($event,'tourauswahl')"
+               [ngClass]="currentRoute == 'tourauswahl' ? 'active' : ''">
+              <i class="nav-icon fa fa-check-circle"></i> Tourauswahl ({{count ? count : 0}})
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <p class="textindent30" id="switchhide"><label class="switch switch-3d switch-primary">
+        <input type="checkbox" class="switch-input" [(ngModel)]="checkboxValue"
+               (change)="isChangeLimitAccessToggle(checkboxValue)">
+        <span class="switch-slider"></span>
+        <span class="textad">Auto FM</span>
+      </label></p>
+      <app-sidebar-minimizer></app-sidebar-minimizer>
+    </div>
+  </app-sidebar>
+
+  <main class="main" id=main_resp>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+      <div class="se-pre-con"></div>
+    </div>
+  </main>
+<!--  <div class="app-body">-->
+<!--    <main class="main">-->
+<!--      <router-outlet></router-outlet>-->
+<!--    </main>-->
+<!--  </div>-->
+</div>

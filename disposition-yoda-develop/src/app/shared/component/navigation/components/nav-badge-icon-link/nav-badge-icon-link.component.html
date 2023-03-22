@@ -1,0 +1,11 @@
+<a class="nav-link" [routerLink]="[url]" routerLinkActive="router-link-active">
+  <div class="caption-wrapper" [ngClass]="{'customCss': !this.badge}">
+    <span class="caption">{{ caption }}</span>
+    <span
+      class="badge badge-primary"
+      style="position: static;"
+      *ngIf="objectCount > 0"
+      >{{ objectCount }}</span
+    >
+  </div>
+</a>

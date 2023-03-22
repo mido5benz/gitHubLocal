@@ -1,0 +1,65 @@
+<div class="d-flex">
+  <div class="btn-group first" dropdown [autoClose]="false" #selectedStoppsDrownDown="bs-dropdown"
+       *ngIf="(selectedStoppCount$ | async ) > 0; else noStoppsSelected">
+    <button dropdownToggle type="button" class="btn dropdown-toggle" aria-controls="dropdown-basic">
+      <ng-container class="selected-stopps">
+        {{ (selectedStoppCount$ | async) }} Stopps gewählt
+      </ng-container>
+      <span class="caret"></span>
+    </button>
+
+    <div class="remove-selection-container" (click)="resetSelection()" *ngIf="(selectedStoppCount$ | async ) > 0">
+      <i class="fa fa-times" aria-hidden="true" triggers="mouseenter:mouseleave"></i>
+    </div>
+    <ul id="dropdown-basic1" *dropdownMenu class="dropdown-menu shadow" role="menu" aria-labelledby="button-basic">
+      <li class="soll-stopp-item" *ngFor="let stopp of (allSelectedStopps$ | async)" (click)="showOnMap(stopp)">
+        <span *ngIf="stopp?.tournr === 'Unverplant'; else verplant">Unverplanter Stopp</span>
+        <ng-template #verplant>
+          Sollstopp: {{ stopp?.soll_stopp }} - Tour: {{ stopp?.tournr | tourNumber}}
+        </ng-template>
+      </li>
+    </ul>
+  </div>
+  <ng-template #noStoppsSelected>
+    <div class="no-stopps">
+      Keine Stopps gewählt
+    </div>
+  </ng-template>
+  <div class="btn-group second" dropdown [autoClose]="false" #dropdown="bs-dropdown">
+    <button dropdownToggle type="button" class="btn  dropdown-toggle" aria-controls="dropdown-basic">
+      <ng-container *ngIf="selectedTour; else noTourSelected">
+        Tour: {{ selectedTour?.tournr | tourNumber }}
+      </ng-container>
+      <ng-template #noTourSelected>
+        Keine Tour gewählt
+      </ng-template>
+
+      <span class="caret"></span>
+    </button>
+    <div class="remove-selection-container" (click)="resetSelectedTour()" *ngIf="selectedTour">
+      <i class="fa fa-times" aria-hidden="true" triggers="mouseenter:mouseleave"></i>
+    </div>
+    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu shadow" role="menu" aria-labelledby="button-basic">
+      <li role="menuitem">
+        <input #tourNumberInput type="text" placeholder="Touren filtern" autofocus
+               appAutofocus
+               class="tour-filter-input form-control"
+               (input)="filterTourList(tourNumberInput.value)">
+      </li>
+      <li class="tour-item" *ngFor="let tour of filteredTours" (click)="selectTour(tour)">
+        {{ tour?.tournr | tourNumber }}
+      </li>
+    </ul>
+  </div>
+  <div class="umdispo-button"
+       *ngIf="!(reschedulingLoading$ | async)"
+       [hidden]="(selectedStoppCount$ | async) === 0 || !this.selectedTour"
+       (click)="startUmdispo()">
+    <i class="fas fa-truck-loading mr-2"></i> Umdisponieren
+  </div>
+  <div class="umdispo-button"
+       *ngIf="(reschedulingLoading$ | async)">
+    <i class="fa fa-spinner fa-spin fa-fw"></i>
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="d-flex">
+  <app-navigation-item
+    [caption]="'Sattel'"
+    [layer]="'sattel'"
+    [isActive]="currentLayer === 'sattel'"
+    [isDisabled]="wochentag()"
+    [iconClasses]="['fas', 'fa-pallet']"
+    (itemClicked)="onNavItemClicked($event)"
+  ></app-navigation-item>
+  <app-navigation-item
+    [caption]="'LKW'"
+    [layer]="'lkw'"
+    [iconClasses]="['fa', 'fa-truck']"
+    [isActive]="currentLayer === 'lkw'"
+    [isDisabled]="wochentag()"
+    (itemClicked)="onNavItemClicked($event)"
+  ></app-navigation-item>
+  <app-navigation-item
+    [caption]="'Express'"
+    [layer]="'express'"
+    [iconClasses]="['fas', 'fa-shipping-fast']"
+    [isActive]="currentLayer === 'express'"
+    [isDisabled]="wochentag()"
+    (itemClicked)="onNavItemClicked($event)"
+  ></app-navigation-item>
+  <app-navigation-item
+    [caption]="'Regel'"
+    [layer]="'regel'"
+    [iconClasses]="['fa', 'fa-cubes']"
+    [isActive]="currentLayer === 'regel'"
+    [isDisabled]="wochentag()"
+    (itemClicked)="onNavItemClicked($event)"
+  ></app-navigation-item>
+  <app-navigation-item
+    [caption]="'Samstag'"
+    [layer]="'samstag'"
+    [iconClasses]="['fab', 'fa-stripe-s']"
+    [isActive]="currentLayer === 'samstag'"
+    [isDisabled]="samstag()"
+    (itemClicked)="onNavItemClicked($event)"
+  ></app-navigation-item>
+</div>

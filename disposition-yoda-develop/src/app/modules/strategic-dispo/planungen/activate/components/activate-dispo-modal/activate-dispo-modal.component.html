@@ -1,0 +1,173 @@
+<span *ngIf="loading1==true||loading2==true">
+  <ngx-spinner [fullScreen]="false"></ngx-spinner>
+</span>
+
+<div class="modal-header">
+  <h3 class="modal-title pull-left">Planungen aktivieren</h3>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="card-body">
+    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+      <div class="form-group row">
+        <label class="col-form-label col-md-5"><strong>Aktuell</strong></label>
+        <label class="col-form-label col-md-7"><strong>Zukünftig</strong></label>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-5">
+          <input type="text" name="disabled-input" class="form-control"
+                 [value]="aktiviertePlanungenName.standard" disabled>
+        </div>
+        <div class="col-md-7">
+          <div class="input-group">
+            <span class="input-group-prepend">
+              <button type="button" class="btn btn-primary width"><i class="fa fa-exclamation"></i> Standard</button>
+            </span>
+            <select class="form-control" id="selectStandard" name="selectStandard"
+                    [(ngModel)]="aktiviertePlanungenZukunft.standard" #aktiviertePlanungenZukunftStandard="ngModel">
+              <option *ngFor="let planung of planungen" [ngValue]="planung.rastertourenplan_id">{{planung.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+      <div class="form-group row">
+        <div class="col-md-5">
+          <input type="text" name="disabled-input" class="form-control"
+                 [value]="aktiviertePlanungenName.montag" disabled>
+        </div>
+        <div class="col-md-7">
+          <div class="input-group">
+            <span class="input-group-prepend">
+              <button type="button" class="btn btn-warning width">Montag</button>
+            </span>
+            <select class="form-control" id="selectMontag" name="selectMontag"
+                    [(ngModel)]="aktiviertePlanungenZukunft.montag">
+              <option *ngFor="let planung of planungen" [ngValue]="planung.rastertourenplan_id">{{planung.name}}
+              </option>
+              <option [ngValue]=null></option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-5">
+          <input type="text" name="disabled-input" class="form-control"
+                 [value]="aktiviertePlanungenName.dienstag" disabled>
+        </div>
+        <div class="col-md-7">
+          <div class="input-group">
+            <span class="input-group-prepend">
+              <button type="button" class="btn btn-warning width">Dienstag</button>
+            </span>
+            <select class="form-control" id="selectDienstag" name="selectDienstag"
+                    [(ngModel)]="aktiviertePlanungenZukunft.dienstag">
+              <option *ngFor="let planung of planungen" [ngValue]="planung.rastertourenplan_id">{{planung.name}}
+              </option>
+              <option [ngValue]=null></option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-5">
+          <input type="text" name="disabled-input" class="form-control"
+                 [value]="aktiviertePlanungenName.mittwoch" disabled>
+        </div>
+        <div class="col-md-7">
+          <div class="input-group">
+            <span class="input-group-prepend">
+              <button type="button" class="btn btn-warning width">Mittwoch</button>
+            </span>
+            <select class="form-control" id="selectMittwoch" name="selectMittwoch"
+                    [(ngModel)]="aktiviertePlanungenZukunft.mittwoch">
+              <option *ngFor="let planung of planungen" [ngValue]="planung.rastertourenplan_id">{{planung.name}}
+              </option>
+              <option [ngValue]=null></option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-5">
+          <input type="text" name="disabled-input" class="form-control"
+                 [value]="aktiviertePlanungenName.donnerstag" disabled>
+        </div>
+        <div class="col-md-7">
+          <div class="input-group">
+            <span class="input-group-prepend">
+              <button type="button" class="btn btn-warning width">Donnerstag</button>
+            </span>
+            <select class="form-control" id="selectDonnerstag" name="selectDonnerstag"
+                    [(ngModel)]="aktiviertePlanungenZukunft.donnerstag">
+              <option *ngFor="let planung of planungen" [ngValue]="planung.rastertourenplan_id">{{planung.name}}
+              </option>
+              <option [ngValue]=null></option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-5">
+          <input type="text" name="disabled-input" class="form-control"
+                 [value]="aktiviertePlanungenName.freitag" disabled>
+        </div>
+        <div class="col-md-7">
+          <div class="input-group">
+            <span class="input-group-prepend">
+              <button type="button" class="btn btn-warning width">Freitag</button>
+            </span>
+            <select class="form-control" id="selectFreitag" name="selectFreitag"
+                    [(ngModel)]="aktiviertePlanungenZukunft.freitag">
+              <option *ngFor="let planung of planungen" [ngValue]="planung.rastertourenplan_id">{{planung.name}}
+              </option>
+              <option [ngValue]=null></option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-5">
+          <input type="text" name="disabled-input" class="form-control"
+                 [value]="aktiviertePlanungenName.samstag" disabled>
+        </div>
+        <div class="col-md-7">
+          <div class="input-group">
+            <span class="input-group-prepend">
+              <button type="button" class="btn btn-primary width"><i class="fa fa-exclamation"></i> Samstag</button>
+            </span>
+            <select class="form-control" id="selectSamstag" name="selectSamstag"
+                    [(ngModel)]="aktiviertePlanungenZukunft.samstag" #aktiviertePlanungenZukunftSamstag="ngModel">
+              <option *ngFor="let planung of planungenSamstag" [ngValue]="planung.rastertourenplan_id">{{planung.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-block btn-success" (click)="aktivieren()"
+            [disabled]="aktiviertePlanungenZukunftStandard.value === 0 || aktiviertePlanungenZukunftSamstag.value === 0 ">
+      <i
+        class="fa fa-dot-circle-o"></i> Aktivieren
+    </button>
+  </div>
+
+  <div style="text-align:right"><i class="fa fa-exclamation"></i>: Pflichtfelder</div>
+
+
+</div>

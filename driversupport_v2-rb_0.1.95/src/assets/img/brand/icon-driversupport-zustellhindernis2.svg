@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144.769" height="85.5" viewBox="0 0 144.769 85.5">
+  <g id="Gruppe_74" data-name="Gruppe 74" transform="translate(-1080 -634)">
+    <path id="Pfad_2413" data-name="Pfad 2413" d="M96.695,32.534h41.527a3.048,3.048,0,0,1,3.048,4.111L122.981,99.872H81.79m-23.853,0H42.78l5.928-20.554M141.27,99.872H122.981M139.9,41.147h31.18a5.173,5.173,0,0,1,5.341,6.236l-3.468,20.246a5.593,5.593,0,0,0,1.23,4.53L180,78.591a6.152,6.152,0,0,1,.7,6.488l-5.872,14.793h-9.76m-85.319,0a10.962,10.962,0,1,1-3.1-7.867,10.878,10.878,0,0,1,3.1,7.867m83.277,0a10.962,10.962,0,1,1-3.1-7.866,10.878,10.878,0,0,1,3.1,7.866" transform="translate(1040.337 606.058)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"/>
+    <g id="Rechteck_2819" data-name="Rechteck 2819" transform="translate(1080 636)" fill="none" stroke="#fff" stroke-width="5">
+      <rect width="46" height="39" stroke="none"/>
+      <rect x="2.5" y="2.5" width="41" height="34" fill="none"/>
+    </g>
+    <text id="_" data-name="!" transform="translate(1098 667)" fill="#fff" font-size="32" font-family="PTSans-Bold, PT Sans" font-weight="700"><tspan x="0" y="0">!</tspan></text>
+  </g>
+</svg>

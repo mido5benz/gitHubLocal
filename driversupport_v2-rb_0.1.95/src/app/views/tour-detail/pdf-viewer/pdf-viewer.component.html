@@ -1,0 +1,53 @@
+<div class="pdfViewer">
+    <ngx-extended-pdf-viewer [base64Src]="pdfData" [showSidebarButton]="true" [showFindButton]="false" [showPagingButtons]="true" [showZoomButtons]="true" [showPresentationModeButton]="false" [showOpenFileButton]="false" [showPrintButton]="true" [showDownloadButton]="false"
+        [showBookmarkButton]="false" [showSecondaryToolbarButton]="false" [showRotateButton]="true" [showHandToolButton]="false" [showScrollingButton]="false" [showSpreadButton]="false" [customToolbar]="additionalButtons" [showPropertiesButton]="false" [useBrowserLocale]="true">
+    </ngx-extended-pdf-viewer>
+</div>
+
+<ng-template #additionalButtons>
+    <div id="toolbarViewer">
+        <div id="toolbarViewerLeft">
+            <button type="button" id="sidebarToggle" class="toolbarButton" title="Toggle Sidebar">
+        <i class="fas fa-bars"></i>
+      </button>
+            <div class="toolbarButtonSpacer"></div>
+            <pdf-find-button [showFindButton]="true" [textLayer]="true" class="hidden"></pdf-find-button>
+            <pdf-paging-area class="hidden"></pdf-paging-area>
+        </div>
+        <div id="toolbarViewerRight">
+            <pdf-open-file class="hidden"></pdf-open-file>
+            <pdf-presentation-mode class="hidden"></pdf-presentation-mode>
+            <button type="button"  class="toolbarButton" title="Print" (click)="onPrint()">
+                 <i class="fas fa-print"></i> </button>
+
+            <pdf-download class="hidden"></pdf-download>
+            <pdf-bookmark class="hidden"></pdf-bookmark>
+            <div class="verticalToolbarSeparator hiddenSmallView"></div>
+            <pdf-toggle-secondary-toolbar class="hidden"></pdf-toggle-secondary-toolbar>
+        </div>
+        <div id="toolbarViewerMiddle">
+            <button type="button" id="zoomOut" class="toolbarButton" title="Zoom out">
+        <i class="fas fa-minus"></i>
+      </button>
+            <button type="button" id="zoomIn" class="toolbarButton" title="Zoom in">
+        <i class="fas fa-plus"></i>
+      </button>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Empty PDF modal start -->
+<ng-template #EmptyPdfModaltemplate>
+    <div class="modal-header p-3">
+        <h4 class="modal-title">Informationen</h4>
+    </div>
+    <div class="modal-body p-3">
+        <div class="container-fluid">
+            <span>Der Druck kann derzeit noch nicht durchgeführt werden. Die Tour muss zuerst vollständig beladen und alle Verbringpflichten aufgelöste sein.</span>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary text-capitalize btsm" (click)="redirectToTourDetail()">Ok</button>
+    </div>
+</ng-template>
+<!-- Empty PDF modal End -->

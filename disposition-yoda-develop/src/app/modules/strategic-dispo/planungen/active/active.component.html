@@ -1,0 +1,27 @@
+<span *ngIf="currentPlaning==undefined; else notRed" class="h3" style="font-size:9pt; color: grey">
+    Planung in Bearbeitung:
+    <span style="color: red;">
+    {{currentPlaning ? currentPlaning : 'Keine'}}
+  </span>
+  </span>
+<ng-template #notRed>
+    <span class="h3" style="font-size:9pt;">Planung in Bearbeitung:
+      <span style="color: green;">
+        {{currentPlaning ? currentPlaning : 'Keine'}}</span>
+      </span>
+    <span *ngIf="inBearbeitung==true;" class="h3" style="font-size:8pt; color: red;"> (nicht gespeichert)</span>
+</ng-template>
+ |
+<span *ngIf="currentTour==undefined; else notRed2" class="h3" style="font-size:9pt; color: grey">
+    Tour:
+    <span style="color: red;">
+    {{currentTour ? currentTour : 'Keine'}}
+  </span>
+  </span>
+<ng-template #notRed2>
+    <span class="h3" style="font-size:9pt;">Tour:
+      <span style="color: green;">
+        {{convertTourNr(currentTour.tournr) ? convertTourNr(currentTour.tournr) : 'Keine'}}
+      </span>
+    </span>
+</ng-template>

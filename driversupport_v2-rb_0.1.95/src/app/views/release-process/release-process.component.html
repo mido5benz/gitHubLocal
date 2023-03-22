@@ -1,0 +1,39 @@
+<accordion-group [isOpen]="isCardOpen()" #freigabe>
+  <div accordion-heading class="d-flex ">
+
+    <div class="p-1 caption-wrapper">
+      <span class="caption">
+      <i class="fas fa-camera customIcon"></i>
+      </span>
+    </div>
+
+    <div class="customPosition">
+      <label style="margin-top: 5px" class="customHeading"><b>Zur Freigabe
+        ({{anzeigeFreigabe?.length ? anzeigeFreigabe.length : 0}})</b></label>
+    </div>
+    <div class="ml-auto p-2">
+      <span class="customPosition">
+        <p *ngIf="freigabe.isOpen"><i class="fa fa-chevron-up fa-lg"></i></p>
+        <p *ngIf="!freigabe.isOpen"><i class="fa fa-chevron-down fa-lg"></i></p>
+      </span>
+    </div>
+  </div>
+
+  <div class="row cards">
+    <div *ngFor="let tour of anzeigeFreigabe; let i = index" class="card customCard">
+      <div class="card-header d-flex cardHeader">
+        <div class="mr-auto p-2"><b>{{tour.tourNr}}</b></div>
+        <div class="ml-auto p-2"><b>
+          <i class="fa fa-arrow-alt-circle-right mr-2"></i>{{tour.abfahrtzeit}}</b></div>
+      </div>
+      <div class="card-body">
+        <app-card-body [tour]=tour [index]="i" [rejectionReason]="reasonForRejection"
+                       (confirm)="confirmFreigabe($event)"
+                       (decline)="declineFreigabe($event)"
+        ></app-card-body>
+      </div>
+    </div>
+  </div>
+</accordion-group>
+
+

@@ -1,0 +1,4 @@
+*.spec.ts
+polyfills.ts
+_colors.ts
+/src/**/*.spec.ts

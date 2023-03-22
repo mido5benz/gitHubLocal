@@ -1,0 +1,42 @@
+// Import variables
+@import '../variables';
+
+// AgGrid
+@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
+
+.ag-theme-alpine {
+  @include ag-theme-alpine();
+}
+
+.ag-theme-alpine .ag-row-hover, .ag-theme-alpine .ag-list-item.ag-active-item {
+  background-color: rgba($orange, 0.1) !important;
+}
+
+.ag-theme-alpine .ag-row-selected {
+  background-color: rgba($orange, 0.3) !important;
+}
+
+.ag-ltr, .ag-rtl {
+  .ag-has-focus .ag-cell-focus:not(.ag-cell-range-selected),
+  .ag-has-focus .ag-cell-focus.ag-cell-range-single-cell,
+  .ag-cell-range-single-cell.ag-cell-range-handle {
+      border: 1px solid	$orange !important;
+  }
+}
+
+.ag-center-cols-viewport {
+  overflow-x: hidden;
+}
+
+.ag-row {
+  cursor: pointer;
+}
+
+.ag-row-status-green {
+  color: green;
+}
+
+.ag-row-selected > .ag-row-status {
+  color: red !important;
+}

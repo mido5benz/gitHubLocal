@@ -1,0 +1,29 @@
+<div class="info-container">
+
+
+  <button class="btn btn-sm" (click)="editRecipient()" [class.disabled]="selectedRecipients.length !== 1"><i
+    class="fas fa-edit"></i> Bearbeiten
+  </button>
+  <button class="btn btn-sm" (click)="deleteRecipient()" [hidden]="selectedRecipients.length !== 1"><i
+    class="far fa-trash-alt"></i> Löschen
+  </button>
+  <button class="btn btn-sm" (click)="mergeRecipients()" [hidden]="selectedRecipients.length < 2"><i
+    class="fas fa-object-ungroup"></i> Ziele zusammenführen
+  </button>
+  <button class="btn btn-sm" (click)="resetFilter()"><i
+    class="fas fa-filter"></i> Filter zurücksetzen
+  </button>
+
+  <button [disabled]="!showZieleAktualisierenButton" class="btn btn-sm" (click)="refreshAddressData()">
+    <i class=" fa fa-refresh"></i> Ziele aktualisieren
+  </button>
+
+  <button type="button" class="btn btn-primary btn-sm search-Button" (click)="navigateToPage(zeitnummer.value)">
+    <i class="fas fa-search"></i>
+  </button>
+
+  <input #zeitnummer type="text" class="search-Field"  id="inputZeite"  (keyup.enter)="navigateToPage(zeitnummer.value)"placeholder="Seitenzahl eintippen" >
+
+</div>
+
+

@@ -1,0 +1,29 @@
+<div class="details">
+  <div class="loading-container" *ngIf="loading; else showStopps">
+    <div class="spinner-border text-warning" role="status"></div>
+    <div>Tour wird geladen...</div>
+  </div>
+  <ng-template #showStopps>
+    <div class="tour-details-container" [class.isCollapsed]="!isCollapsed" cdkScrollable>
+      <app-tour-details-header [frozen]="frozen" [tourNr]="tourNr"></app-tour-details-header>
+      <app-selected-tour-stopps-list
+        [frozen]="frozen"
+        (stoppSelected)="flyToStopp($event)"
+        (stoppOrderChanged)="dispatchNewSortOrder($event)"
+        (reloadLineMoved)="dispatchNewReloadLine($event)"
+        (deleteReloadLineClicked)="dispatchDeleteReloadLine()"
+        [reloadlineEditable]="reloadlineEditable"
+        [reloadLineIndex]="reloadLineIndex"
+        [stopps]="stopps">
+      </app-selected-tour-stopps-list>
+    </div>
+  </ng-template>
+  <div
+    class="collapse-control"
+    (click)="collapse()"
+    [class.isCollapsed]="!isCollapsed"
+    [attr.title]="!isCollapsed ? 'Tourdetails anzeigen' : 'Tourdetails ausblenden'">
+    <i class="fa fa-caret-left" aria-hidden="true"></i>
+  </div>
+</div>
+

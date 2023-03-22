@@ -1,0 +1,71 @@
+<app-navigation>
+  <ng-container left>
+    <div class="d-flex">
+      <app-navigation-item
+        [caption]="'Karte'"
+        [iconClasses]="['fas', 'fa-map-marked']"
+        (itemClicked)="goToMap()"
+      ></app-navigation-item>
+      <app-navigation-item
+        [isDisabled]="tagesAbschlussDone"
+        [iconClasses]="['fa', 'fa-calendar-check-o']"
+        (itemClicked)="showTagedAbschluss()"
+      ></app-navigation-item>
+      <app-navigation-delivery-item
+        [deliveryDay]="deliveryDayToDisplay"
+      ></app-navigation-delivery-item>
+      <!--      <app-navigation-item-->
+      <!--        [toolTip]="'Tourliste aktualisieren'"-->
+      <!--        [isHighlighted]="newDataAvailable"-->
+      <!--        [iconClasses]="['fas', 'fa-redo-alt']"-->
+      <!--        (itemClicked)="reloadTourList()"-->
+      <!--      ></app-navigation-item>-->
+      <app-update-tours>
+
+      </app-update-tours>
+      <app-selected-list-emergency-button
+        *ngIf="hasEmergencyButtonRole === 'true'">
+      </app-selected-list-emergency-button>
+      <app-activate-maschinelle-dispo-button>
+
+      </app-activate-maschinelle-dispo-button>
+
+<!--      <app-ptv-rest-planning>-->
+
+<!--      </app-ptv-rest-planning>-->
+
+      <app-nav-badge-icon-link
+        [url]="'/manual-dispo/spontane-uebernahme'"
+        [caption]="'Abholungen'"
+        [objectCount]="null"
+        [badge]="false"
+      ></app-nav-badge-icon-link>
+
+    </div>
+  </ng-container>
+  <div middle></div>
+  <ng-container right>
+    <div class="d-flex">
+      <app-navigation-item
+        [isDisabled]="tagesAbschlussDone"
+        [iconClasses]="['fas', 'fa-filter']"
+        (itemClicked)="toggleMapFilter()"
+        [isHighlighted]="activatedMapFilter"
+      ></app-navigation-item>
+      <div class="filter" *ngIf="!mapFilterCollapsed">
+        <app-map-filter (applyFilter)="applyMapFilter($event)"></app-map-filter>
+      </div>
+      <app-umdispo-info></app-umdispo-info>
+      <app-nav-badge-icon-link
+        [url]="'/stammdaten/fehlerhaft'"
+        [caption]="'Fehlerhafte Adressen'"
+        [objectCount]="unassignedAddressesCount"
+      ></app-nav-badge-icon-link>
+      <app-nav-badge-icon-link
+        [url]="'/manual-dispo/feindisposition'"
+        [caption]="'Unverplante Stopps'"
+        [objectCount]="unassignedStopCount"
+      ></app-nav-badge-icon-link>
+    </div>
+  </ng-container>
+</app-navigation>

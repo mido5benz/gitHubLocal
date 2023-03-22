@@ -1,0 +1,35 @@
+.router-link-active {
+  color: #5a7882;
+  font-weight: 800;
+}
+
+.bg-light {
+  background-color: #ffffff !important;
+}
+
+.nav-link {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.hideLegend {
+  display: none;
+}
+
+.customize-badge ::ng-deep app-nav-badge-icon-link .nav-link {
+  border-right: 0;
+  margin-left: -17px;
+}
+
+.dropdown-menu {
+  z-index: 1001;
+}
+
+.depotDropdown {
+  button {
+    background-color: transparent;
+    border: none;
+    color: rgba(0, 0, 0, 0.7);
+  }
+}

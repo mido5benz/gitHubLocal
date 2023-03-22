@@ -1,0 +1,32 @@
+<div class="w-100 h-100 bg-white">
+  <div class="p-30">
+    <div class="row">
+      <div class="col-md-6">
+        <span class="header">Stammdaten</span>
+        <app-recipient-details
+          [recipient]="currentZiel$ | async"
+          [address]="recipientAddress"
+        ></app-recipient-details>
+      </div>
+      <div class="col-md-6">
+        <app-delivery-period-table
+          (removeDeliveryTimeFramePeriod)="removeTimeFrame($event)"
+          [deliveryTimeFramePeriodCount]="deliveryTimeFramePeriodsCount$ | async"
+          [deliveryTimeFramePeriods]="deliveryTimeFramePeriods$ | async">
+        </app-delivery-period-table>
+        <div>
+          <button class="btn btn-primary btn-sm mb-3" (click)="openDeliveryPeriodDialog()">
+            Anlieferungszeit hinzufügen
+          </button>
+          <button class="btn btn-primary btn-sm mb-3" [disabled]="saveCheckValue" (click)="saveTimeFrames()">
+            Anlieferungszeit speichern
+          </button>
+        </div>
+        <hr/>
+        <app-recipient-synonyms [currentZiel]="currentZiel$ | async" [synonym]="synonyms$ | async"
+                                (seperateSynonymClicked)="openSeperateSynonymDialog($event)">
+        </app-recipient-synonyms>
+      </div>
+    </div>
+  </div>
+</div>

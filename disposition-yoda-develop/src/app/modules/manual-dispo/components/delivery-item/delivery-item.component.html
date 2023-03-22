@@ -1,0 +1,10 @@
+<div class="delivery" *ngIf="delivery; else notFound">
+  {{
+    delivery.name1.length > 12
+      ? (delivery.name1 | slice: 0:12) + '..'
+      : delivery.name1
+  }}
+</div>
+<ng-template #notFound>
+  <div class="delivery">Unbekannt</div>
+</ng-template>

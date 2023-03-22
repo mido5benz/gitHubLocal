@@ -1,0 +1,91 @@
+<div class="col-md-4 btn btsm btn-sq-lg_g  btn-lightdark btcent text-capitalize" style="display:block;"
+(click)="bruchMethod('', BruchModaltemplate)"><i style="position: relative; top: 25px; font-style: normal !important;" class="mt-5">Bruch</i></div>
+
+
+<ng-template #BruchModaltemplate>
+  <div class="modal-header popheader">
+    <h4 class="modal-title">Vereinnahmung - Bruch</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeBruchModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+  </div>
+  <div class="modal-body popbody mo_bodyradius">
+    <div *ngIf="imageDataList.length !== 0"  class="sub mb-3 border border-dark">
+      <img  [src]="url" class="img-fluid">
+    </div>
+
+    <carousel [itemsPerSlide]="itemsPerSlide" [singleSlideOffset]="singleSlideOffset" [interval]="false"
+      [noWrap]="noWrap" [showIndicators]="showIndicator">
+      <slide *ngFor="let slide of imageDataList; let index=index">
+        <img [src]="slide.src" (click)="openImageModal(index)" alt="image slide" class="img-thumbnail rounded tof-img">
+        <div class="carousel-caption">
+          <h5 (click)="deleteimg(index)"><i class="fas fa-trash-alt error"></i></h5>
+        </div>
+      </slide>
+    </carousel>
+
+    <form #bruchForm="ngForm" (ngSubmit)="bruchModalConfirm()">
+      <div class="row mb-2 mt-3">
+        <div class="col-md-12 mb-1">
+          <div class="form-group">
+            <input #searchBarBruch required class="form-control mb-3"  type="text" ngModel name="num" #num="ngModel"
+              autocomplete="off" minlength="24" maxlength="30" [(ngModel)]="numval" (keypress)="keyPressNumbers($event)"
+              autofocus id="bruchModalInput">
+            <div class="alert alert-danger" role="alert"
+              *ngIf="(!num.valid && num.errors && num.errors.minlength ) || bruchBarcodeError || bruchRequiredError  || bruchNoFotosError">
+              <div *ngIf="bruchRequiredError">Dieses Feld ist erforderlich</div>
+              <!-- <div>{{test(num.valid, num.errors, num.errors.minlength)}}</div> -->
+              <div *ngIf="num.errors && num.errors.minlength">Es muss eine 24-stelliger Barcode sein </div>
+              <div *ngIf="bruchBarcodeError">Bitte geben Sie den richtigen Barcode ein.</div>
+              <div *ngIf="bruchNoFotosError">Bitte nehmen Sie ein Foto auf.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-sm-7">
+          <span>
+            Ist dieser Bruch ein Collo oder eine Palette? Bitte wählen Sie aus.
+          </span>
+        </div>
+        <div class="col-sm-5">
+          <table [ngClass]="colliActive ? 'active1' : 'disabled1'">
+            <tr>
+              <td class="icons" (click)="toggleColli(true)">
+                <i class="fa fa-box-open fawid fawid1 fa-2x activeclass"></i>
+
+              </td>
+              <td class="icons" (click)="toggleColli(false)">
+                <i class="fa fa-pallet fawid fawid1 fa-2x activeclass1"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="m-l1" [hidden]="!colliActive"><i class="fa fa-check-circle fawid fa-1x activeclass"></i>
+                </div>
+              </td>
+              <td>
+                <div class="m-l1" [hidden]="colliActive"><i class="fa fa-check-circle fawid fa-1x activeclass1"></i>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row mb-1">
+        <div class="col-md-12 d-flex justify-content-end">
+          <button type="button" class="btn btn-sm btn-primary text-capitalize" (click)="bruchModalNewPhoto()">
+            Foto aufnehmen</button> &nbsp;
+          <button type="submit" class="btn btn-sm btn-primary text-capitalize"
+            [disabled]="!bruchForm.form.valid">Bestätigen</button>
+        </div>
+      </div>
+    </form>
+    <ngx-spinner bdColor = "rgba(235,206,158,0.5)" size = "medium" color = "#f27e00" type = "timer" [fullScreen] = "true"><p style="color: #f27e00" > warten... </p></ngx-spinner>
+  </div>
+</ng-template>
+
+<input type="file" accept="image/*" capture="environment" (change)="selectFile($event,BruchModaltemplate)"
+  style="display:none;" id="imagUploadId" value="">

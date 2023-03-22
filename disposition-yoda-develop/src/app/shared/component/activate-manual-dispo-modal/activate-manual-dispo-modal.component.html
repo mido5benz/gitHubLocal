@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <div class="modal-body">
+    <ng-container *ngIf="loading">Prüfe Manuelle Disposition....</ng-container>
+    <ng-container *ngIf="!isActive && !loading">
+    <p >Die Tagesdisposition ist momentan nicht aktiv. Sie muss aktiviert werden um fortzufahren!</p>
+    <div>
+      <button type="button" class="btn btn-sm btn-primary" (click)="confirm()">Jetzt Aktivieren!</button>
+      <button type="button" class="btn btn-sm btn-primary" (click)="close()">Abbrechen</button>
+    </div>
+    </ng-container>
+  </div>
+</div>

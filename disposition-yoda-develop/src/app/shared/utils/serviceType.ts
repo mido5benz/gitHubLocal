@@ -1,0 +1,12 @@
+export enum ServiceType {
+    UNKNOWN,
+    AMBIENT,
+    PLUS8,
+    PLUS9,
+    PLUS10,
+    PLUS12,
+    ABENDDIENST,
+    THERMOMED,
+    GEFAHRGUTSCHWACH,
+    GEFAHRGUTSTARK
+}

@@ -1,0 +1,70 @@
+.customIcon {
+  font-size: 40px;
+  padding-right: 10px;
+}
+
+.customHeading {
+  color: #000000;
+  font-family: PT Sans, sans serif;
+  letter-spacing: 0.1em;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.customHeader :hover {
+  text-decoration: underline;
+}
+
+.customPosition {
+  margin-top: 9px;
+}
+
+.customCard {
+  min-width: 375px;
+  min-height: 500px;
+  margin-right: 25px;
+  max-width: 400px;
+}
+
+.cardHeader {
+  font-family: Days;
+  color: white;
+  font-size: 19.2px;
+  background-color: #5A7882;
+}
+
+.cards {
+  margin: auto;
+}
+
+accordion-group {
+  ::ng-deep {
+    div {
+      & > div.panel-heading.card-header.panel-enabled {
+        background-color: #edeeef;
+        box-shadow: 0px 3px 3px -1px rgba(71, 78, 106, 0.5);
+
+        .btn-link {
+          color: black;
+          border-bottom: 0px;
+          text-transform: capitalize;
+        }
+      }
+
+      & > div.panel-collapse.collapse.in.show > div {
+        background-color: #edeeef;
+        box-shadow: -3px 6px 3px -3px rgba(71, 78, 106, 0.5);
+        margin-top: -15px;
+      }
+    }
+  }
+}
+
+.caption-wrapper {
+  padding-right: 20px;
+
+  .badge {
+    position: absolute !important;
+    left: 50px;
+  }
+}

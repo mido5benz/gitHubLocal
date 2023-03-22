@@ -1,0 +1,24 @@
+<app-recipientlist-info-header (onMergeRecipientsClicked)="openMergeRecipientDialog($event)"
+                               (refreshAddressTable)="refreshRecipientTable($event)"
+                               (onDeleteRecipientClicked)="openDeleteRecipientDialog($event)"
+                               (resetFilterClicked)="resetAllFilterOptions()"
+                               (showSearchedPage)="openSelectedPage($event)"
+                               [selectedRecipients]="selectedRecipients"></app-recipientlist-info-header>
+
+<div class="table-container">
+  <ag-grid-angular
+    style="width: 100%; height: 100%;"
+    class="ag-theme-alpine"
+    [localeText]="locale"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [pagination]="true"
+    [rowData]="rowData"
+    [rowSelection]="'multiple'"
+    (rowDoubleClicked)="onRowDoubleClicked($event)"
+    (rowSelected)="onRowSelected()"
+    (gridReady)="onGridReady($event)"
+    [gridOptions]="gridOptions"
+  >
+  </ag-grid-angular>
+</div>

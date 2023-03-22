@@ -1,0 +1,22 @@
+.filter {
+  border: 1px solid darken(#fff, 15%);
+  border-radius: 2px;
+  width: 300px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-bottom: 8px solid #FFF;
+  }
+
+  position: absolute;
+  background-color: #ffffff;
+  top: 50px;
+  z-index: 99999999999;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}

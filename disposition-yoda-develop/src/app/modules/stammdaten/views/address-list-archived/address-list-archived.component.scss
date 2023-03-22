@@ -1,0 +1,46 @@
+.address-list {
+  overflow-y: scroll;
+  height: calc(100vh - (58px + 37px));
+
+  .container-size {
+    width: 30%;
+  }
+
+  .button-position {
+    position: relative;
+    float: right;
+    margin-top: 10px;
+  }
+
+  .item {
+    font-size: 15px;
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+    background-color: white;
+    margin: 0 0 5px 0;
+
+    &:hover {
+      cursor: pointer;
+      background-color: darken(#fff, 5%);
+      border-color: orange;
+      color: black;
+    }
+
+    &.selected {
+      background-color: darken(#fff, 5%);
+      border-color: orange;
+      color: black;
+    }
+  }
+
+  .checkbox {
+    position: relative;
+    text-align: end;
+  }
+
+  .no-content-text {
+    position: relative;
+    text-align: center;
+    top: 50%;
+  }
+}

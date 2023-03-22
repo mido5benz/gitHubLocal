@@ -1,0 +1,99 @@
+<div class="card-header-wrapper">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-8 col-sm-7 tour-info">
+        <div class="tourID">
+          <span>{{tourDetails ? tourDetails.tourNr : ''}}</span>
+        </div>
+        <div class="print" (click)="routeToPDFViewer(tourDetails.tourId)">
+          <!-- <i class="fas fa-print"></i> -->
+          <i class="fa fa-print"></i>
+        </div>
+        <div class="time">
+          <!-- <i class="fas fa-map-marker-alt header-detail-icon"></i> -->
+          <i class="fa fa-map-marker-alt header-detail-icon"></i>
+          <span class=" header-detail-text">{{tourDetails ?tourDetails.tourPlaceTime:''}}</span>
+        </div>
+        <div class="time">
+          <!-- <i class="far fa-arrow-alt-circle-right header-detail-icon"></i> -->
+          <i class="fa fa-arrow-alt-circle-right header-detail-icon"></i>
+          <span class=" header-detail-text">{{tourDetails ?tourDetails.tourStartTime:''}}</span>
+        </div>
+        
+        <div class="fmsection">
+          <span>FM : {{fmCounts}}</span>
+        </div>
+
+        <div class="package-pallet" *ngFor="let package of packages">
+          <div class="package">
+            <div class="package-icon ">
+              <span class="header-detail-text">{{package.label}}</span>
+              <i class="fa fa-box-open header-detail-icon"></i>
+            </div>
+            <div class="package-text header-detail-text">
+              {{package.packageText}}
+            </div>
+          </div>
+          <div class="pallet">
+            <div class="pallet-icon">
+              <i class="fa fa-pallet header-detail-icon"></i>
+            </div>
+            <div class="pallet-text header-detail-text">
+              {{package.palletText}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-5 criteria">
+
+        <ng-container *ngIf="tourDetails.labelingObligation">
+          <div class="orangeIcon">
+            <div class="criteria-icon">
+              <img src="assets/img/brand/gefahrgut.png" class="img-fluid imgwid">
+            </div>
+          </div>
+        </ng-container>
+
+        <div *ngIf="tourDetails"
+          [ngClass]="tourDetails.temperatur && tourDetails.temperatur.length == 1 ? 'centerClass' :'' "
+          class="paddingClass">
+          <div [style.color]="item.degreeeStatus" *ngFor="let item of tourDetails.temperatur"
+            class="d-inline-block newpadClass">
+            <div class="criteria-icon">
+              <i class="header-detail-icon fa fa-thermometer-three-quarters m-auto"></i>
+            </div>
+            <div class="criteria-text header-detail-text classpad">
+              {{item.currentDegreeVehicle ? item.currentDegreeVehicle : '&nbsp;'}}<span
+                *ngIf=" item.currentDegreeVehicle">&#176;</span>
+            </div>
+          </div>
+        </div>
+
+        <div *ngFor="let criteria of criterias">
+          <div [ngClass]="[criteria.color]" [style.color]="criteria.backEndClass">
+            <div class="criteria-icon ">
+              <ng-container *ngIf=[criteria.iconText]>
+                <span class="dolly-count">
+                  {{criteria.iconText}}
+                </span>
+              </ng-container>
+              <i class="header-detail-icon" [ngClass]=[criteria.icon]></i>
+            </div>
+            <ng-container *ngIf=[criteria.textArray]>
+              <div *ngFor="let text of criteria.textArray">
+                <div class="criteria-text header-detail-text">
+                  {{text.name }} - {{text.count}}
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf=[criteria.text]>
+              <div class="criteria-text header-detail-text">
+                {{criteria.text}}
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

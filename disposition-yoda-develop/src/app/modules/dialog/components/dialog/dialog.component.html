@@ -1,0 +1,25 @@
+<div class="overlay" (click)="onOverlayClicked($event)">
+  <div
+    class="dialog"
+    [ngClass]="[
+      dialogConfig.modalType === 0 ? 'dialogModal' : '',
+      dialogConfig.modalType === 1 ? 'dialogLeft' : '',
+      dialogConfig.modalType === 2 ? 'dialogRight' : ''
+    ]"
+    (click)="onDialogClicked($event)"
+    [style.width.px]="dialogConfig.width"
+    [style.height.px]="dialogConfig.height"
+  >
+    <div class="dialog-title d-flex justify-content-between">
+      <div class="title">{{dialogConfig.title}}</div>
+      <app-dialog-controls
+        *ngIf="dialogConfig.showTitle"
+        [title]="dialogConfig.title"
+        (closeButtonClicked)="closeDialog()"
+      ></app-dialog-controls>
+    </div>
+    <div class="content-wrapper">
+      <ng-template appInsertion></ng-template>
+    </div>
+  </div>
+</div>

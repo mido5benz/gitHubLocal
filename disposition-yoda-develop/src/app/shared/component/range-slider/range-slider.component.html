@@ -1,0 +1,12 @@
+<div class="slidecontainer">
+  <input
+    class="form-control"
+    type="range"
+    [attr.min]="min"
+    [attr.max]="max"
+    class="slider"
+    #input
+    (change)="onChange($event.target.value)"
+  />
+  <div>{{ input.value | minuteSeconds }} min</div>
+</div>

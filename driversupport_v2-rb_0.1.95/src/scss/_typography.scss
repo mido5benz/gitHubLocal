@@ -1,0 +1,62 @@
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  font-family: $font-family-display;
+  font-style: italic;
+  letter-spacing: 0.4px;
+}
+
+@include media-breakpoint-down(md) {
+  h1,
+  .h1 {
+    font-size: 2rem;
+  }
+
+  h2,
+  .h2 {
+    font-size: 1.5rem;
+  }
+
+  h3,
+  .h3 {
+    font-size: 1rem;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  h1,
+  .h1 {
+    font-size: 1.5rem;
+  }
+
+  h2,
+  .h2 {
+    font-size: 1.3125rem;
+  }
+}
+
+a {
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+a,
+li,
+p {
+  &.small {
+    font-size: $font-size-sm;
+  }
+
+  &.big {
+    font-size: $font-size-lg;
+  }
+}
+
+.text-transparent {
+  opacity: 0.6;
+}

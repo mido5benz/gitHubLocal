@@ -1,0 +1,25 @@
+<div class="p-3 h-100 relative">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/manual-dispo">Karte</a></li>
+      <li class="breadcrumb-item"><a
+        [routerLink]="['../../../', this.tourDetails?.tour.tour_id]">Tour {{ this.tourDetails?.tour.tournr }}</a>
+      </li>
+      <li class="breadcrumb-item"><a
+        [routerLink]="['../../../', this.tourDetails?.tour.tour_id, 'stopps', dispoStopp?.dispostopp_id]">Stopp {{ dispoStopp?.soll_stopp }}</a>
+      </li>
+    </ol>
+  </nav>
+  <div class="info-container">
+    <app-selection-count-button *ngIf="selectedDeliveries?.length > 0"
+                                (buttonClicked)="openMoveDeliveryDialog()"
+                                [count]="selectedDeliveries?.length"></app-selection-count-button>
+  </div>
+  <app-supplies-list
+    [tourDetails]="tourDetails"
+    [dispoStopp]="dispoStopp"
+    [sendungen]="sendungen$ | async"
+    (rowSelectionChanged)="onRowSelectionChanged($event)"
+  ></app-supplies-list>
+</div>
+

@@ -1,0 +1,69 @@
+<app-navigation>
+  <ng-container left>
+    <div class="d-flex">
+      <div class="nav-item" [routerLink]="['/manual-dispo']">
+        <i class="fas fa-map-marked"></i> Karte
+      </div>
+      <app-depot-selection-list>
+      </app-depot-selection-list>
+    </div>
+  </ng-container>
+  <div middle></div>
+  <div right></div>
+</app-navigation>
+
+<div class="container-fluid mt-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/manual-dispo">Karte</a></li>
+      <li class="breadcrumb-item"><a routerLink="/manual-dispo/spontane-uebernahme">Abholungen</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+
+<!-- Kunden für Abholungen -->
+<div class="card card-size">
+  <div class="card-body">
+
+    <div style="cursor: pointer" (click)="openCustomerForTakeover()">
+      <h5 class="card-title">Kunden für Abholungen</h5>
+    </div>
+
+    <div id="collapseBasic2" [collapse]="!isCustomerForTakeoverCollapsed" [isAnimated]="true">
+      <app-customer-takeover-table></app-customer-takeover-table>
+    </div>
+
+  </div>
+</div>
+
+<!-- Spontane Abholungen -->
+<div class="card card-size">
+  <div class="card-body">
+
+    <div style="cursor: pointer" (click)="openSpontaneousTakeover()">
+      <h5 class="card-title">Spontane Abholungen</h5>
+    </div>
+
+    <div id="collapseBasic" [collapse]="!isSpontaneousTakeoverCollapsed" [isAnimated]="true">
+      <app-spontaneous-takeover-table></app-spontaneous-takeover-table>
+    </div>
+
+  </div>
+</div>
+
+<!-- Regel Abholungen -->
+<div class="card card-size">
+  <div class="card-body">
+
+    <div style="cursor: pointer" (click)="openRuleForTakeover()">
+      <h5 class="card-title">Regelabholungen</h5>
+    </div>
+
+    <div id="collapseBasic3" [collapse]="!isRuleForTakeoverCollapsed" [isAnimated]="true">
+<!--      <app-spontaneous-takeover-table></app-spontaneous-takeover-table>-->
+      <app-rule-pickup-table></app-rule-pickup-table>
+    </div>
+
+  </div>
+</div>

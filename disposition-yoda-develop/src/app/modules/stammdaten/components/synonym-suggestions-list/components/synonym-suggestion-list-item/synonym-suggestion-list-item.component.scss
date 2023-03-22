@@ -1,0 +1,21 @@
+.item {
+  font-size: 14px;
+  padding: 5px 10px;
+  border: 1px solid lightgray;
+  margin-bottom: 3px;
+
+  &:hover {
+    cursor: pointer;
+    color: black;
+  }
+}
+
+.add-synonym {
+  padding-left: 5px;
+  margin-bottom: 15px;
+
+  &:hover {
+    cursor: pointer;
+    color: #f27e00;
+  }
+}

@@ -1,0 +1,56 @@
+.btn {
+  box-shadow: none !important;
+  min-width: 0;
+  max-width: 100%;
+  transition: $transition-base;
+  letter-spacing: normal;
+  font-weight: normal;
+
+  .btn-group & {
+    min-width: 0 !important;
+
+    &:not(:first-of-type) {
+      margin-left: 1px;
+    }
+  }
+
+  .btn-group-block & {
+    flex: 1 1 auto;
+  }
+
+  &-light {
+    &,
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &-link {
+    color: $gray-500;
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 0;
+    width: auto;
+    // font-weight: $font-weight-bold;
+
+    &:hover {
+      color: $primary;
+      text-decoration: none;
+    }
+  }
+
+  &-squared {
+    border-radius: 0;
+  }
+
+  i[class*='bt-'] {
+    font-size: 0.75em;
+  }
+}
+
+.btn-group {
+  &-block {
+    width: 100%;
+    justify-content: stretch;
+  }
+}

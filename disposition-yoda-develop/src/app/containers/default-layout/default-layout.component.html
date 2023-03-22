@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="assets/img/brand/transoflex_logo.png" height="20" alt=""/>
+  </a>
+  <button
+    aria-controls="navbarSupportedContent"
+    (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed"
+    class="navbar-toggler"
+    type="button"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div
+    class="collapse navbar-collapse"
+    id="navbarSupportedContent"
+    [collapse]="isCollapsed"
+    [isAnimated]="true"
+  >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/strategic-dispo"
+          routerLinkActive="router-link-active"
+        >Strategische Disposition</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          (click)="fetchTours()"
+          class="nav-link"
+          routerLink="/manual-dispo"
+          routerLinkActive="router-link-active"
+        >Manuelle Disposition</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/stammdaten"
+          routerLinkActive="router-link-active"
+        >Ziel-/Adresspflege</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/on-tour"
+          routerLinkActive="router-link-active"
+        >onTour Änderung
+        </a>
+      </li>
+      <div class="customize-badge">
+        <app-nav-badge-icon-link
+          [objectCount]="onTourCount"
+        ></app-nav-badge-icon-link>
+      </div>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+
+      <div class="btn-group depotDropdown" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class=" dropdown-toggle"
+                aria-controls="dropdown-basic">
+          Depotauswahl <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="button-basic">
+          <li *ngFor="let userDepot of depots" role="menuitem">
+            <a class="dropdown-item" (click)="redirectToDepotServer(userDepot)">
+              {{ userDepot.depotnr }} - {{ userDepot.bezeichnung }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          (click)="showLegendModal()"
+        ><i class="fas fa-shapes"></i> Legende</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/info"
+          routerLinkActive="router-link-active"
+        ><i class="fa fa-info"></i> Info</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="doLogout()"><i class="fa fa-abmelden"></i> Abmelden</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="app-body">
+  <main class="main">
+    <router-outlet></router-outlet>
+  </main>
+</div>

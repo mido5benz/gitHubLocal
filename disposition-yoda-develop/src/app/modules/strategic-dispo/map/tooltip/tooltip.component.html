@@ -1,0 +1,30 @@
+<div *ngIf="loading == true">
+  <ngx-spinner [fullScreen]="false"></ngx-spinner>
+</div>
+<div *ngIf="namenEmpfaenger !== ''">
+  <div class="title">Empfänger:</div>
+  <div [innerHTML]="namenEmpfaenger">{{ namenEmpfaenger }}</div>
+</div>
+
+<p>
+  <span *ngIf="tourNr"><span class="title">Tour: </span>{{ tourNr }} </span>
+</p>
+
+<div class="title">Mengen:</div>
+<div *ngIf="intAnzahlStopps !== 0">Anzahl Stopps: {{ intAnzahlStopps }}</div>
+<div *ngIf="intGesamtmenge !== 0">Sendungen: {{ intGesamtmenge }}</div>
+<div *ngIf="intCollo !== 0">Colli: {{ intCollo }}</div>
+<div *ngIf="intPalette !== 0">Paletten: {{ intPalette }}</div>
+<div *ngIf="intGesamtgewicht !== 0">
+  Gesamtgewicht: {{ intGesamtgewicht }} kg
+</div>
+<div *ngIf="intPlus8 !== 0">{{plus8()}} {{ intPlus8 }}</div>
+<div *ngIf="intPlus9 !== 0">{{plus9()}} {{ intPlus9 }}</div>
+<div *ngIf="intFrueh !== 0">{{plus10()}} {{ intFrueh }}</div>
+<div *ngIf="intVormittag !== 0">{{plus12()}} {{ intVormittag }}</div>
+<div *ngIf="intAbend !== 0">Abend: {{ intAbend }}</div>
+<div *ngIf="intAmb !== 0">Ambient: {{ intAmb }}</div>
+<div *ngIf="intKuehlraum !== 0">ThermoMed: {{ intKuehlraum }}</div>
+<div *ngIf="intRadioaktiv !== 0">KL7: {{ intRadioaktiv }}</div>
+
+<p><span class="title">Raster: </span>{{ rasterId }}</p> 

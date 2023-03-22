@@ -1,0 +1,13 @@
+<span *ngIf="params?.value?.kennzeichenpflichtig">
+  <img [hidden]="params?.value?.tournr === '9999'" src="assets/img/gefahrgut.png"  height="15" width="30" alt="" title="Gefahrgut">
+</span>&nbsp;
+<span *ngIf="params?.value?.abgefertigt">
+  <i class="fas fa-check colorChange"></i>
+</span>
+
+<span *ngIf="params?.value?.potentiell_gleiche_ziele && params?.value?.tournr !== '9999'">
+  <img src="assets/icons/merge_icon.png" height="25" width="25" title="Auf dieser Tour liegen Ziele mit identischer Geoposition">
+</span>
+
+
+

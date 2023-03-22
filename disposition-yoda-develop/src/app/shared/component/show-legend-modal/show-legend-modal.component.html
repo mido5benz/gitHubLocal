@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Legende</h4>
+</div>
+<div class="modal-body">
+  <div class="d-flex p-3" *ngIf="mDisopActivated; else sDispoLegend">
+    <div>
+    </div>
+    <div class="ml-4">
+      <ng-container *ngFor="let stoppDefinition of stoppDefinitions">
+        <div class="circle mt-3 mb-2" [style.background]="stoppDefinition.color">
+          <span>{{stoppDefinition.description}}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <ng-template #sDispoLegend>
+    <div class="row">
+      <div class="ml-5">
+        <div class="">
+          <strong class="mb-1" >Layer</strong>
+        </div>
+        <ng-container *ngFor="let iconDefinition of iconDefinitions">
+          <div class="mt-1">
+            <i [className]="iconDefinition.icon"></i> {{ iconDefinition.description }}
+          </div>
+        </ng-container>
+      </div>
+      <div>
+        <div class="sendungenHeader">
+          <strong class="mb-1">&empty; Sendungen</strong>
+        </div>
+        <!-- Color list -->
+        <ng-container *ngFor="let heatDef of heatmapColors">
+          <div class="circle circle-position" [style.background]="heatDef.color">
+            <span>{{ heatDef.max ? heatDef.min + ' - ' + heatDef.max : '>= ' + heatDef.min }}</span>
+          </div>
+          <br>
+        </ng-container>
+      </div>
+    </div>
+  </ng-template>
+  <div>
+    <button type="button" class="btn btn-sm btn-primary" (click)="close()">Schließen</button>
+  </div>
+</div>
+

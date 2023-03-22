@@ -1,0 +1,45 @@
+
+// If you want to override variables do it here
+@import "variables";
+
+
+@import "../../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// If you want to add something do it here
+@import "typography";
+@import "buttons";
+@import "custom";
+
+@import "./shared.scss";
+
+.ngx-ptr-loadingbar-container {
+	max-width: 30px!important;
+    top: -122px!important;
+}
+
+.ngx-ptr-str-container {
+	display: flex!important;
+	justify-content: center!important;
+	align-items: center!important;
+}
+
+.ngx-ptr-path {
+	stroke: #f27e00!important;
+}
+
+@-webkit-keyframes ngx-ptr-colors{0%{stroke:#f27e00}25%{stroke:#f27e00}50%{stroke:#f27e00}75%{stroke:#f27e00}to{stroke:#f27e00}}@keyframes ngx-ptr-colors{0%{stroke:#f27e00}25%{stroke:#f27e00}50%{stroke:#f27e00}75%{stroke:#f27e00}to{stroke:#f27e00}}
+
+.bruch-tof{
+  &.modal-dialog {
+    &.modal-dialog-centered{
+      max-width: 1000px;
+    }
+  }
+}

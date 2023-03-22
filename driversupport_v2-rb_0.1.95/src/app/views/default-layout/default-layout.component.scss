@@ -1,0 +1,71 @@
+@import "../../../scss/variables";
+// .avatar {
+//     margin-right: 20px;
+//     margin-left: auto;
+// }
+
+.main {
+  background-color: #e4e5e6;
+  padding-top: 30px;
+}
+
+.main>.container-fluid {
+  height: 100%;
+}
+
+.navbar-nav li.nav-item.px-3 {
+  padding-right: 0.5rem !important;
+}
+
+.main>.container-fluid {
+  height: auto !important;
+}
+
+@media (max-width: 991px) {
+  #main_resp {
+    margin-left: 0 !important;
+    position: relative;
+  }
+}
+
+@media (min-width:800px) and (max-width: 900px) {
+  .textindent30 {
+    bottom: 3rem;
+  }
+}
+
+.textad {
+  position: absolute;
+  margin-left: 1rem;
+  margin-top: -1.6rem;
+  width: max-content;
+}
+
+.textindent30 {
+  text-indent: 2.1rem;
+  // position: fixed;
+  bottom: 2rem;
+  position: absolute;
+  flex: 0 0 50px;
+}
+
+.fa-sign-out-alt{
+  color: $primary;
+}
+
+.test :hover {
+color: rgb(141, 214, 68);
+}
+
+
+
+
+.caption-wrapper {
+  padding-right: 20px;
+
+  .badge {
+    position: absolute !important;
+    top: 7px;
+    right: 55px;
+  }
+}

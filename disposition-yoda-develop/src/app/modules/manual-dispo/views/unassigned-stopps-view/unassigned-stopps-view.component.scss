@@ -1,0 +1,43 @@
+.tour-info-container {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: 1px solid darken(white, 15%);
+}
+
+.table-container {
+  min-height: 750px;
+  height: 750px;
+}
+
+.nav-item {
+  font-size: 14px;
+  color: black;
+  border-left: 1px solid darken(#ffffff, 10%);
+  border-right: 1px solid darken(#ffffff, 10%);
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    cursor: pointer;
+    background: rgb(242, 241, 241);
+    background: linear-gradient(180deg, rgba(205, 205, 205, 0.4) 0%, rgba(232, 230, 230, 0) 100%);
+    border-left: 1px solid darken(#ffffff, 30%);
+    border-right: 1px solid darken(#ffffff, 30%);
+  }
+
+  .fa-filter {
+    font-size: 12px;
+  }
+}
+
+.breadcrumb {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  .breadcrumb-item {
+    font-size: 13px !important;
+    visibility: visible !important;
+  }
+}

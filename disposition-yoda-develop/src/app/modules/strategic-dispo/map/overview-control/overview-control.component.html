@@ -1,0 +1,30 @@
+<div class="tour-info-container">
+  <div class="tourNumber mb-2"><b>Tour {{ convertTourNr(tour.tournr) }}</b></div>
+  <div class="tourinfo">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="mr-2"><i class="far fa-clock"></i></div>
+      <span *ngIf="loading==true; else showTime" class="width">
+        <progressbar class="progress progress-success" [value]="0" [max]="28800">
+          <b>&nbsp;&empty; Wird berechnet...</b>
+        </progressbar>
+      </span>
+      <ng-template #showTime>
+        <progressbar class="progress progress-success" [value]="fahrtzeit" [max]="28800">
+          <b>{{ fahrtzeit * 1000 | date: 'H:mm':'UTC' }}</b>
+        </progressbar>
+      </ng-template>
+    </div>
+    <div class="d-flex mt-2 align-items-center">
+      <div class="mr-2"><i class="fas fa-weight-hanging"></i></div>
+      <div>{{ aufrunden(kg) }} kg</div>
+    </div>
+    <div class="d-flex mt-2 align-items-center">
+      <div class="mr-2"><i class="fas fa-archive"></i></div>
+      <div>{{ aufrunden(colli) }} Colli</div>
+    </div>
+    <div class="d-flex mt-2 align-items-center">
+      <div class="mr-2"><i class="fas fa-pallet"></i></div>
+      <div>{{ aufrunden(paletten) }} Paletten</div>
+    </div>
+  </div>
+</div>

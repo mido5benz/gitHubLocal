@@ -1,0 +1,37 @@
+<div class="popup-container text-center">
+  <div class="mb-4" *ngIf="selectedTour">
+    <b>
+      {{ stopps.length }} Stopps wirklich verschieben?
+    </b
+    >
+  </div>
+  <div class="mb-4" *ngIf="!selectedTour">
+    Bitte geben Sie die Nummer der Tour ein, auf welche der Stopp umdisponiert werden soll
+  </div>
+  <div class="input-group">
+    <input
+      appAutofocus
+      [(ngModel)]="tourNr"
+      [typeahead]="dataSource$"
+      [typeaheadAsync]="true"
+      typeaheadOptionField="tournr"
+      (typeaheadOnSelect)="onSelect($event)"
+      (typeaheadLoading)="changeTypeaheadLoading($event)"
+      [typeaheadItemTemplate]="tourNumberTemplate"
+      [typeaheadScrollable]="true"
+      [typeaheadOptionsInScrollableView]="5"
+      placeholder="Tournummer"
+      class="form-control"
+    />
+  </div>
+  <button *ngIf="selectedTour" class="btn btn-danger btn-popup"
+          type="button"
+          (click)="moveStopps()"
+          [disabled]="!selectedTour"
+  >Umdisponierung
+  </button>
+</div>
+
+<ng-template #tourNumberTemplate let-tour="item">
+  <span>{{tour?.tournr}}</span>
+</ng-template>

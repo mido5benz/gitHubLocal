@@ -1,0 +1,21 @@
+<div class="address-list">
+  <div *ngFor="let item of unassignedAddresses" class="item" [class.selected]="item === unassignedSelectedAddress"
+       (click)="itemSelected(item)">
+    <div>
+      <div>
+        <span class="block"><b>{{ item.name1 }}</b></span>
+        <span class="block">{{ item.name2 }}</span>
+        <span class="block">{{ item.name3 }}</span>
+      </div>
+      <div>
+        {{ item.strasse }} {{item.hausnr }}
+      </div>
+      <div>
+        {{ item.plz }} {{ item.ort }}
+      </div>
+    </div>
+  </div>
+  <div class="w-100 text-center mt-2">
+    <app-load-more-button [weitereLadenButton]="showButton" (buttonClicked)="loadNextEntries()"></app-load-more-button>
+  </div>
+</div>

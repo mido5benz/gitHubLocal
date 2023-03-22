@@ -1,0 +1,72 @@
+$unassigned-color: #f9420c;
+$assigned-color: grey;
+$selected-color: #f27e00;
+
+$stopp-border-radius: 18px;
+$stopp-width: 30px;
+$stopp-height: 30px;
+
+.assigned-stopp {
+  width: $stopp-width !important;
+  height: $stopp-height !important;
+  border-radius: $stopp-border-radius;
+  margin-left: -12px !important;
+  margin-top: -12px !important;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  background-color: $assigned-color;
+  line-height: 30px;
+}
+
+.selected-stopp {
+  width: $stopp-width !important;
+  height: $stopp-height !important;
+  border-radius: $stopp-border-radius;
+  margin-left: -12px !important;
+  margin-top: -12px !important;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  background-color: blue;
+  line-height: 30px;
+}
+
+.unassigned-stopp {
+  width: $stopp-width !important;
+  height: $stopp-height !important;
+  margin-left: -12px !important;
+  margin-top: -12px !important;
+  background-color: $unassigned-color;
+  border-radius: $stopp-border-radius;
+  text-align: center;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.assigned-pickup-stopp {
+  width: $stopp-width !important;
+  height: $stopp-height !important;
+  border-radius: $stopp-border-radius;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 24px solid $assigned-color;
+  margin-left: -15px !important;
+  margin-top: -12px !important;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+.assigned-selected-stopp {
+  width: $stopp-width !important;
+  height: $stopp-height !important;
+  border-radius: $stopp-border-radius;
+  margin-left: -12px !important;
+  margin-top: -12px !important;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  background-color: $selected-color !important;
+  z-index: 1000000 !important;
+}

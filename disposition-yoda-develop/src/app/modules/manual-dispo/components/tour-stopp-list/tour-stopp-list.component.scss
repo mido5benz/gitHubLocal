@@ -1,0 +1,72 @@
+.details {
+  position: relative;
+  height: 100%;
+  border: solid 1px #babfc7;
+
+  .tour-details-container {
+    overflow-y: scroll !important;
+    transition: width 0.5s ease-in-out;
+    border-radius: 3px;
+    position: relative;
+    height: 100%;
+    width: 0;
+
+    &.isCollapsed {
+      width: 350px !important;
+    }
+  }
+
+  .collapse-control {
+    text-align: center;
+    position: absolute;
+    left: -35px;
+    top: -1px;
+    height: 35px;
+    z-index: 999;
+    background-color: #fff;
+    width: 34px;
+    border: solid 1px #babfc7;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: none;
+
+    &:hover {
+      cursor: pointer;
+
+      i {
+        color: darken(#babfc7, 25%);
+      }
+    }
+
+    &.isCollapsed {
+      i {
+        transform: rotate(180deg);
+      }
+    }
+
+    i {
+      transition: transform 0.5s ease-in-out;
+      font-size: 25px;
+      line-height: 35px;
+      color: #babfc7;
+    }
+  }
+}
+
+.loading-container {
+  min-width: 270px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+
+

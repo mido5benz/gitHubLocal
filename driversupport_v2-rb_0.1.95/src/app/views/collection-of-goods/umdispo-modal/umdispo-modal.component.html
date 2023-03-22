@@ -1,0 +1,64 @@
+<div class="col-md-4 btn btsm btn-sq-lg_g  btn-lightdark btcent text-capitalize"
+     (click)="umdispoMethod(VereUmdispoModaltemplate)"><i style="position: relative; font-style: normal !important;">Umdispo</i>
+</div>
+
+<ng-template #VereUmdispoModaltemplate>
+  <div class="modal-header popheader p-3">
+    <h4 class="modal-title">Vereinnahmung – Umdispo</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="clearUmdispo()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body popbody p-3">
+    <div class="container-fluid">
+      <div class="row justify-content-center mb-3">
+        <h4>Auf welche Tour soll disponiert werden?</h4>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 mb-3">
+          <input id="search" class="form-control" type="text" name="myCountry" maxlength="4"
+                 (keypress)="acceptNumbers($event)" [(ngModel)]="umdisTourNo" autocomplete="off">
+        </div>
+      </div>
+      <div class="row justify-content-center mb-3">
+        <h4>Grund der Umdisposition?</h4>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 mb-5">
+          <select class="form-control reasonListClass" [(ngModel)]="umdispoReasonObject">
+            <option *ngFor="let item of reArrangeList;let i = index" [value]="item.umdispoGrundId">
+              {{item.bezeichnung}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row m30 mb-5">
+        <div class="col-6">
+          <button type="button"
+                  class="btn btn-outline-primary btn-square btn-block text-capitalize btn-sm buttonClass btcolor"
+                  (click)="clearUmdispo()">abbrechen
+          </button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-primary  btn-square btn-block text-capitalize btn-sm buttonClass"
+                  (click)="umdispoSave()" [disabled]="umdisTourNo.length === 0 || umdispoReasonObject === ''"
+          >umdisponieren
+          </button>
+        </div>
+      </div>
+      <div class="row m30">
+        <div class="col-12">
+          <button type="button" class="btn btn-lg btn-block btn-dark text-capitalize btn-sm"
+                  (click)="redirectToShipment()">Sendungsdetails anschauen
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer popfooter justify-content-center">
+
+  </div>
+  <div class="UMDispoSelectionLoader">
+    <p class="loadtxt">Bitte warten Sie, die Daten werden verarbeitet</p>
+  </div>
+</ng-template>

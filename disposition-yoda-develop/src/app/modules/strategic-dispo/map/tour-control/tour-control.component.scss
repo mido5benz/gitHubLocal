@@ -1,0 +1,35 @@
+.control {
+  box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  max-height: 450px;
+  position: relative;
+  // width: 100px;
+}
+
+.status {
+  font-size: 34px;
+}
+
+.highlight {
+  color: #f27e00;
+}
+
+.selectable {
+  cursor: pointer;
+}
+
+.list {
+  margin-bottom: 10px;
+  font-size: 18px;
+  max-height: 250px;
+  overflow: auto;
+}
+
+.list-item:hover {
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}

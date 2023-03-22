@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'customer-web-app';
 
 
+
   columnDefs = [{ field: "make" }, { field: "model" }, { field: "price" }];
 
   rowData = [
